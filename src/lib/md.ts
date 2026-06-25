@@ -4,6 +4,16 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
+/** Pre-process Obsidian wikilinks [[Note]] → styled spans before markdown */
+function preprocessWikilinks(content: string): string {
+  return content.replace(/\[\[([^\]]+)\]\]/g, (_, text) => {
+    // Split on pipe for aliased links: [[Note|display text]]
+    const parts = text.split("|");
+    const display = parts.length > 1 ? parts[1].trim() : parts[0].trim();
+    return `<span class="wikilink">${display}</span>`;
+  });
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface ProjectFrontmatter {
@@ -57,7 +67,8 @@ export function getContent<T>(subdir: string): ContentItem<T>[] {
       return { slug, frontmatter: data as T, content };
     })
     .map((item) => {
-      const result = remark().use(html).processSync(item.content);
+      const processed = preprocessWikilinks(item.content);
+      const result = remark().use(html).processSync(processed);
       return { ...item, html: result.toString() };
     })
     .sort((a, b) => {

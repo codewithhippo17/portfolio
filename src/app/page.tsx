@@ -16,11 +16,8 @@ export default function Home() {
       </h1>
 
       <div className="space-y-6">
-        <div className="text-ctp-subtext-0 leading-relaxed space-y-4">
-          <div
-            className="[&_a]:text-ctp-mauve [&_a]:no-underline [&_a:hover]:underline"
-            dangerouslySetInnerHTML={{ __html: home.html }}
-          />
+        <div className="markdown-content text-ctp-subtext-0 leading-relaxed">
+          <div dangerouslySetInnerHTML={{ __html: home.html }} />
         </div>
 
         <div className="flex gap-4 text-sm text-ctp-subtext-0">
