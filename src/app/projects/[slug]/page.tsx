@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProjects, getProjectBySlug } from "@/lib/md";
+import TechIcon from "@/components/TechIcon";
 
 export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
@@ -50,13 +51,14 @@ export default async function ProjectPage({
 
       {/* Tags */}
       {frontmatter.tags?.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-3 mb-6">
           {frontmatter.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs text-ctp-overlay-1 bg-ctp-surface-0 px-2 py-0.5 rounded"
+              className="flex items-center gap-1.5 text-xs text-ctp-overlay-1 bg-ctp-surface-0 px-2 py-0.5 rounded"
             >
-              #{tag}
+              <TechIcon name={tag} size={14} />
+              {tag}
             </span>
           ))}
         </div>

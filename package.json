@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@catppuccin/tailwindcss": "^1.0.0",
+    "@iconify-json/devicon": "^1.2.62",
+    "@iconify-json/logos": "^1.2.11",
+    "@iconify-json/simple-icons": "^1.2.87",
+    "@iconify/react": "^6.0.2",
     "gray-matter": "^4.0.3",
     "next": "16.2.9",
     "react": "19.2.4",
