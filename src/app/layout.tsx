@@ -30,8 +30,8 @@ export default function RootLayout({
       className={`macchiato ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Nav />
         <div className="max-w-xl mx-auto w-full px-6">
-          <Nav />
           <main className="pb-16">{children}</main>
           <Footer />
         </div>

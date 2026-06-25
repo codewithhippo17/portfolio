@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
 ];
@@ -17,8 +18,8 @@ const moreLinks = [
 
 export default function Nav() {
   return (
-    <nav className="flex items-center justify-end py-6">
-      <div className="flex items-center gap-8 text-sm">
+    <nav className="sticky top-0 z-50 bg-ctp-base/80 backdrop-blur-sm">
+      <div className="max-w-xl mx-auto w-full px-6 flex items-center justify-end gap-8 py-4 text-sm">
         {navLinks.map((link) => (
           <Link
             key={link.href}
