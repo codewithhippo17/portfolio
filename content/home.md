@@ -3,15 +3,9 @@ title: "Hamza El Haiba"
 description: "Full-stack engineer building scalable web experiences"
 ---
 
-I'm a full-stack engineer with a passion for building scalable, well-architected systems. I think in terms of **tradeoffs**, not silver bullets — and I believe the best code is code you understand **deeply**.
+I’m a developer and writer. I work at Cursor teaching about AI. Previously, I worked at Vercel. I’ve been **coding** for 15 years and teaching for the second half.
 
-### What I do
-
-I build **web applications** and **developer tools**. My work spans vehicle auction platforms, LLM-powered dashboards, and agent-based systems. I'm currently exploring [[MCP]] and [[Agent Systems]].
-
-### How I work
-
-I follow [[Test-Driven Development]] and [[Engineering Principles]] that prioritize simplicity over cleverness. I believe in **shipping early**, **learning fast**, and writing code that the next person can read without a decoder ring.
+My life’s work is to make technology easy to understand and interesting to learn about. I’m a husband, father, and a massive music fan. I last listened to Actually by Dan Kye. 
 
 ### What you'll find here
 

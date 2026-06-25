@@ -27,9 +27,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`macchiato ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="bg-ctp-base text-ctp-text min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col">
         <div className="max-w-xl mx-auto w-full px-6">
           <Nav />
           <main className="pb-16">{children}</main>
