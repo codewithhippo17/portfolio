@@ -4,14 +4,25 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-/** Pre-process Obsidian wikilinks [[Note]] → styled spans before markdown */
-function preprocessWikilinks(content: string): string {
-  return content.replace(/\[\[([^\]]+)\]\]/g, (_, text) => {
-    // Split on pipe for aliased links: [[Note|display text]]
+/**
+ * Post-process HTML to replace Obsidian [[wikilinks]] with styled spans.
+ * Must run AFTER remark-html converts markdown, because remark strips
+ * raw HTML tags from markdown content.
+ */
+function postprocessWikilinks(htmlContent: string): string {
+  return htmlContent.replace(/\[\[([^\]]+)\]\]/g, (_, text) => {
     const parts = text.split("|");
     const display = parts.length > 1 ? parts[1].trim() : parts[0].trim();
     return `<span class="wikilink">${display}</span>`;
   });
+}
+
+/**
+ * Post-process HTML to replace Obsidian ==highlights== with styled spans.
+ * Must run AFTER remark-html.
+ */
+function postprocessHighlights(htmlContent: string): string {
+  return htmlContent.replace(/==([^=]+)==/g, '<span class="highlight">$1</span>');
 }
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -67,9 +78,9 @@ export function getContent<T>(subdir: string): ContentItem<T>[] {
       return { slug, frontmatter: data as T, content };
     })
     .map((item) => {
-      const processed = preprocessWikilinks(item.content);
-      const result = remark().use(html).processSync(processed);
-      return { ...item, html: result.toString() };
+      const result = remark().use(html).processSync(item.content);
+      const htmlStr = postprocessHighlights(postprocessWikilinks(result.toString()));
+      return { ...item, html: htmlStr };
     })
     .sort((a, b) => {
       // Sort by date descending if available
@@ -122,6 +133,11 @@ export function getProjects(category?: string) {
     if (dateA && dateB) return dateB.localeCompare(dateA);
     return 0;
   });
+}
+
+/** Get a single project by slug, searching across all subdirectories */
+export function getProjectBySlug(slug: string): ContentItem<ProjectFrontmatter> | null {
+  return getProjects().find((p) => p.slug === slug) ?? null;
 }
 
 /** Get featured projects only */

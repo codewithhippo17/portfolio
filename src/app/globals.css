@@ -43,10 +43,29 @@ body {
 
 /* ─── Markdown Content Styling ──────────────────────────────────── */
 
+/* Headings — stepped rainbow through Catppuccin accent colors */
+.markdown-content h1 {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--catppuccin-color-mauve);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.markdown-content h2 {
+  font-size: 1.375rem;
+  font-weight: 650;
+  color: var(--catppuccin-color-blue);
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
 .markdown-content h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--catppuccin-color-mauve);
+  color: var(--catppuccin-color-green);
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
 }
@@ -54,8 +73,16 @@ body {
 .markdown-content h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--catppuccin-color-lavender);
+  color: var(--catppuccin-color-peach);
   margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content h5 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--catppuccin-color-lavender);
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -147,7 +174,13 @@ body {
   margin: 1rem 0;
 }
 
-/* Wikilinks – Obsidian-style */
+.markdown-content .highlight {
+  background: color-mix(in srgb, var(--catppuccin-color-yellow) 30%, transparent);
+  color: var(--catppuccin-color-text);
+  padding: 0.05rem 0.2rem;
+  border-radius: 0.2rem;
+}
+
 .markdown-content .wikilink {
   color: var(--catppuccin-color-blue);
   cursor: default;
