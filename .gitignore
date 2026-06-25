@@ -36,6 +36,16 @@ yarn-error.log*
 # vercel
 .vercel
 
+# editor
+.vscode/
+.idea/
+
+# local symlinks
+docs
+
+# OS
+Thumbs.db
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
