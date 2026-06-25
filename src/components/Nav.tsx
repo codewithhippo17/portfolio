@@ -17,11 +17,7 @@ const moreLinks = [
 
 export default function Nav() {
   return (
-    <nav className="flex items-center justify-between py-6">
-      <Link href="/" className="text-ctp-text font-semibold text-lg">
-        Hamza El Haiba
-      </Link>
-
+    <nav className="flex items-center justify-end py-6">
       <div className="flex items-center gap-8 text-sm">
         {navLinks.map((link) => (
           <Link
