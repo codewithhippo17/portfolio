@@ -1,11 +1,42 @@
 @import "tailwindcss";
 @import "@catppuccin/tailwindcss/macchiato.css";
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+/* Force Macchiato dark mode by overriding any light defaults */
+:root {
+  --catppuccin-color-base: #24273a !important;
+  --catppuccin-color-mantle: #1e2030 !important;
+  --catppuccin-color-crust: #181926 !important;
+  --catppuccin-color-text: #cad3f5 !important;
+  --catppuccin-color-subtext0: #a5adcb !important;
+  --catppuccin-color-subtext1: #b8c0e0 !important;
+  --catppuccin-color-surface0: #363a4f !important;
+  --catppuccin-color-surface1: #494d64 !important;
+  --catppuccin-color-surface2: #5b6078 !important;
+  --catppuccin-color-overlay0: #6e738d !important;
+  --catppuccin-color-overlay1: #8087a2 !important;
+  --catppuccin-color-overlay2: #939ab7 !important;
+  --catppuccin-color-mauve: #c6a0f6 !important;
+  --catppuccin-color-blue: #8aadf4 !important;
+  --catppuccin-color-lavender: #b7bdf8 !important;
+  --catppuccin-color-green: #a6da95 !important;
+  --catppuccin-color-peach: #f5a97f !important;
+  --catppuccin-color-red: #ed8796 !important;
+  --catppuccin-color-yellow: #eed49f !important;
+  --catppuccin-color-teal: #8bd5ca !important;
+  --catppuccin-color-pink: #f5bde6 !important;
+  --catppuccin-color-flamingo: #f0c6c6 !important;
+  --catppuccin-color-rosewater: #f4dbd6 !important;
+  --catppuccin-color-sapphire: #7dc4e4 !important;
+  --catppuccin-color-sky: #91d7e3 !important;
+}
+
 body {
-  background: var(--ctp-base);
-  color: var(--ctp-text);
+  background: var(--catppuccin-color-base);
+  color: var(--catppuccin-color-text);
   font-family: var(--font-sans);
 }

@@ -1,65 +1,77 @@
-import Image from "next/image";
+import { getContent, type PageFrontmatter } from "@/lib/md";
+import Link from "next/link";
 
 export default function Home() {
+  const home = getContent<PageFrontmatter>(".").find((c) => c.slug === "home");
+
+  if (!home) {
+    return (
+      <div className="text-ctp-subtext-0">
+        <p>Create content/home.md to get started.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div>
+      {/* Hero */}
+      <section className="mb-16">
+        <div
+          className="prose prose-invert max-w-none text-ctp-subtext-0 leading-relaxed [&_a]:text-ctp-mauve [&_a]:no-underline [&_a:hover]:underline"
+          dangerouslySetInnerHTML={{ __html: home.html }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+      </section>
+
+      {/* Social links */}
+      <section className="flex gap-6 text-sm mb-16">
+        <a
+          href="https://github.com/elhaibahamza"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+        >
+          GitHub →
+        </a>
+        <a
+          href="https://linkedin.com/in/elhaibahamza"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+        >
+          LinkedIn →
+        </a>
+        <a
+          href="mailto:contact@elhaiba-hamza.tech"
+          className="text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+        >
+          Email →
+        </a>
+      </section>
+
+      {/* Quick links to standout sections */}
+      <section className="space-y-3">
+        <h2 className="text-sm font-semibold text-ctp-overlay-1 uppercase tracking-wider">
+          Explore
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {[
+            { href: "/projects", label: "Projects" },
+            { href: "/blog", label: "Blog" },
+            { href: "/failure-log", label: "Failure Log" },
+            { href: "/mental-models", label: "Mental Models" },
+            { href: "/engineering-principles", label: "Principles" },
+            { href: "/tools-built", label: "Tools" },
+          ].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="px-4 py-3 bg-ctp-surface-0 rounded-lg text-ctp-subtext-0 hover:text-ctp-text hover:bg-ctp-surface-1 transition-colors text-sm"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              {link.label}
+            </Link>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }
