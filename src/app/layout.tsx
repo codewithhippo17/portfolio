@@ -31,8 +31,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Nav />
-        <div className="max-w-xl mx-auto w-full px-6">
-          <main className="pb-16">{children}</main>
+        <div className="max-w-xl mx-auto w-full px-6 flex flex-col flex-grow">
+          <main className="flex-grow pb-16">{children}</main>
           <Footer />
         </div>
       </body>
