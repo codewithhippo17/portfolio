@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ChevronLeft } from "lucide-react";
 import { getProjects, getProjectBySlug } from "@/lib/md";
 import TechIcon from "@/components/TechIcon";
 
@@ -30,9 +31,10 @@ export default async function ProjectPage({
       {/* Back link */}
       <Link
         href="/projects"
-        className="text-sm text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+        className="inline-flex items-center text-sm text-ctp-subtext-0 hover:text-ctp-text transition-colors"
       >
-        ← Back to projects
+        <ChevronLeft size={16} className="mr-1 -ml-1" />
+        Back to projects
       </Link>
 
       {/* Header */}

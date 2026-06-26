@@ -2,6 +2,7 @@ import Link from "next/link";
 import fs from "fs";
 import path from "path";
 import { notFound } from "next/navigation";
+import { ChevronLeft } from "lucide-react";
 import { getContent } from "@/lib/md";
 
 export const dynamicParams = false;
@@ -63,9 +64,10 @@ export default async function ContentPage({
       {/* Back link */}
       <Link
         href={`/${category}`}
-        className="text-sm text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+        className="inline-flex items-center text-sm text-ctp-subtext-0 hover:text-ctp-text transition-colors"
       >
-        ← Back to {formatTitle(category)}
+        <ChevronLeft size={16} className="mr-1 -ml-1" />
+        Back to {formatTitle(category)}
       </Link>
 
       {/* Header */}
