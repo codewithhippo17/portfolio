@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Security audit
+        run: bun audit
+
       - name: Build with Next.js
         run: bun run build
 
