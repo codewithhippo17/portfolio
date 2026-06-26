@@ -27,6 +27,12 @@ function postprocessHighlights(htmlContent: string): string {
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
+export interface BaseFrontmatter {
+  title?: string;
+  date?: string;
+  description?: string;
+}
+
 export interface ProjectFrontmatter {
   title: string;
   category: string;
@@ -176,4 +182,24 @@ export function getBlogTags() {
   const tags = new Set<string>();
   posts.forEach((p) => p.frontmatter.tags?.forEach((t) => tags.add(t)));
   return [...tags].sort();
+}
+
+/** Get dynamic categories (subdirectories in content, excluding custom routes) */
+export function getDynamicCategories() {
+  if (!fs.existsSync(contentDir)) return [];
+  return fs
+    .readdirSync(contentDir)
+    .filter(
+      (f) =>
+        f !== "projects" &&
+        fs.statSync(path.join(contentDir, f)).isDirectory()
+    );
+}
+
+/** Format a slug string into a readable title */
+export function formatTitle(str: string) {
+  return str
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }

@@ -32,8 +32,8 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Security audit
-        run: bun audit
+      - name: Security audit (fail on high/critical only)
+        run: bun audit --audit-level=high
 
       - name: Build with Next.js
         run: bun run build

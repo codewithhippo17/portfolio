@@ -1,31 +1,10 @@
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
-import { getContent } from "@/lib/md";
+import { getContent, getDynamicCategories, formatTitle, BaseFrontmatter } from "@/lib/md";
 
 export const dynamicParams = false;
 
-function getDynamicCategories() {
-  const contentDir = path.join(process.cwd(), "content");
-  if (!fs.existsSync(contentDir)) return [];
-  return fs
-    .readdirSync(contentDir)
-    .filter(
-      (f) =>
-        f !== "projects" &&
-        fs.statSync(path.join(contentDir, f)).isDirectory()
-    );
-}
-
 export async function generateStaticParams() {
   return getDynamicCategories().map((category) => ({ category }));
-}
-
-function formatTitle(str: string) {
-  return str
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
 }
 
 export default async function FolderIndexPage({
@@ -40,8 +19,7 @@ export default async function FolderIndexPage({
     return <div>Not found</div>;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const items = getContent<any>(category);
+  const items = getContent<BaseFrontmatter>(category);
   const title = formatTitle(category);
 
   if (items.length === 0) {
