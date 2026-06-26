@@ -29,9 +29,12 @@ export default function RootLayout({
       lang="en"
       className={`macchiato ${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <Nav />
-        <div className="max-w-xl mx-auto w-full px-6 flex flex-col flex-grow">
+      <body className="min-h-full flex flex-col md:flex-row max-w-5xl mx-auto px-6">
+        <aside className="md:w-64 flex-shrink-0 md:h-screen md:sticky md:top-0 py-8 md:py-16 md:pr-8">
+          <Nav />
+        </aside>
+        
+        <div className="flex flex-col flex-grow min-w-0 py-8 md:py-16">
           <main className="flex-grow pb-16">{children}</main>
           <Footer />
         </div>
