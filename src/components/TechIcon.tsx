@@ -19,7 +19,7 @@ const iconMap: Record<string, string> = {
   cli: "carbon:terminal",
   markdown: "logos:markdown",
   authentication: "carbon:security",
-  ai: "logos:openai",
+  ai: "mingcute:ai-fill",
   "open-source": "octicon:repo-16",
 };
 
