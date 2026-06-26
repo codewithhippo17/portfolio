@@ -2,7 +2,7 @@
 title: "RAG Tutor"
 category: "AI/ML"
 date: "2026-01-20"
-tags: [python, llm, rag, machine-learning]
+tags: [python, go, rag, machine-learning]
 role: "ML Engineer"
 github: "https://github.com/elhaibahamza/rag-tutor"
 status: "ongoing"

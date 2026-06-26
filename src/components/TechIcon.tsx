@@ -5,10 +5,14 @@
 import { Icon } from "@iconify/react";
 
 const iconMap: Record<string, string> = {
-  typescript: "logos:typescript",
+  typescript: "logos:typescript-icon",
+  javascript: "logos:javascript",
   react: "logos:react",
   nextjs: "logos:nextjs-icon",
   python: "logos:python",
+  go: "logos:go",
+  golang: "logos:go",
+  rust: "logos:rust",
   "machine-learning": "logos:tensorflow",
   llm: "carbon:machine-learning-model",
   rag: "carbon:search",

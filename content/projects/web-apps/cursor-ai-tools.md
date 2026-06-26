@@ -2,7 +2,7 @@
 title: "Cursor AI Tools"
 category: "Web Apps"
 date: "2026-03-15"
-tags: [react, nextjs, ai, typescript]
+tags: [react, nextjs, ai, TypeScript]
 role: "Lead Engineer"
 github: "https://github.com/elhaibahamza/cursor-ai-tools"
 live: "https://cursor-ai-tools.vercel.app"

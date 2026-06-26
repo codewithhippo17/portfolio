@@ -1,4 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -30,25 +38,23 @@ export default function Nav() {
           </Link>
         ))}
 
-        {/* More dropdown */}
-        <div className="relative group">
-          <button className="text-ctp-subtext-0 hover:text-ctp-text transition-colors cursor-pointer">
+        <DropdownMenu>
+          <DropdownMenuTrigger className="text-ctp-subtext-0 hover:text-ctp-text transition-colors cursor-pointer">
             More ▾
-          </button>
-          <div className="absolute right-0 top-full mt-2 w-44 bg-ctp-surface-0 border border-ctp-surface-1 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
-            <div className="py-2">
-              {moreLinks.map((link) => (
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-44">
+            {moreLinks.map((link) => (
+              <DropdownMenuItem key={link.href} className="p-0">
                 <Link
-                  key={link.href}
                   href={link.href}
-                  className="block px-4 py-2 text-ctp-subtext-0 hover:text-ctp-text hover:bg-ctp-surface-1 transition-colors text-sm"
+                  className="block w-full px-2 py-1.5 text-ctp-subtext-0 hover:text-ctp-text"
                 >
                   {link.label}
                 </Link>
-              ))}
-            </div>
-          </div>
-        </div>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   );
