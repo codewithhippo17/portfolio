@@ -1,19 +1,24 @@
 import Link from "next/link";
+import fs from "fs";
+import path from "path";
 import { getContent } from "@/lib/md";
-
-const DYNAMIC_FOLDERS = [
-  "anti-portfolio",
-  "decision-log",
-  "engineering-principles",
-  "failure-log",
-  "mental-models",
-  "blog",
-];
 
 export const dynamicParams = false;
 
+function getDynamicCategories() {
+  const contentDir = path.join(process.cwd(), "content");
+  if (!fs.existsSync(contentDir)) return [];
+  return fs
+    .readdirSync(contentDir)
+    .filter(
+      (f) =>
+        f !== "projects" &&
+        fs.statSync(path.join(contentDir, f)).isDirectory()
+    );
+}
+
 export async function generateStaticParams() {
-  return DYNAMIC_FOLDERS.map((category) => ({ category }));
+  return getDynamicCategories().map((category) => ({ category }));
 }
 
 function formatTitle(str: string) {
@@ -29,8 +34,9 @@ export default async function FolderIndexPage({
   params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
+  const validCategories = getDynamicCategories();
 
-  if (!DYNAMIC_FOLDERS.includes(category)) {
+  if (!validCategories.includes(category)) {
     return <div>Not found</div>;
   }
 
@@ -44,7 +50,7 @@ export default async function FolderIndexPage({
         <h1 className="text-2xl font-bold text-ctp-text mb-6 tracking-tight">
           {title}
         </h1>
-        <p className="text-ctp-subtext-0">No entries yet.</p>
+        <p className="text-ctp-subtext-0">No entries yet. Add markdown files to <code className="text-ctp-peach bg-ctp-surface-0 px-1 rounded">content/{category}/</code>.</p>
       </div>
     );
   }

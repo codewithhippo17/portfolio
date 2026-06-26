@@ -1,22 +1,28 @@
 import Link from "next/link";
+import fs from "fs";
+import path from "path";
 import { notFound } from "next/navigation";
 import { getContent } from "@/lib/md";
 
-const DYNAMIC_FOLDERS = [
-  "anti-portfolio",
-  "decision-log",
-  "engineering-principles",
-  "failure-log",
-  "mental-models",
-  "blog",
-];
-
 export const dynamicParams = false;
+
+function getDynamicCategories() {
+  const contentDir = path.join(process.cwd(), "content");
+  if (!fs.existsSync(contentDir)) return [];
+  return fs
+    .readdirSync(contentDir)
+    .filter(
+      (f) =>
+        f !== "projects" &&
+        fs.statSync(path.join(contentDir, f)).isDirectory()
+    );
+}
 
 export async function generateStaticParams() {
   const params: { category: string; slug: string }[] = [];
+  const validCategories = getDynamicCategories();
   
-  for (const category of DYNAMIC_FOLDERS) {
+  for (const category of validCategories) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const items = getContent<any>(category);
     for (const item of items) {
@@ -40,8 +46,9 @@ export default async function ContentPage({
   params: Promise<{ category: string; slug: string }>;
 }) {
   const { category, slug } = await params;
+  const validCategories = getDynamicCategories();
 
-  if (!DYNAMIC_FOLDERS.includes(category)) {
+  if (!validCategories.includes(category)) {
     notFound();
   }
 
