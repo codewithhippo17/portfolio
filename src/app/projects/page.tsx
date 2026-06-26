@@ -7,6 +7,10 @@ const categoryColors: Record<string, string> = {
   "AI/ML": "text-ctp-green border-ctp-green",
   Tools: "text-ctp-blue border-ctp-blue",
   "Open Source": "text-ctp-peach border-ctp-peach",
+  Systems: "text-ctp-red border-ctp-red",
+  Graphics: "text-ctp-teal border-ctp-teal",
+  Networking: "text-ctp-sky border-ctp-sky",
+  DevOps: "text-ctp-lavender border-ctp-lavender",
 };
 
 const categoryBorderColors: Record<string, string> = {
@@ -14,6 +18,10 @@ const categoryBorderColors: Record<string, string> = {
   "AI/ML": "border-ctp-green",
   Tools: "border-ctp-blue",
   "Open Source": "border-ctp-peach",
+  Systems: "border-ctp-red",
+  Graphics: "border-ctp-teal",
+  Networking: "border-ctp-sky",
+  DevOps: "border-ctp-lavender",
 };
 
 export default function ProjectsPage() {
