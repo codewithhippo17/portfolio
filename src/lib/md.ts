@@ -46,13 +46,6 @@ export interface ProjectFrontmatter {
   description?: string;
 }
 
-export interface BlogFrontmatter {
-  title: string;
-  date: string;
-  tags: string[];
-  description?: string;
-}
-
 export interface PageFrontmatter {
   title: string;
   description?: string;
@@ -90,20 +83,11 @@ export function getContent<T>(subdir: string): ContentItem<T>[] {
     })
     .sort((a, b) => {
       // Sort by date descending if available
-      const dateA = (a.frontmatter as any).date;
-      const dateB = (b.frontmatter as any).date;
+      const dateA = (a.frontmatter as { date?: string }).date;
+      const dateB = (b.frontmatter as { date?: string }).date;
       if (dateA && dateB) return dateB.localeCompare(dateA);
       return 0;
     });
-}
-
-/** Get a single content item by slug */
-export function getContentBySlug<T>(
-  subdir: string,
-  slug: string
-): ContentItem<T> | null {
-  const items = getContent<T>(subdir);
-  return items.find((item) => item.slug === slug) ?? null;
 }
 
 /** Get all projects, optionally filtered by category */
@@ -146,11 +130,6 @@ export function getProjectBySlug(slug: string): ContentItem<ProjectFrontmatter> 
   return getProjects().find((p) => p.slug === slug) ?? null;
 }
 
-/** Get featured projects only */
-export function getFeaturedProjects() {
-  return getProjects().filter((p) => p.frontmatter.featured);
-}
-
 /** Get all project categories with their projects */
 export function getProjectCategories() {
   const all = getProjects();
@@ -164,24 +143,6 @@ export function getProjectCategories() {
   }
 
   return categories;
-}
-
-/** Get blog posts */
-export function getBlogPosts() {
-  return getContent<BlogFrontmatter>("blog");
-}
-
-/** Get a single blog post */
-export function getBlogPost(slug: string) {
-  return getContentBySlug<BlogFrontmatter>("blog", slug);
-}
-
-/** Get all unique tags from blog posts */
-export function getBlogTags() {
-  const posts = getBlogPosts();
-  const tags = new Set<string>();
-  posts.forEach((p) => p.frontmatter.tags?.forEach((t) => tags.add(t)));
-  return [...tags].sort();
 }
 
 /** Get dynamic categories (subdirectories in content, excluding custom routes) */

@@ -18,10 +18,8 @@ const moreLinks = [
   { href: "/failure-log", label: "Failure Log" },
   { href: "/mental-models", label: "Mental Models" },
   { href: "/engineering-principles", label: "Principles" },
-  { href: "/tools-built", label: "Tools" },
   { href: "/anti-portfolio", label: "Anti-Portfolio" },
   { href: "/decision-log", label: "Decision Log" },
-  { href: "/skills", label: "Skills" },
 ];
 
 export default function Nav() {
