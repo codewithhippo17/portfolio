@@ -3,9 +3,15 @@ title: "Hamza El Haiba"
 description: "Full-stack engineer building scalable web experiences"
 ---
 
-I’m a developer and writer. I work at Cursor teaching about AI. Previously, I worked at Vercel. I’ve been **coding** for 15 years and teaching for the second half.
+I'm a systems programmer and AI tinkerer. I build low-level tools in C and C++, 
+and I run local LLMs (Ollama) to understand where AI models break.
 
-*My life’s work is* ==to make technology easy== to understand and interesting to learn about. I’m a husband, father, and a massive music fan. I last listened to Actually by Dan Kye. 
+I've been coding for [X] years, with deep experience in POSIX systems, 
+networking, concurrency, and graphics algorithms. My recent work includes 
+deploying an AI-powered energy optimization platform using local LLMs.
+
+My life's work is to understand systems deeply — and to teach machines 
+to reason about them correctly.
 
 ### What you'll find here
 
