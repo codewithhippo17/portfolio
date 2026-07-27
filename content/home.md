@@ -3,7 +3,7 @@ title: "Hamza El Haiba"
 description: "Architect in Digital Technologies"
 ---
 
-# Architecture is a Conversation, Not a Monument.
+## Architecture is a Conversation, Not a Monument.
 
 The most catastrophic mistake in software isn't a lack of planning. It’s trying to predict the future on day one. We build rigid, tightly coupled monuments to our own cleverness, only to watch them fracture when the business actually succeeds. 
 
@@ -16,7 +16,7 @@ When you localize state and enforce strict boundaries, testing becomes a natural
 The result isn't just a resilient codebase. **It’s a fearless team, finally free from the paralysis of cascading failures.**
 
 ---
-
+### What you'll find here
 - **[Projects](/projects)** — Things I've built and decisions I made
 - **[Blog](/blog)** — Deep dives and postmortems
 - **[[Failure Log]]** — Mistakes I've made and what they taught me
