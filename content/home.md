@@ -1,13 +1,13 @@
 ---
-title: "Hamza El Haiba"
-description: "Architect in Digital Technologies"
+title: "Architect in Digital Technologies"
+description: "Hamza El Haiba"
 ---
 
-### Architecture is a Conversation, Not a Monument.
+#### Architecture is a Conversation, Not a Monument.
 
 The most expensive mistake in software isn't bad code. It's building a monument to assumptions that haven't been tested yet. We build rigid, tightly coupled monuments to our own cleverness, only to watch them fracture when the business actually succeeds. 
 
-**I’m Hamza El Haiba, an Architect in Digital Technologies.** 
+**I’m Hamza El Haiba, an Architect in Digital Technologies**. 
 *I specialize in systems that have outgrown their assumptions.*
 
 I don't draw perfect, static blueprints. I draw boundaries — strict ones — and I relax them only when the cost of isolation exceeds the cost of coupling. Architecture isn't about predicting the future. It's about making the future cheap to build. 

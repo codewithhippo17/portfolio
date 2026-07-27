@@ -11,9 +11,14 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-ctp-text mb-6 tracking-tight">
-        Hamza El Haiba
+      <h1 className="text-2xl font-bold text-ctp-text mb-1 tracking-tight">
+        {home.frontmatter.title}
       </h1>
+      {home.frontmatter.description && (
+        <p className="text-ctp-subtext-1 text-sm mb-6">
+          {home.frontmatter.description}
+        </p>
+      )}
 
       <div className="space-y-6">
         <div className="markdown-content text-ctp-subtext-0 leading-relaxed">

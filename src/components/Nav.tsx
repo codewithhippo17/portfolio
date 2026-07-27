@@ -25,7 +25,7 @@ const moreLinks = [
 export default function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-ctp-base/80 backdrop-blur-sm">
-      <div className="max-w-xl mx-auto w-full px-6 flex items-center justify-end gap-8 py-4 text-sm">
+      <div className="max-w-2xl mx-auto w-full px-6 flex items-center justify-end gap-8 py-4 text-sm">
         {navLinks.map((link) => (
           <Link
             key={link.href}
