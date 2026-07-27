@@ -3,23 +3,26 @@ title: "Hamza El Haiba"
 description: "Architect in Digital Technologies"
 ---
 
-## Architecture is a Conversation, Not a Monument.
+### Architecture is a Conversation, Not a Monument.
 
-The most catastrophic mistake in software isn't a lack of planning. It’s trying to predict the future on day one. We build rigid, tightly coupled monuments to our own cleverness, only to watch them fracture when the business actually succeeds. 
+The most expensive mistake in software isn't bad code. It's building a monument to assumptions that haven't been tested yet. We build rigid, tightly coupled monuments to our own cleverness, only to watch them fracture when the business actually succeeds. 
 
 **I’m Hamza El Haiba, an Architect in Digital Technologies.** 
+*I specialize in systems that have outgrown their assumptions.*
 
-I don't draw perfect, static blueprints. I draw ruthless boundaries. True architecture is about extreme isolation; it ensures that when you inevitably get it wrong, tearing down a module is merely difficult, not catastrophic. 
+I don't draw perfect, static blueprints. I draw boundaries — strict ones — and I relax them only when the cost of isolation exceeds the cost of coupling. Architecture isn't about predicting the future. It's about making the future cheap to build. 
 
-When you localize state and enforce strict boundaries, testing becomes a natural byproduct. The system absorbs changing requirements with grace. But more importantly, the human friction disappears. 
+When you localize state and enforce strict boundaries, testing stops being a separate project and starts being a natural consequence of the structure. The system absorbs changing requirements with grace. But more importantly, the human friction disappears. 
+
+Recently: I untangled a logistics platform where 12 teams shared one database schema and zero ownership boundaries. Six months later, they deploy independently, and a schema change in one service no longer pages three teams at 2 AM.
 
 The result isn't just a resilient codebase. **It’s a fearless team, finally free from the paralysis of cascading failures.**
 
 ---
-### What you'll find here
-- **[Projects](/projects)** — Things I've built and decisions I made
-- **[Blog](/blog)** — Deep dives and postmortems
-- **[[Failure Log]]** — Mistakes I've made and what they taught me
-- **[[Mental Models]]** — How I think about systems and architecture
+### What you'll find here?
+- **[Projects](/projects)** — Systems I've built, untangled, or killed. With the real constraints.
+- **[Blog](/blog)** — Deep dives and postmortems.
+- **[[Failure Log]]** — Mistakes that cost me sleep, and what they taught me.
+- **[[Mental Models]]** — How I think about systems, teams, and the space between them.
 
 ---
