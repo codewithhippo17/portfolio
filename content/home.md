@@ -16,7 +16,7 @@ I don't draw perfect, static blueprints. I draw boundaries — strict ones — a
 
 When you localize state and enforce strict boundaries, testing stops being a separate project and starts being a natural consequence of the structure. The system absorbs changing requirements with grace. But more importantly, the human friction disappears. 
 
-Recently: I untangled a logistics platform where 12 teams shared one database schema and zero ownership boundaries. Six months later, they deploy independently, and a schema change in one service no longer pages three teams at 2 AM.
+**Recently:** I untangled a logistics platform where 12 teams shared one database schema and zero ownership boundaries. Six months later, they deploy independently, and a schema change in one service no longer pages three teams at 2 AM.
 
 The result isn't just a resilient codebase. **It’s a fearless team, finally free from the paralysis of cascading failures.**
 
