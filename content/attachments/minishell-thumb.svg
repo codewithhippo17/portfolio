@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c6a0f6" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#8aadf4" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#24273a" />
+  
+  <!-- Subtle Glow -->
+  <circle cx="200" cy="200" r="150" fill="url(#glow)" filter="blur(40px)" />
+
+  <!-- Terminal Window -->
+  <rect x="40" y="80" width="320" height="240" rx="12" fill="#181926" stroke="#5b6078" stroke-width="2" />
+  
+  <!-- Mac Window Dots -->
+  <circle cx="65" cy="105" r="6" fill="#ed8796" />
+  <circle cx="85" cy="105" r="6" fill="#eed49f" />
+  <circle cx="105" cy="105" r="6" fill="#a6da95" />
+
+  <!-- Terminal Content -->
+  <text x="65" y="160" font-family="monospace" font-size="18" fill="#c6a0f6" font-weight="bold">minishell$</text>
+  <text x="180" y="160" font-family="monospace" font-size="18" fill="#cad3f5">ls -la | grep src</text>
+  
+  <text x="65" y="200" font-family="monospace" font-size="16" fill="#8aadf4">drwxr-xr-x  src/</text>
+  <text x="65" y="225" font-family="monospace" font-size="16" fill="#a6da95">-rwxr-xr-x  minishell</text>
+
+  <text x="65" y="275" font-family="monospace" font-size="18" fill="#c6a0f6" font-weight="bold">minishell$</text>
+  
+  <!-- Blinking Cursor -->
+  <rect x="180" y="260" width="10" height="18" fill="#cad3f5" opacity="0.8" />
+</svg>

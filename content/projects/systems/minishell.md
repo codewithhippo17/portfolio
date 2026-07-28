@@ -1,13 +1,13 @@
 ---
 title: "Minishell"
+description: "As beautiful as a shell."
 category: "Systems"
-date: "2023-08-01"
-tags: [c, shell, posix, linux]
-role: "Developer"
-github: "https://github.com/codewithhippo17/Minishell"
+date: "2023-10-15"
+tags: ["C", "Unix", "Bash", "System Programming"]
+role: "Core Developer"
+github: "https://github.com/codewithhippo17/minishell"
 status: "completed"
-featured: true
-description: "A compact, modular, POSIX-like shell implemented in C."
+thumbnail: "minishell-thumb.svg"
 ---
 
 ## Overview
