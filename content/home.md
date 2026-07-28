@@ -27,4 +27,7 @@ The result isn't just a resilient codebase. **It’s a fearless team, finally fr
 - **[Blog](/portfolio/blog)** — Deep dives and postmortems.
 - **[Failure Log](/portfolio/failure-log)** — Mistakes that cost me sleep, and what they *taught me*.
 - **[Mental Models](/portfolio/mental-models)** — How I think about **systems**, **teams**, and the space between them.
+- **[engineering principles](/portfolio/engineering-principles)** — How I think about **systems**, **teams**, and the space between them.
+- **[anti portfolio](/portfolio/anti-portfolio)** — How I think about **systems**, **teams**, and the space between them.
+- **[decision log](/portfolio/decision-log)** — How I think about **systems**, **teams**, and the space between them.
 
