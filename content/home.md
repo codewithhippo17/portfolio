@@ -22,8 +22,8 @@ The result isn't just a resilient codebase. **It’s a fearless team, finally fr
 
 ---
 ### What you'll find here?
-- **[Projects](/projects)** — Systems I've built, untangled, or killed. With the real constraints.
-- **[Blog](/blog)** — Deep dives and postmortems.
+- **[Projects](/portfolio/projects)** — Systems I've built, untangled, or killed. With the real constraints.
+- **[Blog](/portfolio/blog)** — Deep dives and postmortems.
 - **[[Failure Log]]** — Mistakes that cost me sleep, and what they taught me.
 - **[[Mental Models]]** — How I think about systems, teams, and the space between them.
 

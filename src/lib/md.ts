@@ -5,15 +5,20 @@ import { remark } from "remark";
 import html from "remark-html";
 
 /**
- * Post-process HTML to replace Obsidian [[wikilinks]] with styled spans.
+ * Post-process HTML to replace Obsidian [[wikilinks]] with functional links.
  * Must run AFTER remark-html converts markdown, because remark strips
  * raw HTML tags from markdown content.
  */
 function postprocessWikilinks(htmlContent: string): string {
   return htmlContent.replace(/\[\[([^\]]+)\]\]/g, (_, text) => {
     const parts = text.split("|");
-    const display = parts.length > 1 ? parts[1].trim() : parts[0].trim();
-    return `<span class="wikilink">${display}</span>`;
+    const target = parts[0].trim();
+    const display = parts.length > 1 ? parts[1].trim() : target;
+    
+    // Convert "Failure Log" -> "failure-log"
+    const slug = target.toLowerCase().replace(/\s+/g, "-");
+    
+    return `<a href="/portfolio/${slug}" class="wikilink">${display}</a>`;
   });
 }
 
