@@ -53,6 +53,7 @@ export interface BaseFrontmatter {
   title?: string;
   date?: string;
   description?: string;
+  thumbnail?: string;
 }
 
 export interface ProjectFrontmatter {
@@ -66,6 +67,7 @@ export interface ProjectFrontmatter {
   status: "completed" | "ongoing" | "archived";
   featured?: boolean;
   description?: string;
+  thumbnail?: string;
 }
 
 export interface PageFrontmatter {

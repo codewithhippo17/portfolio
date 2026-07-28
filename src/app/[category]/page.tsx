@@ -44,20 +44,33 @@ export default async function FolderIndexPage({
           <Link
             key={item.slug}
             href={`/${category}/${item.slug}`}
-            className="block border-l-2 border-ctp-surface-2 hover:border-ctp-mauve pl-4 py-2 hover:bg-ctp-surface-0 transition-all rounded-r-lg group"
+            className="flex items-start justify-between border-l-2 border-ctp-surface-2 hover:border-ctp-mauve pl-4 py-3 hover:bg-ctp-surface-0 transition-all rounded-r-lg group gap-4"
           >
-            <h3 className="text-ctp-text font-medium group-hover:text-ctp-mauve transition-colors">
-              {item.frontmatter.title || item.slug}
-            </h3>
-            {item.frontmatter.date && (
-              <span className="text-xs text-ctp-subtext-0 block mt-1">
-                {item.frontmatter.date}
-              </span>
-            )}
-            {item.frontmatter.description && (
-              <p className="text-ctp-subtext-0 text-sm mt-1">
-                {item.frontmatter.description}
-              </p>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-ctp-text font-medium group-hover:text-ctp-mauve transition-colors truncate">
+                {item.frontmatter.title || item.slug}
+              </h3>
+              {item.frontmatter.date && (
+                <span className="text-xs text-ctp-subtext-0 block mt-1">
+                  {item.frontmatter.date}
+                </span>
+              )}
+              {item.frontmatter.description && (
+                <p className="text-ctp-subtext-0 text-sm mt-1 line-clamp-2">
+                  {item.frontmatter.description}
+                </p>
+              )}
+            </div>
+            {item.frontmatter.thumbnail && (
+              <div className="flex-shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src={`/portfolio/attachments/${item.frontmatter.thumbnail}`} 
+                  alt={item.frontmatter.title || "Thumbnail"} 
+                  className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface-1"
+                  loading="lazy"
+                />
+              </div>
             )}
           </Link>
         ))}

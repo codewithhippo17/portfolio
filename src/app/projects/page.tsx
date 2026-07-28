@@ -64,29 +64,42 @@ export default function ProjectsPage() {
                 <Link
                   key={project.slug}
                   href={`/projects/${project.slug}`}
-                  className={`block border-l-2 ${borderColor} pl-4 py-2 hover:bg-ctp-surface-0 transition-colors rounded-r-lg`}
+                  className={`flex items-start justify-between border-l-2 ${borderColor} pl-4 py-3 hover:bg-ctp-surface-0 transition-colors rounded-r-lg gap-4`}
                 >
-                  <h3 className="text-ctp-text font-medium">
-                    {project.frontmatter.title}
-                  </h3>
-                  {project.frontmatter.description && (
-                    <p className="text-ctp-subtext-0 text-sm mt-0.5">
-                      {project.frontmatter.description}
-                    </p>
-                  )}
-                  <div className="flex gap-2 mt-1.5">
-                    <span className={`text-xs ${textColor}`}>
-                      {project.frontmatter.status}
-                    </span>
-                    {project.frontmatter.tags?.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs text-ctp-overlay-1"
-                      >
-                        #{tag}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-ctp-text font-medium truncate">
+                      {project.frontmatter.title}
+                    </h3>
+                    {project.frontmatter.description && (
+                      <p className="text-ctp-subtext-0 text-sm mt-0.5 line-clamp-2">
+                        {project.frontmatter.description}
+                      </p>
+                    )}
+                    <div className="flex gap-2 mt-1.5 flex-wrap">
+                      <span className={`text-xs ${textColor}`}>
+                        {project.frontmatter.status}
                       </span>
-                    ))}
+                      {project.frontmatter.tags?.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs text-ctp-overlay-1"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
+                  {project.frontmatter.thumbnail && (
+                    <div className="flex-shrink-0">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img 
+                        src={`/portfolio/attachments/${project.frontmatter.thumbnail}`} 
+                        alt={project.frontmatter.title} 
+                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface-1"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                 </Link>
               ))}
             </div>
