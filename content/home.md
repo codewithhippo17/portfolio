@@ -3,11 +3,11 @@ title: "Hamza El Haiba"
 description: "Architect in Digital Technologies"
 ---
 
-#### Architecture is a Conversation, Not a Monument.
+## Architecture is a Conversation, Not a Monument.
 
 The **most expensive mistake** in software isn't bad code. It's building a monument to **assumptions that haven't been tested yet**. We build rigid, tightly coupled monuments to our own cleverness, only to watch them fracture when the business actually succeeds. 
 
-![[hamza-photo.JPEG|right]]
+![[hamza-photo.jpg|left]]
 
 **I’m Hamza El Haiba, an Architect in Digital Technologies**. 
 *I specialize in systems that have outgrown their assumptions.*
@@ -22,9 +22,9 @@ The result isn't just a resilient codebase. **It’s a fearless team, finally fr
 
 ---
 
-### What you'll find here?
-- **[Projects](/portfolio/projects)** — Systems I've built, untangled, or ==killed==. With the *real* constraints.
-- **[Blog](/portfolio/blog)** — Deep dives and ==postmortems==.
-- **[Failure Log](/portfolio/failure-log)** — Mistakes that ==cost me sleep==, and what they *taught me*.
-- **[Mental Models](/portfolio/mental-models)** — How I think about **systems**, **teams**, and the ==space between them==.
+## What you'll find here:
+- **[Projects](/portfolio/projects)** — Systems I've built, untangled, or killed. With the *real* constraints.
+- **[Blog](/portfolio/blog)** — Deep dives and postmortems.
+- **[Failure Log](/portfolio/failure-log)** — Mistakes that cost me sleep, and what they *taught me*.
+- **[Mental Models](/portfolio/mental-models)** — How I think about **systems**, **teams**, and the space between them.
 
