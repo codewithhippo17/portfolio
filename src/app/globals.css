@@ -201,7 +201,7 @@ body {
 }
 
 .markdown-content strong {
-  font-weight: 600;
+  font-weight: 800; /* Made significantly bolder */
   color: var(--catppuccin-color-text);
 }
 
