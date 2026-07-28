@@ -5,6 +5,8 @@ description: "Hamza El Haiba"
 
 ##### Architecture is a Conversation, Not a Monument.
 
+![[hamza-photo.png|right]]
+
 The most expensive mistake in software isn't bad code. It's building a monument to assumptions that haven't been tested yet. We build rigid, tightly coupled monuments to our own cleverness, only to watch them fracture when the business actually succeeds. 
 
 **I’m Hamza El Haiba, an Architect in Digital Technologies**. 

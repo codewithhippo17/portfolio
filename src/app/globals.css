@@ -113,6 +113,45 @@ body {
 
 /* ─── Markdown Content Styling ──────────────────────────────────── */
 
+.markdown-content {
+  display: flow-root; /* Contains floated images cleanly */
+}
+
+/* Obsidian Image Embeds */
+.markdown-content .obsidian-img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.markdown-content .obs-align-left {
+  float: left;
+  margin: 0.5rem 1.5rem 1rem 0;
+  max-width: 50%;
+}
+
+.markdown-content .obs-align-right {
+  float: right;
+  margin: 0.5rem 0 1rem 1.5rem;
+  max-width: 50%;
+}
+
+.markdown-content .obs-align-center {
+  display: block;
+  margin: 1.5rem auto;
+  float: none;
+}
+
+@media (max-width: 768px) {
+  .markdown-content .obs-align-left,
+  .markdown-content .obs-align-right {
+    float: none;
+    display: block;
+    margin: 1.5rem auto;
+    max-width: 100%;
+  }
+}
+
 /* Headings — stepped rainbow through Catppuccin accent colors */
 .markdown-content h1 {
   font-size: 1.625rem;

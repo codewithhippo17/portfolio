@@ -25,6 +25,28 @@ function postprocessHighlights(htmlContent: string): string {
   return htmlContent.replace(/==([^=]+)==/g, '<span class="highlight">$1</span>');
 }
 
+/**
+ * Post-process HTML to replace Obsidian image embeds ![[filename.png|align]]
+ * Must run BEFORE postprocessWikilinks so it doesn't get consumed as a regular link.
+ */
+function postprocessObsidianImages(htmlContent: string): string {
+  return htmlContent.replace(/!\[\[([^\]]+)\]\]/g, (_, text) => {
+    const parts = text.split("|");
+    const filename = parts[0].trim();
+    const align = parts.length > 1 ? parts[1].trim().toLowerCase() : "";
+    
+    let alignClass = "obs-align-default";
+    if (align === "left") alignClass = "obs-align-left";
+    if (align === "right") alignClass = "obs-align-right";
+    if (align === "center") alignClass = "obs-align-center";
+
+    // Next.js uses basePath "/portfolio" in this project
+    const src = `/portfolio/attachments/${filename}`;
+    
+    return `<img src="${src}" alt="${filename}" class="obsidian-img ${alignClass}" loading="lazy" />`;
+  });
+}
+
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export interface BaseFrontmatter {
@@ -78,7 +100,7 @@ export function getContent<T>(subdir: string): ContentItem<T>[] {
     })
     .map((item) => {
       const result = remark().use(html).processSync(item.content);
-      const htmlStr = postprocessHighlights(postprocessWikilinks(result.toString()));
+      const htmlStr = postprocessHighlights(postprocessWikilinks(postprocessObsidianImages(result.toString())));
       return { ...item, html: htmlStr };
     })
     .sort((a, b) => {
@@ -153,6 +175,7 @@ export function getDynamicCategories() {
     .filter(
       (f) =>
         f !== "projects" &&
+        f !== "attachments" &&
         fs.statSync(path.join(contentDir, f)).isDirectory()
     );
 }
