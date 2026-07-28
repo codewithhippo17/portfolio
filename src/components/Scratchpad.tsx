@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 export default function Scratchpad() {
   const [isOpen, setIsOpen] = useState(true);
   const [text, setText] = useState("");
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     // Load text from local storage on mount
@@ -28,6 +29,13 @@ export default function Scratchpad() {
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
     localStorage.setItem("scratchpad_text", e.target.value);
+  };
+
+  const handleCopy = () => {
+    if (!text) return;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   if (!isOpen) {
@@ -75,6 +83,17 @@ export default function Scratchpad() {
         value={text}
         onChange={handleTextChange}
       ></textarea>
+      <div className="mt-2 flex justify-end">
+        <button 
+          onClick={handleCopy}
+          className={`text-xs uppercase tracking-widest select-none transition-colors ${
+            copied ? "text-ctp-green" : "text-ctp-surface-2 hover:text-ctp-mauve"
+          }`}
+          aria-label="Copy to clipboard"
+        >
+          {copied ? "[copied!]" : "[copy]"}
+        </button>
+      </div>
     </aside>
   );
 }
