@@ -284,9 +284,9 @@ body {
 }
 
 .markdown-content .highlight {
-  background: color-mix(in srgb, var(--catppuccin-color-yellow) 30%, transparent);
-  color: var(--catppuccin-color-text);
-  padding: 0.05rem 0.2rem;
+  background: color-mix(in srgb, var(--catppuccin-color-yellow) 12%, transparent);
+  color: var(--catppuccin-color-yellow);
+  padding: 0.05rem 0.25rem;
   border-radius: 0.2rem;
 }
 
