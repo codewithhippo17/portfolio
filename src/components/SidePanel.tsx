@@ -42,23 +42,48 @@ export default function SidePanel() {
     setIsOpen(false);
   };
 
-  // ── Persistent top-right CTA bar (visible on all screens) ──
+  // ── Persistent top-right CTA bar (mobile) and sidebar CTAs (desktop) ──
   if (!isOpen) {
     return (
-      <div className="flex justify-end gap-4 pb-2 pt-[10px]">
-        <button
-          onClick={() => handleOpen("scratchpad")}
-          className="text-xs uppercase tracking-widest text-ctp-mauve font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
+      <>
+        {/* Mobile: top-right bar */}
+        <div className="flex xl:hidden justify-end gap-4 pb-2 pt-[10px]">
+          <button
+            onClick={() => handleOpen("scratchpad")}
+            className="text-xs uppercase tracking-widest text-ctp-mauve font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
+          >
+            [+ scratchpad]
+          </button>
+          <button
+            onClick={() => handleOpen("hireme")}
+            className="text-xs uppercase tracking-widest text-ctp-green font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
+          >
+            [hire me]
+          </button>
+        </div>
+        {/* Desktop: sidebar CTAs */}
+        <aside
+          className="hidden xl:flex fixed top-16 flex-col font-mono text-sm"
+          style={{
+            left: "calc(50vw + 416px)",
+            width: "300px",
+            maxWidth: "calc(50vw - 416px - 2rem)",
+          }}
         >
-          [+ scratchpad]
-        </button>
-        <button
-          onClick={() => handleOpen("hireme")}
-          className="text-xs uppercase tracking-widest text-ctp-green font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
-        >
-          [hire me]
-        </button>
-      </div>
+          <button
+            onClick={() => handleOpen("scratchpad")}
+            className="text-left select-none uppercase tracking-widest text-xs text-ctp-mauve font-bold cursor-pointer transition-colors hover:opacity-80"
+          >
+            [+ open scratchpad]
+          </button>
+          <button
+            onClick={() => handleOpen("hireme")}
+            className="text-left select-none uppercase tracking-widest text-xs text-ctp-green font-bold cursor-pointer transition-colors hover:opacity-80 mt-2"
+          >
+            [hire me]
+          </button>
+        </aside>
+      </>
     );
   }
 
