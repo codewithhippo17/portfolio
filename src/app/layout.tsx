@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import Scratchpad from "@/components/Scratchpad";
+import SidePanel from "@/components/SidePanel";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -36,8 +36,8 @@ export default function RootLayout({
           <main className="flex-grow pt-16 pb-16">{children}</main>
           <Footer />
 
-          {/* Notepad Component */}
-          <Scratchpad />
+          {/* Side panel — Scratchpad / Hire Me */}
+          <SidePanel />
         </div>
       </body>
     </html>
