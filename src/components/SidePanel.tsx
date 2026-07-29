@@ -60,6 +60,14 @@ export default function SidePanel() {
           >
             [hire me]
           </button>
+          <a
+            href="/portfolio/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs uppercase tracking-widest text-ctp-peach font-bold hover:opacity-80 transition-colors select-none"
+          >
+            [Resume]
+          </a>
         </div>
         {/* Desktop: sidebar CTAs */}
         <aside
@@ -82,6 +90,14 @@ export default function SidePanel() {
           >
             [hire me]
           </button>
+          <a
+            href="/portfolio/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-left uppercase tracking-widest text-xs text-ctp-peach font-bold transition-colors hover:opacity-80 mt-2"
+          >
+            [Resume]
+          </a>
         </aside>
       </>
     );
