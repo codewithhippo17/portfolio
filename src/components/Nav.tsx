@@ -23,6 +23,11 @@ const moreLinks = [
   { href: "/decision-log", label: "Decision Log" },
 ];
 
+const panelActions = [
+  { id: "scratchpad" as const, label: "Scratchpad" },
+  { id: "hireme" as const, label: "Hire Me" },
+];
+
 export default function Nav() {
   const pathname = usePathname();
 
@@ -73,6 +78,21 @@ export default function Nav() {
                 </DropdownMenuItem>
               );
             })}
+            <div className="border-t border-ctp-surface-1 my-1" />
+            {panelActions.map((action) => (
+              <DropdownMenuItem key={action.id} className="p-0">
+                <button
+                  onClick={() => {
+                    window.dispatchEvent(
+                      new CustomEvent("open-sidepanel", { detail: action.id })
+                    );
+                  }}
+                  className="block w-full text-left px-2 py-1.5 text-ctp-subtext-0 hover:text-ctp-mauve hover:font-bold transition-colors"
+                >
+                  {action.label}
+                </button>
+              </DropdownMenuItem>
+            ))}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
