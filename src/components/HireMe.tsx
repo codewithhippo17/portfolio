@@ -180,15 +180,15 @@ export default function HireMe({ onClose }: HireMeProps) {
           <button
             type="submit"
             disabled={formStatus === "sending" || !formData.name || !formData.email}
-            className={`text-xs uppercase tracking-widest select-none transition-colors ${
+              className={`text-xs uppercase tracking-widest select-none transition-colors font-bold ${
               formStatus === "sending"
                 ? "text-ctp-surface-1 animate-pulse"
                 : !formData.name || !formData.email
                   ? "text-ctp-surface-1 cursor-not-allowed"
-                  : "text-ctp-surface-2 hover:text-ctp-green"
+                  : "text-ctp-surface-2 hover:text-ctp-green cursor-pointer"
             }`}
           >
-            {formStatus === "sending" ? "$ sending..." : "$ ./submit"}
+            {formStatus === "sending" ? "$ sending..." : "[Submit]"}
           </button>
         </div>
       </form>
