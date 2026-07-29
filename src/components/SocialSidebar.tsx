@@ -50,7 +50,7 @@ const socialLinks = [
 
 export default function SocialSidebar() {
   return (
-    <div className="fixed bottom-0 left-10 z-10 hidden md:flex flex-col items-center text-ctp-subtext0 group">
+    <div className="fixed bottom-0 left-10 z-10 flex flex-col items-center text-ctp-subtext0 group">
       <ul className="flex flex-col items-center m-0 p-0 list-none gap-5">
         {socialLinks.map((link) => (
           <li key={link.name}>
