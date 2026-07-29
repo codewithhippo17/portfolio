@@ -41,7 +41,7 @@ export default function Scratchpad({ onClose }: ScratchpadProps) {
   return (
     <>
       <div className="mb-4 flex items-center justify-between text-ctp-surface-2 select-none uppercase tracking-widest text-xs">
-        <span># Scratchpad</span>
+        <span className="text-ctp-mauve font-bold"># Scratchpad</span>
         <div className="flex items-center gap-3">
           <button
             onClick={onClose}
@@ -60,7 +60,7 @@ export default function Scratchpad({ onClose }: ScratchpadProps) {
         </div>
       </div>
       <textarea
-        className="w-full flex-grow bg-transparent resize-none outline-none text-ctp-text placeholder-ctp-surface-1 no-scrollbar overscroll-contain"
+        className="w-full h-[300px] bg-transparent resize-none outline-none text-ctp-text placeholder-ctp-surface-1 no-scrollbar overscroll-contain"
         placeholder="> _"
         spellCheck={false}
         value={text}

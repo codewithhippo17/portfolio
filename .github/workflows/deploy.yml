@@ -37,6 +37,8 @@ jobs:
 
       - name: Build with Next.js
         run: bun run build
+        env:
+          NEXT_PUBLIC_FORMSPREE_ID: ${{ secrets.FORMSPREE_ID }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // Get your free Formspree endpoint at https://formspree.io
 // Then set NEXT_PUBLIC_FORMSPREE_ID in your env, or paste the ID directly here
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || "YOUR_FORM_ID";
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 
 interface HireMeProps {
   onClose: () => void;
@@ -88,7 +88,7 @@ export default function HireMe({ onClose }: HireMeProps) {
     return (
       <>
         <div className="mb-4 flex items-center justify-between text-ctp-surface-2 select-none uppercase tracking-widest text-xs">
-          <span className="text-ctp-green"># hire me</span>
+          <span className="text-ctp-mauve font-bold"># hire me</span>
           <HeaderButtons />
         </div>
         <div className="flex flex-col justify-center flex-grow">
@@ -113,9 +113,9 @@ export default function HireMe({ onClose }: HireMeProps) {
   return (
     <>
       <div className="mb-4 flex items-center justify-between text-ctp-surface-2 select-none uppercase tracking-widest text-xs">
-        <span className="text-ctp-green"># hire me</span>
-        <HeaderButtons />
-      </div>
+          <span className="text-ctp-mauve font-bold"># hire me</span>
+          <HeaderButtons />
+        </div>
 
       <form
         onSubmit={handleFormSubmit}
@@ -157,8 +157,8 @@ export default function HireMe({ onClose }: HireMeProps) {
 
           {/* Message — multi-line */}
           <div className="pt-1">
-            <span className="text-ctp-surface-2 select-none text-xs">
-              $ _message:
+            <span className="text-ctp-subtext-0 font-bold select-none text-xs">
+              message
             </span>
             <textarea
               value={formData.message}
@@ -214,8 +214,8 @@ function FieldRow({
 }) {
   return (
     <div className="flex items-baseline gap-2">
-      <span className="text-ctp-surface-2 shrink-0 select-none text-xs">
-        $ _{label}:
+      <span className="text-ctp-subtext-0 font-bold shrink-0 select-none text-xs">
+        {label}
       </span>
       <input
         type={type}

@@ -76,7 +76,7 @@ export default function SidePanel() {
   // ═══════════════════════════
   return (
     <aside
-      className="hidden xl:flex fixed top-16 bottom-16 flex-col font-mono text-sm group"
+      className="hidden xl:flex fixed top-16 flex-col font-mono text-sm group"
       style={panelStyle}
     >
       {mode === "scratchpad" ? (
