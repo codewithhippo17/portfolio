@@ -61,7 +61,7 @@ export default function Scratchpad({ onClose }: ScratchpadProps) {
       </div>
       <textarea
         className="w-full h-[300px] bg-transparent resize-none outline-none text-ctp-text placeholder-ctp-surface-1 no-scrollbar overscroll-contain"
-        placeholder="> _"
+        placeholder="your honest read."
         spellCheck={false}
         value={text}
         onChange={handleTextChange}

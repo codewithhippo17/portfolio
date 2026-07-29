@@ -164,7 +164,7 @@ export default function HireMe({ onClose }: HireMeProps) {
               value={formData.message}
               onChange={(e) => handleFormChange("message", e.target.value)}
               className="w-full bg-transparent outline-none text-ctp-text font-mono text-sm resize-none no-scrollbar overscroll-contain mt-1"
-              placeholder="> _"
+              placeholder="your pitch. make it count."
               rows={3}
               spellCheck={false}
             />
