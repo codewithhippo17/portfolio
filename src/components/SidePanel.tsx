@@ -45,7 +45,7 @@ export default function SidePanel() {
   // ── Persistent top-right CTA bar (visible on all screens) ──
   if (!isOpen) {
     return (
-      <div className="flex justify-end gap-4 pb-2">
+      <div className="flex justify-end gap-4 pb-2 pt-[10px]">
         <button
           onClick={() => handleOpen("scratchpad")}
           className="text-xs uppercase tracking-widest text-ctp-mauve font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
