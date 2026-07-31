@@ -19,6 +19,11 @@ const opportunities = [
 export default function ContactMadlibs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [opportunity, setOpportunity] = useState("");
+  
+  // Controlled states for dynamic sizing
+  const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,23 +37,47 @@ export default function ContactMadlibs() {
 
   const selectedLabel = opportunities.find((o) => o.value === opportunity)?.label;
 
+  // Reusable component for the auto-sizing input (CSS Grid Mirror Pattern)
+  const AutoSizeInput = ({ 
+    value, 
+    onChange, 
+    placeholder, 
+    type = "text",
+    required = false
+  }: { 
+    value: string; 
+    onChange: (val: string) => void; 
+    placeholder: string;
+    type?: string;
+    required?: boolean;
+  }) => {
+    return (
+      <div className="inline-grid [grid-template-columns:min-content] relative items-center align-baseline">
+        {/* The Invisible Mirror */}
+        <span className={`invisible col-start-1 row-start-1 whitespace-pre px-2 pointer-events-none ${value ? 'font-bold' : 'font-light'}`}>
+          {value || placeholder}
+        </span>
+        {/* The Actual Input */}
+        <input 
+          type={type}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          required={required}
+          className="col-start-1 row-start-1 w-full min-w-0 bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light placeholder:text-ctp-surface-2 transition-colors"
+        />
+      </div>
+    );
+  };
+
   return (
     <section className="py-16 border-t border-ctp-surface-0/50 mt-12 mb-4">
       <h2 className="text-2xl font-bold text-ctp-text mb-8 tracking-tight">Let's build something resilient.</h2>
       <form onSubmit={handleSubmit} className="text-lg md:text-xl leading-loose text-ctp-subtext-0 font-light max-w-3xl">
         Hi Hamza, my name is{" "}
-        <input 
-          type="text" 
-          placeholder="your name" 
-          required
-          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light w-40 placeholder:text-ctp-surface-2 transition-colors"
-        />{" "}
-        and I'm reaching out from{" "}
-        <input 
-          type="text" 
-          placeholder="company/org (optional)" 
-          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light w-56 placeholder:text-ctp-surface-2 transition-colors"
-        />
+        <AutoSizeInput value={name} onChange={setName} placeholder="your name" required />
+        {" "}and I'm reaching out from{" "}
+        <AutoSizeInput value={company} onChange={setCompany} placeholder="company (optional)" />
         . I'd love to get in touch with you regarding{" "}
         
         <DropdownMenu>
@@ -76,13 +105,8 @@ export default function ContactMadlibs() {
         <input type="hidden" name="opportunity" value={opportunity} required />
 
         . You can reach me at{" "}
-        <input 
-          type="email" 
-          placeholder="your@email.com" 
-          required
-          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light w-56 placeholder:text-ctp-surface-2 transition-colors"
-        />{" "}
-        to discuss potential next steps.
+        <AutoSizeInput value={email} onChange={setEmail} placeholder="your@email.com" type="email" required />
+        {" "}to discuss potential next steps.
         
         <div className="mt-10">
           <button 
