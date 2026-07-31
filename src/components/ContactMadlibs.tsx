@@ -16,6 +16,39 @@ const opportunities = [
   { value: "coffee", label: "grabbing a coffee to talk tech" },
 ];
 
+// MUST be defined outside the main component so React doesn't unmount it on every render
+const AutoSizeInput = ({ 
+  value, 
+  onChange, 
+  placeholder, 
+  type = "text",
+  required = false
+}: { 
+  value: string; 
+  onChange: (val: string) => void; 
+  placeholder: string;
+  type?: string;
+  required?: boolean;
+}) => {
+  return (
+    <div className="inline-grid [grid-template-columns:min-content] relative items-center align-baseline">
+      {/* The Invisible Mirror */}
+      <span className={`invisible col-start-1 row-start-1 whitespace-pre px-2 pointer-events-none ${value ? 'font-bold' : 'font-light'}`}>
+        {value || placeholder}
+      </span>
+      {/* The Actual Input */}
+      <input 
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        required={required}
+        className="col-start-1 row-start-1 w-full min-w-0 bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light placeholder:text-ctp-surface-2 transition-colors"
+      />
+    </div>
+  );
+};
+
 export default function ContactMadlibs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [opportunity, setOpportunity] = useState("");
@@ -36,39 +69,6 @@ export default function ContactMadlibs() {
   };
 
   const selectedLabel = opportunities.find((o) => o.value === opportunity)?.label;
-
-  // Reusable component for the auto-sizing input (CSS Grid Mirror Pattern)
-  const AutoSizeInput = ({ 
-    value, 
-    onChange, 
-    placeholder, 
-    type = "text",
-    required = false
-  }: { 
-    value: string; 
-    onChange: (val: string) => void; 
-    placeholder: string;
-    type?: string;
-    required?: boolean;
-  }) => {
-    return (
-      <div className="inline-grid [grid-template-columns:min-content] relative items-center align-baseline">
-        {/* The Invisible Mirror */}
-        <span className={`invisible col-start-1 row-start-1 whitespace-pre px-2 pointer-events-none ${value ? 'font-bold' : 'font-light'}`}>
-          {value || placeholder}
-        </span>
-        {/* The Actual Input */}
-        <input 
-          type={type}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          required={required}
-          className="col-start-1 row-start-1 w-full min-w-0 bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light placeholder:text-ctp-surface-2 transition-colors"
-        />
-      </div>
-    );
-  };
 
   return (
     <section className="py-16 border-t border-ctp-surface-0/50 mt-12 mb-4">
