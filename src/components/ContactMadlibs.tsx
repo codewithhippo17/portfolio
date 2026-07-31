@@ -41,22 +41,22 @@ export default function ContactMadlibs() {
           type="text" 
           placeholder="your name" 
           required
-          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-40 placeholder:text-ctp-surface-2 transition-colors"
+          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light w-40 placeholder:text-ctp-surface-2 transition-colors"
         />{" "}
         and I'm reaching out from{" "}
         <input 
           type="text" 
           placeholder="company/org (optional)" 
-          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-56 placeholder:text-ctp-surface-2 transition-colors"
+          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light w-56 placeholder:text-ctp-surface-2 transition-colors"
         />
         . I'd love to get in touch with you regarding{" "}
         
         <DropdownMenu>
           <DropdownMenuTrigger className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text cursor-pointer transition-colors inline-flex items-center gap-1 group">
             {selectedLabel ? (
-              <span>{selectedLabel}</span>
+              <span className="font-bold">{selectedLabel}</span>
             ) : (
-              <span className="text-ctp-surface-2">an opportunity...</span>
+              <span className="text-ctp-surface-2 font-light">an opportunity...</span>
             )}
             <span className="text-xs opacity-50 group-hover:opacity-100 transition-opacity">▾</span>
           </DropdownMenuTrigger>
@@ -80,7 +80,7 @@ export default function ContactMadlibs() {
           type="email" 
           placeholder="your@email.com" 
           required
-          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-56 placeholder:text-ctp-surface-2 transition-colors"
+          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light w-56 placeholder:text-ctp-surface-2 transition-colors"
         />{" "}
         to discuss potential next steps.
         
