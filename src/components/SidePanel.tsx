@@ -52,13 +52,13 @@ export default function SidePanel() {
             onClick={() => handleOpen("scratchpad")}
             className="text-xs uppercase tracking-widest text-ctp-mauve font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
           >
-            [+ scratchpad]
+            [scratchpad]
           </button>
           <button
             onClick={() => handleOpen("hireme")}
             className="text-xs uppercase tracking-widest text-ctp-green font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
           >
-            [hire me]
+            [Get in touch]
           </button>
           <a
             href="/portfolio/attachments/elhaiba_hamza.pdf"
@@ -82,13 +82,13 @@ export default function SidePanel() {
             onClick={() => handleOpen("scratchpad")}
             className="text-left select-none uppercase tracking-widest text-xs text-ctp-mauve font-bold cursor-pointer transition-colors hover:opacity-80"
           >
-            [+ open scratchpad]
+            [Scratchpad]
           </button>
           <button
             onClick={() => handleOpen("hireme")}
             className="text-left select-none uppercase tracking-widest text-xs text-ctp-green font-bold cursor-pointer transition-colors hover:opacity-80 mt-2"
           >
-            [hire me]
+            [Get in touch]
           </button>
           <a
             href="/portfolio/attachments/elhaiba_hamza.pdf"
