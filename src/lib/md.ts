@@ -2,7 +2,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import html from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
+import { visit } from "unist-util-visit";
 
 /**
  * Post-process HTML to replace Obsidian [[wikilinks]] with functional links.
@@ -84,11 +87,32 @@ export interface ContentItem<T> {
   slug: string;
   frontmatter: T;
   html: string;
+  headings: { id: string; title: string; depth: number }[];
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 const contentDir = path.join(process.cwd(), "content");
+
+// Plugin to extract headings
+function extractHeadingsPlugin() {
+  return (tree: any, file: any) => {
+    file.data.headings = [];
+    visit(tree, "heading", (node: any) => {
+      let text = "";
+      visit(node, "text", (textNode: any) => {
+        text += textNode.value;
+      });
+      // Basic slugification (rehype-slug does something similar)
+      const id = text.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/[\s_-]+/g, "-").replace(/^-+|-+$/g, "");
+      file.data.headings.push({
+        depth: node.depth,
+        title: text,
+        id,
+      });
+    });
+  };
+}
 
 /** Reads all .md files from a directory, parses frontmatter + renders body */
 export function getContent<T>(subdir: string): ContentItem<T>[] {
@@ -106,9 +130,16 @@ export function getContent<T>(subdir: string): ContentItem<T>[] {
       return { slug, frontmatter: data as T, content };
     })
     .map((item) => {
-      const result = remark().use(html).processSync(item.content);
+      const processor = remark()
+        .use(extractHeadingsPlugin)
+        .use(remarkRehype, { allowDangerousHtml: true })
+        .use(rehypeSlug)
+        .use(rehypeStringify, { allowDangerousHtml: true });
+
+      const result = processor.processSync(item.content);
+      const headings = (result.data.headings as any) || [];
       const htmlStr = postprocessHighlights(postprocessWikilinks(postprocessObsidianImages(result.toString())));
-      return { ...item, html: htmlStr };
+      return { ...item, html: htmlStr, headings };
     })
     .sort((a, b) => {
       // Sort by date descending if available
