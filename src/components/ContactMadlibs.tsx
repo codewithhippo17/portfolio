@@ -42,7 +42,7 @@ export default function ContactMadlibs() {
           required
           className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-56 placeholder:text-ctp-surface-2 transition-colors"
         />{" "}
-        so we can figure out the next steps.
+        to discuss potential next steps.
         
         <div className="mt-10">
           <button 
