@@ -71,7 +71,7 @@ export default function ContactMadlibs() {
   const selectedLabel = opportunities.find((o) => o.value === opportunity)?.label;
 
   return (
-    <section className="py-16 border-t border-ctp-surface-0/50 mt-12 mb-4">
+    <section id="contact-form" className="py-16 border-t border-ctp-surface-0/50 mt-12 mb-4">
       <h2 className="text-2xl font-bold text-ctp-text mb-8 tracking-tight">Let's build something resilient.</h2>
       <form onSubmit={handleSubmit} className="text-lg md:text-xl leading-loose text-ctp-subtext-0 font-light max-w-3xl">
         Hi Hamza, my name is{" "}
