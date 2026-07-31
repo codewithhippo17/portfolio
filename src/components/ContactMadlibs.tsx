@@ -27,12 +27,12 @@ export default function ContactMadlibs() {
           placeholder="company (optional)" 
           className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-48 placeholder:text-ctp-surface-2 transition-colors"
         />
-        . We value engineers who think deeply about systems, and I'd love to chat with you about{" "}
+        . We are currently looking for engineering talent, and I'd love to connect with you regarding{" "}
         <select required defaultValue="" className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text appearance-none cursor-pointer transition-colors max-w-full">
           <option value="" disabled>an opportunity...</option>
           <option value="fulltime">a full-time engineering role</option>
           <option value="internship">an internship opportunity</option>
-          <option value="project">collaborating on a project</option>
+          <option value="project">a collaborative project</option>
           <option value="coffee">grabbing a coffee to talk tech</option>
         </select>
         . You can reach me at{" "}
@@ -42,7 +42,7 @@ export default function ContactMadlibs() {
           required
           className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-56 placeholder:text-ctp-surface-2 transition-colors"
         />{" "}
-        so we can see if we're a good fit.
+        so we can figure out the next steps.
         
         <div className="mt-10">
           <button 
