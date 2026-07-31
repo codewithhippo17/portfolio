@@ -112,7 +112,7 @@ export default function ContactMadlibs() {
           <button 
             type="submit" 
             disabled={isSubmitting}
-            className="text-xs uppercase tracking-widest bg-ctp-mauve text-ctp-crust px-6 py-2 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text disabled:opacity-50 disabled:cursor-not-allowed"
+            className="font-mono text-xs uppercase tracking-widest bg-ctp-mauve text-ctp-crust px-6 py-2 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
