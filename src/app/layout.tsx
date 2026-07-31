@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import ContactMadlibs from "@/components/ContactMadlibs";
 import SidePanel from "@/components/SidePanel";
 import SocialSidebar from "@/components/SocialSidebar";
 import "./globals.css";
@@ -37,6 +38,7 @@ export default function RootLayout({
           {/* Side panel — Scratchpad / Hire Me */}
           <SidePanel />
           <main className="flex-grow pt-16 pb-16">{children}</main>
+          <ContactMadlibs />
           <Footer />
           <SocialSidebar />
         </div>
