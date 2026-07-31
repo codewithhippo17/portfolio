@@ -34,6 +34,7 @@ export default function ContactMadlibs() {
           <option value="internship">an internship opportunity</option>
           <option value="freelance">a freelance/consulting project</option>
           <option value="opensource">an open-source collaboration</option>
+          <option value="podcast">an interview or podcast appearance</option>
           <option value="coffee">grabbing a coffee to talk tech</option>
         </select>
         . You can reach me at{" "}
