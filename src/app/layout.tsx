@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ContactMadlibs from "@/components/ContactMadlibs";
-import SidePanel from "@/components/SidePanel";
 import SocialSidebar from "@/components/SocialSidebar";
 import "./globals.css";
 
@@ -34,9 +33,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col relative overflow-x-hidden">
         <Nav />
-        <div className="max-w-2xl mx-auto w-full px-6 flex flex-col flex-grow relative xl:after:content-[''] xl:after:absolute xl:after:top-16 xl:after:bottom-16 xl:after:-right-12 xl:after:w-px xl:after:bg-ctp-surface-0/50">
+        <div className="max-w-2xl mx-auto w-full px-6 flex flex-col flex-grow relative ">
           {/* Side panel — Scratchpad / Hire Me */}
-          <SidePanel />
           <main className="flex-grow pt-16 pb-16">{children}</main>
           <ContactMadlibs />
           <Footer />
