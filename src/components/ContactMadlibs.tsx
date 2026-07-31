@@ -24,15 +24,16 @@ export default function ContactMadlibs() {
         and I'm reaching out from{" "}
         <input 
           type="text" 
-          placeholder="company (optional)" 
-          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-48 placeholder:text-ctp-surface-2 transition-colors"
+          placeholder="company/org (optional)" 
+          className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text w-56 placeholder:text-ctp-surface-2 transition-colors"
         />
-        . We are currently looking for engineering talent, and I'd love to connect with you regarding{" "}
+        . I'd love to get in touch with you regarding{" "}
         <select required defaultValue="" className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text appearance-none cursor-pointer transition-colors max-w-full">
           <option value="" disabled>an opportunity...</option>
           <option value="fulltime">a full-time engineering role</option>
           <option value="internship">an internship opportunity</option>
-          <option value="project">a collaborative project</option>
+          <option value="freelance">a freelance/consulting project</option>
+          <option value="opensource">an open-source collaboration</option>
           <option value="coffee">grabbing a coffee to talk tech</option>
         </select>
         . You can reach me at{" "}
