@@ -47,31 +47,31 @@ export default function SidePanel() {
     return (
       <>
         {/* Mobile: top-right bar */}
-        <div className="flex xl:hidden justify-end gap-4 pb-2 pt-[10px]">
+        <div className="flex xl:hidden justify-end gap-3 pb-2 pt-[10px]">
           <button
             onClick={() => handleOpen("scratchpad")}
-            className="text-xs uppercase tracking-widest text-ctp-mauve font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
+            className="text-xs uppercase tracking-widest bg-ctp-mauve text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer hover:bg-ctp-text transition-colors select-none"
           >
-            [scratchpad]
+            Scratchpad
           </button>
           <button
             onClick={() => handleOpen("hireme")}
-            className="text-xs uppercase tracking-widest text-ctp-green font-bold cursor-pointer hover:opacity-80 transition-colors select-none"
+            className="text-xs uppercase tracking-widest bg-ctp-green text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer hover:bg-ctp-text transition-colors select-none"
           >
-            [Get in touch]
+            Get in touch
           </button>
           <a
             href="/portfolio/attachments/elhaiba_hamza.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs uppercase tracking-widest text-ctp-peach font-bold hover:opacity-80 transition-colors select-none"
+            className="text-xs uppercase tracking-widest bg-ctp-peach text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold hover:bg-ctp-text transition-colors select-none"
           >
-            [Resume]
+            Resume
           </a>
         </div>
         {/* Desktop: sidebar CTAs */}
         <aside
-          className="hidden xl:flex fixed top-16 flex-col font-mono text-sm"
+          className="hidden xl:flex fixed top-16 flex-col font-mono text-base gap-2"
           style={{
             left: "calc(50vw + 416px)",
             width: "300px",
@@ -80,23 +80,23 @@ export default function SidePanel() {
         >
           <button
             onClick={() => handleOpen("scratchpad")}
-            className="text-left select-none uppercase tracking-widest text-xs text-ctp-mauve font-bold cursor-pointer transition-colors hover:opacity-80"
+            className="text-left select-none uppercase tracking-widest text-xs bg-ctp-mauve text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text self-start"
           >
-            [Scratchpad]
+            Scratchpad
           </button>
           <button
             onClick={() => handleOpen("hireme")}
-            className="text-left select-none uppercase tracking-widest text-xs text-ctp-green font-bold cursor-pointer transition-colors hover:opacity-80 mt-2"
+            className="text-left select-none uppercase tracking-widest text-xs bg-ctp-green text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text self-start"
           >
-            [Get in touch]
+            Get in touch
           </button>
           <a
             href="/portfolio/attachments/elhaiba_hamza.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-left uppercase tracking-widest text-xs text-ctp-peach font-bold transition-colors hover:opacity-80 mt-2"
+            className="block text-left uppercase tracking-widest text-xs bg-ctp-peach text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold transition-colors hover:bg-ctp-text self-start"
           >
-            [Resume]
+            Resume
           </a>
         </aside>
       </>
