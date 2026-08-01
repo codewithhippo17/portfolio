@@ -46,7 +46,7 @@ export default function ProjectsPage() {
         Projects
       </h1>
       <p className="text-ctp-subtext-0 mb-8 text-sm">
-        Things I&apos;ve built — organized by category.
+        Systems I&apos;ve built, untangled, or killed. With the real constraints.
       </p>
 
       {Array.from(categories.entries()).map(([category, projects]) => {
@@ -92,9 +92,9 @@ export default function ProjectsPage() {
                   {project.frontmatter.thumbnail && (
                     <div className="flex-shrink-0">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img 
-                        src={`/portfolio/attachments/${project.frontmatter.thumbnail}`} 
-                        alt={project.frontmatter.title} 
+                      <img
+                        src={`/portfolio/attachments/${project.frontmatter.thumbnail}`}
+                        alt={project.frontmatter.title}
                         className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface-1"
                         loading="lazy"
                       />
