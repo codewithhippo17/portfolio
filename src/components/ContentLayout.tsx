@@ -59,9 +59,9 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
         {children}
       </div>
 
-      {/* Sidebar TOC - Pushed to the right of the 2xl container on larger screens */}
+      {/* Sidebar TOC - Fixed to the right of the screen, vertically centered */}
       {chapters.length > 0 && (
-        <aside className="hidden lg:block absolute left-full top-24 ml-12 h-[calc(100vh-6rem)]">
+        <aside className="hidden lg:block fixed right-8 xl:right-12 top-1/2 -translate-y-1/2 z-40">
           <ChapterScrubber
             chapters={chapters}
             currentIndex={activeIndex}
