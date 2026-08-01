@@ -53,7 +53,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    url: "mailto:contact@elhaiba-hamza.tech",
+    url: "mailto:elhaiba.hamza@proton.me",
     color: "hover:text-ctp-peach",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -68,7 +68,7 @@ export default function Footer() {
   return (
     <footer className="pt-16 pb-6 flex flex-col justify-between">
       <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
-        
+
         {/* Left Side: Branding / Identity */}
         <div className="space-y-6 max-w-sm">
           <div>
@@ -85,10 +85,10 @@ export default function Footer() {
           <span className="text-xs font-bold uppercase tracking-widest text-ctp-surface2 mb-6">Elsewhere</span>
           <div className="grid grid-cols-2 gap-x-12 gap-y-4">
             {socialLinks.map((link) => (
-              <a 
+              <a
                 key={link.name}
-                href={link.url} 
-                target={link.name !== "Email" ? "_blank" : "_self"} 
+                href={link.url}
+                target={link.name !== "Email" ? "_blank" : "_self"}
                 rel={link.name !== "Email" ? "noopener noreferrer" : ""}
                 className={`flex items-center gap-3 text-ctp-subtext0 transition-all duration-300 group ${link.color}`}
                 aria-label={link.name}

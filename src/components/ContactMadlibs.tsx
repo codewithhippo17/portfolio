@@ -7,6 +7,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+// Formspree endpoint for the contact form.
+// https://formspree.io/f/xykroqbb — ID injected at build time:
+//   local: .env.local (NEXT_PUBLIC_FORMSPREE_ID)
+//   CI:    .github/workflows/deploy.yml maps secrets.FORMSPREE_ID → NEXT_PUBLIC_FORMSPREE_ID
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+
 const opportunities = [
   { value: "fulltime", label: "a full-time engineering role" },
   { value: "internship", label: "an internship opportunity" },
@@ -50,7 +56,7 @@ const AutoSizeInput = ({
 };
 
 export default function ContactMadlibs() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [opportunity, setOpportunity] = useState("");
   
   // Controlled states for dynamic sizing
@@ -58,14 +64,39 @@ export default function ContactMadlibs() {
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!opportunity) {
       alert("Please select an opportunity before sending.");
       return;
     }
-    setIsSubmitting(true);
-    setTimeout(() => setIsSubmitting(false), 1000);
+    setFormStatus("sending");
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          company,
+          email,
+          opportunity: opportunities.find((o) => o.value === opportunity)?.label,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      if (res.ok) {
+        setFormStatus("sent");
+        setName("");
+        setCompany("");
+        setEmail("");
+        setOpportunity("");
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   const selectedLabel = opportunities.find((o) => o.value === opportunity)?.label;
@@ -108,13 +139,19 @@ export default function ContactMadlibs() {
         <AutoSizeInput value={email} onChange={setEmail} placeholder="your@email.com" type="email" required />
         {" "}to discuss potential next steps.
         
-        <div className="mt-10">
+        <div className="mt-10 flex items-center gap-3">
+          {formStatus === "sent" && (
+            <span className="text-ctp-green text-sm">✓ sent — i&apos;ll get back to you soon.</span>
+          )}
+          {formStatus === "error" && (
+            <span className="text-ctp-red text-sm">✗ failed. try again.</span>
+          )}
           <button 
             type="submit" 
-            disabled={isSubmitting}
+            disabled={formStatus === "sending"}
             className="font-mono text-xs uppercase tracking-widest bg-ctp-mauve text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? "Sending..." : "Send Message"}
+            {formStatus === "sending" ? "Sending..." : "Send Message"}
           </button>
         </div>
       </form>

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ContactMadlibs from "@/components/ContactMadlibs";
 import StickyFooterReveal from "@/components/StickyFooterReveal";
 import SocialSidebar from "@/components/SocialSidebar";
+import EmailSidebar from "@/components/EmailSidebar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,6 +55,7 @@ export default function RootLayout({
         </StickyFooterReveal>
 
         <SocialSidebar />
+        <EmailSidebar />
       </body>
     </html>
   );

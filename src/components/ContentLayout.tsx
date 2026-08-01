@@ -92,10 +92,10 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
         {children}
       </div>
 
-      {/* Sidebar TOC - Fixed to the right of the screen, fades out when footer reveals */}
+      {/* Sidebar TOC - hugs the right edge of the max-w-2xl text column, fades out when footer reveals */}
       {chapters.length > 0 && (
         <motion.aside 
-          className="hidden lg:block fixed right-8 xl:right-12 top-1/2 z-40 origin-right"
+          className="hidden lg:block fixed left-[calc(50%_+_21rem_+_1.5rem)] top-1/2 z-40 origin-left"
           style={{ opacity, scale, translateY }}
         >
           <ChapterScrubber

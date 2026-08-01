@@ -99,7 +99,7 @@ export default function SocialSidebar() {
 
   return (
     <motion.div 
-      className="hidden md:flex fixed bottom-0 left-10 z-10 flex-col items-center text-ctp-subtext0 group origin-bottom"
+      className="hidden md:flex w-10 fixed bottom-0 left-10 z-10 flex-col items-center text-ctp-subtext0 group origin-bottom"
       style={{ opacity, y, scale }}
     >
       <ul className="flex flex-col items-center m-0 p-0 list-none gap-5">
@@ -119,10 +119,10 @@ export default function SocialSidebar() {
       </ul>
       <motion.div 
         style={{ 
-          width: '2px', 
-          height: `${96 * (1 - squishProgress)}px`, // Line shrinks to 0px
-          backgroundColor: '#6c7086', 
-          marginTop: '8px', 
+          width: '1px', 
+          height: `${90 * (1 - squishProgress)}px`, // Line shrinks to 0px
+          backgroundColor: 'var(--catppuccin-color-subtext0)', 
+          marginTop: '20px', 
           flexShrink: 0 
         }} 
       />
