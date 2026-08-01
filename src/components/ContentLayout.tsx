@@ -67,6 +67,10 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
             currentIndex={activeIndex}
             onSelect={handleSelect}
             side="left"
+            rowHeight={16}
+            restLength={22}
+            peakLength={76}
+            radius={5}
           />
         </aside>
       )}
