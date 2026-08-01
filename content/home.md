@@ -31,3 +31,17 @@ The result isn't just a resilient codebase. **It's a fearless team, finally free
 - **[Engineering Principles](/portfolio/engineering-principles)** — The rules I refuse to break.
 - **[Anti Portfolio](/portfolio/anti-portfolio)** — Tech I walked away from, and why.
 - **[Decision Log](/portfolio/decision-log)** — Big calls, with the trade-offs on record.
+
+---
+
+## Featured
+
+Four builds that shaped how I think about systems — and the stories behind them.
+
+- **[Industrial Copilot (OCP)](/portfolio/projects/industrial-copilot)** — An AI energy platform where a facility manager can ask *"Why did energy consumption spike in Sector 4 yesterday at 2 PM?"* — and a local LLM answers it, on hardware that never leaves the building. *(The build story: [Merging legacy energy with modern LLMs](/portfolio/blog/building-industrial-copilot))*
+
+- **[Minishell](/portfolio/projects/minishell)** — A bash-like shell in C: lexer, AST, pipelines, heredocs, signals. It also taught me that **file descriptors are like memory** — the one `close()` I forgot froze an entire pipeline. *(The postmortem: [The Minishell Pipe Deadlock](/portfolio/failure-log/minishell-ast-deadlock))*
+
+- **[IRC Server](/portfolio/projects/irc)** — A C++98 server that real clients connect to. Silently swallowing malformed packets bought me memory corruption hours later — and a principle: [fail fast and loudly](/portfolio/engineering-principles/fail-fast).
+
+- **[Inception](/portfolio/projects/inception)** — A Docker infrastructure built from scratch: no pre-built images, one TLS entry point, MariaDB isolated from the network. Boring technology, on purpose. *(The principle: [Boring Technology is Good](/portfolio/engineering-principles/boring-tech))*
