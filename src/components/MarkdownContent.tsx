@@ -5,13 +5,14 @@ import { useEffect, useRef } from "react";
 /**
  * Renders markdown-generated HTML with skeleton-shimmer image loading.
  *
- * Every <img> in the content gets a shimmer placeholder that fades the
- * image in once loaded. The `.md-images-loading` class is added on mount
- * (not at SSR time) so content never flashes invisible before JS runs.
+ * Obsidian image embeds are wrapped in `<span class="md-img-wrap skeleton-shimmer">`
+ * at build time (postprocessObsidianImages). The shimmer lives on the wrapper
+ * via the existing `skeleton-shimmer` ::after sweep, while the `<img>` starts
+ * at opacity 0. This effect fades each image in (`.md-loaded`) and strips the
+ * shimmer class from its wrapper once loaded.
  *
- * Handles the cached-image case: if the image finished loading before
- * hydration (browser cache), the `load` event never fires again, so we
- * check `img.complete` on mount — same guard as ProjectThumbnail.
+ * A minimum shimmer duration guarantees the effect is visible even for
+ * cached images (otherwise settle is instant and the shimmer never shows).
  */
 export default function MarkdownContent({
   html,
@@ -26,53 +27,49 @@ export default function MarkdownContent({
     const container = ref.current;
     if (!container) return;
 
-    container.classList.add("md-images-loading");
+    const wraps = Array.from(container.querySelectorAll(".md-img-wrap"));
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const mountTime = performance.now();
+    const MIN_SHIMMER_MS = 600;
 
-    const images = Array.from(container.querySelectorAll("img"));
-    let settled = 0;
+    wraps.forEach((wrap) => {
+      const img = wrap.querySelector("img");
+      if (!img) return;
 
-    const settle = (img: HTMLImageElement, error = false) => {
-      if (img.classList.contains("md-loaded") || img.classList.contains("md-error")) {
-        return;
-      }
-      img.classList.add(error ? "md-error" : "md-loaded");
-      settled += 1;
-      if (settled === images.length) {
-        container.classList.remove("md-images-loading");
-      }
-    };
+      const settle = (error = false) => {
+        if (img.classList.contains("md-loaded") || img.classList.contains("md-error")) return;
 
-    images.forEach((img) => {
+        const remaining = Math.max(0, MIN_SHIMMER_MS - (performance.now() - mountTime));
+        const tid = setTimeout(() => {
+          if (img.classList.contains("md-loaded") || img.classList.contains("md-error")) return;
+          img.classList.add(error ? "md-error" : "md-loaded");
+          wrap.classList.remove("skeleton-shimmer");
+        }, remaining);
+        timers.push(tid);
+      };
+
       if (img.complete) {
-        // Already loaded (cached) or failed before hydration.
-        settle(img, img.naturalWidth === 0);
+        settle(img.naturalWidth === 0);
         return;
       }
-      img.addEventListener("load", () => settle(img), { once: true });
-      img.addEventListener("error", () => settle(img, true), { once: true });
+      img.addEventListener("load", () => settle(), { once: true });
+      img.addEventListener("error", () => settle(true), { once: true });
     });
 
-    // Zero images (or all settled synchronously) — no shimmer needed.
-    if (settled === images.length) {
-      container.classList.remove("md-images-loading");
-    }
-
-    // Safety net: if no images exist, or a load event is missed
-    // (e.g. lazy images below the fold), never leave content invisible.
-    const timeout = setTimeout(() => {
-      if (settled !== images.length) {
-        images.forEach((img) => {
-          if (!img.classList.contains("md-loaded") && !img.classList.contains("md-error")) {
-            settle(img);
-          }
-        });
-      }
-      container.classList.remove("md-images-loading");
+    // Safety net: never leave images invisible.
+    const safetyNet = setTimeout(() => {
+      wraps.forEach((wrap) => {
+        const img = wrap.querySelector("img");
+        if (img && !img.classList.contains("md-loaded") && !img.classList.contains("md-error")) {
+          img.classList.add("md-loaded");
+          wrap.classList.remove("skeleton-shimmer");
+        }
+      });
     }, 3000);
 
     return () => {
-      clearTimeout(timeout);
-      container.classList.remove("md-images-loading");
+      timers.forEach(clearTimeout);
+      clearTimeout(safetyNet);
     };
   }, [html]);
 

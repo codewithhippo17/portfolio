@@ -51,7 +51,10 @@ function postprocessObsidianImages(htmlContent: string): string {
     // Next.js uses basePath "/portfolio" in this project
     const src = `/portfolio/attachments/${filename}`;
     
-    return `<img src="${src}" alt="${filename}" class="obsidian-img ${alignClass}" loading="lazy" />`;
+    // Wrap in a shimmer container so the skeleton shows while the
+    // image is opacity-0. The <MarkdownContent/> client component
+    // removes `.skeleton-shimmer` and fades the image in on load.
+    return `<span class="md-img-wrap skeleton-shimmer obsidian-img ${alignClass}"><img src="${src}" alt="${filename}" loading="lazy" /></span>`;
   });
 }
 
