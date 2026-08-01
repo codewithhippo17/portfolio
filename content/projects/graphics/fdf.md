@@ -7,6 +7,7 @@ role: "Developer"
 github: "https://github.com/codewithhippo17/FDF"
 status: "completed"
 featured: false
+thumbnail: "1_9FHBRBJfPiFCz9GJjGroLQ.webp"
 description: "A 3D wireframe renderer implemented in C using a basic graphic library."
 ---
 
