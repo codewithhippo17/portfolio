@@ -283,6 +283,42 @@ body {
   margin: 1rem 0;
 }
 
+/* Content images — shimmer while loading, fade in when ready.
+   `.md-images-loading` is added by <MarkdownContent/> on mount, so
+   images never flash invisible before JS runs. `.md-loaded`/`.md-error`
+   are added by the component once each image settles. */
+.markdown-content.md-images-loading img {
+  opacity: 0;
+  background-color: var(--catppuccin-color-surface0);
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    rgba(202, 211, 245, 0.08),
+    transparent
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: markdown-sweep 1.6s ease-in-out infinite;
+}
+
+.markdown-content.md-images-loading img.md-loaded,
+.markdown-content.md-images-loading img.md-error {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  animation: none;
+  background-image: none;
+  background-color: transparent;
+}
+
+@keyframes markdown-sweep {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
 .markdown-content .highlight {
   background: color-mix(in srgb, var(--catppuccin-color-yellow) 12%, transparent);
   color: var(--catppuccin-color-yellow);

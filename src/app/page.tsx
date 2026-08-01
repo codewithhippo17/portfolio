@@ -1,6 +1,7 @@
 import { getContent, type PageFrontmatter } from "@/lib/md";
 import ContentLayout from "@/components/ContentLayout";
 import JsonLd from "@/components/JsonLd";
+import MarkdownContent from "@/components/MarkdownContent";
 import {
   SITE_NAME,
   AUTHOR,
@@ -58,9 +59,7 @@ export default function Home() {
           )}
 
           <div className="space-y-6">
-            <div className="markdown-content text-ctp-subtext0 leading-relaxed">
-              <div dangerouslySetInnerHTML={{ __html: home.html }} />
-            </div>
+            <MarkdownContent html={home.html} />
           </div>
         </div>
       </ContentLayout>

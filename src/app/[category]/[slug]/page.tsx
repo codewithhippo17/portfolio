@@ -4,6 +4,7 @@ import { ChevronLeft } from "lucide-react";
 import { getContent, getDynamicCategories, formatTitle, BaseFrontmatter } from "@/lib/md";
 import ContentLayout from "@/components/ContentLayout";
 import JsonLd from "@/components/JsonLd";
+import MarkdownContent from "@/components/MarkdownContent";
 import { AUTHOR, SITE_NAME, buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -123,10 +124,7 @@ export default async function ContentPage({
         <hr className="border-ctp-surface0 mb-8" />
 
         {/* Content */}
-        <div
-          className="markdown-content text-ctp-subtext0 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: item.html }}
-        />
+        <MarkdownContent html={item.html} />
       </article>
       </ContentLayout>
     </>

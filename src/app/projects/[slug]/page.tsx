@@ -5,6 +5,7 @@ import { getProjects, getProjectBySlug } from "@/lib/md";
 import TechIcon from "@/components/TechIcon";
 import ContentLayout from "@/components/ContentLayout";
 import JsonLd from "@/components/JsonLd";
+import MarkdownContent from "@/components/MarkdownContent";
 import { AUTHOR, buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -148,10 +149,7 @@ export default async function ProjectPage({
         <hr className="border-ctp-surface0 mb-8" />
 
         {/* Content */}
-        <div
-          className="markdown-content text-ctp-subtext0 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <MarkdownContent html={html} />
       </article>
       </ContentLayout>
     </>
