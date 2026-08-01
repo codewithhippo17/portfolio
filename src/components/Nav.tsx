@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,6 +23,29 @@ const moreLinks = [
   { href: "/anti-portfolio", label: "Anti-Portfolio" },
   { href: "/decision-log", label: "Decision Log" },
 ];
+
+function NavLink({
+  href,
+  active,
+  children,
+}: {
+  href: string;
+  active: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className={
+        active
+          ? "block w-full px-2 py-1.5 text-ctp-mauve font-bold transition-colors"
+          : "block w-full px-2 py-1.5 text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+      }
+    >
+      {children}
+    </Link>
+  );
+}
 
 export default function Nav() {
   const pathname = usePathname();
@@ -45,9 +69,46 @@ export default function Nav() {
   return (
     <nav className="sticky top-0 z-50 bg-ctp-base/90 backdrop-blur-md border-b border-ctp-surface-0/30">
       <div className="max-w-2xl mx-auto w-full px-6 flex items-center justify-between py-4 text-sm">
-        
-        {/* Primary Links */}
-        <div className="flex items-center gap-4 sm:gap-6">
+        {/* Mobile: hamburger menu (hidden at sm+) */}
+        <DropdownMenu>
+          <DropdownMenuTrigger
+            aria-label="Open menu"
+            className="sm:hidden -ml-1 p-1.5 text-ctp-subtext-0 hover:text-ctp-text transition-colors cursor-pointer"
+          >
+            <Menu className="size-5" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="w-56 sm:hidden">
+            {navLinks.map((link) => (
+              <DropdownMenuItem key={link.href} className="p-0">
+                <NavLink href={link.href} active={isActive(link.href)}>
+                  {link.label}
+                </NavLink>
+              </DropdownMenuItem>
+            ))}
+            <div className="my-1 border-t border-ctp-surface-0/30" role="separator" />
+            {moreLinks.map((link) => (
+              <DropdownMenuItem key={link.href} className="p-0">
+                <NavLink href={link.href} active={isActive(link.href)}>
+                  {link.label}
+                </NavLink>
+              </DropdownMenuItem>
+            ))}
+            <div className="my-1 border-t border-ctp-surface-0/30" role="separator" />
+            <DropdownMenuItem className="p-0">
+              <a
+                href="/portfolio/attachments/elhaiba_hamza.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full px-2 py-1.5 font-mono text-[10px] uppercase tracking-widest text-ctp-peach hover:text-ctp-text transition-colors"
+              >
+                Resume ↗
+              </a>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {/* Desktop: primary links + More dropdown (hidden below sm) */}
+        <div className="hidden sm:flex items-center gap-4 sm:gap-6">
           {navLinks.map((link) => {
             const active = isActive(link.href);
             return (
@@ -74,16 +135,9 @@ export default function Nav() {
                 const active = isActive(link.href);
                 return (
                   <DropdownMenuItem key={link.href} className="p-0">
-                    <Link
-                      href={link.href}
-                      className={
-                        active
-                          ? "block w-full px-2 py-1.5 text-ctp-mauve font-bold transition-colors"
-                          : "block w-full px-2 py-1.5 text-ctp-subtext-0 hover:text-ctp-text transition-colors"
-                      }
-                    >
+                    <NavLink href={link.href} active={active}>
                       {link.label}
-                    </Link>
+                    </NavLink>
                   </DropdownMenuItem>
                 );
               })}
@@ -108,7 +162,6 @@ export default function Nav() {
             Resume
           </a>
         </div>
-
       </div>
     </nav>
   );
