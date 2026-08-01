@@ -52,6 +52,7 @@ const socialLinks = [
 
 export default function SocialSidebar() {
   const [scrollDistanceToBottom, setScrollDistanceToBottom] = useState(1000);
+  const [footerHeight, setFooterHeight] = useState(150);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,11 +62,19 @@ export default function SocialSidebar() {
       const scrollY = window.scrollY;
       const distance = documentHeight - (scrollY + windowHeight);
       setScrollDistanceToBottom(Math.max(0, distance));
+      
+      // Get exact dynamic footer height
+      const spacerEl = document.getElementById("footer-spacer");
+      if (spacerEl) {
+        setFooterHeight(spacerEl.clientHeight);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll);
-    handleScroll(); // Initial check
+    
+    // Initial check (use timeout to ensure DOM is painted)
+    setTimeout(handleScroll, 100);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -73,11 +82,10 @@ export default function SocialSidebar() {
     };
   }, []);
 
-  // When distance to bottom is > 150px, we are normally scrolling.
-  // As distance approaches 0 (the user reaches the very bottom), we squeeze and fade out.
-  // We'll use 150px because that's roughly the footer's height.
+  // Use the exact dynamic footer height so the animation perfectly syncs 
+  // with the moment the footer starts revealing.
   // Calculate progress from 0 (normal) to 1 (fully squished at bottom).
-  const squishProgress = Math.min(1, Math.max(0, (150 - scrollDistanceToBottom) / 150));
+  const squishProgress = Math.min(1, Math.max(0, (footerHeight - scrollDistanceToBottom) / footerHeight));
 
   // We manually interpolate styles based on squishProgress
   const opacity = 1 - (squishProgress * 1); // Fades to 0
