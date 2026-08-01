@@ -22,10 +22,10 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
 
   useEffect(() => {
     if (chapters.length === 0) return;
-    
+
     // Setup intersection observer to track which heading is currently in view
     const headingElements = chapters.map((ch) => document.getElementById(ch.id));
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -68,9 +68,9 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
             onSelect={handleSelect}
             side="left"
             rowHeight={16}
-            restLength={22}
+            restLength={50}
             peakLength={76}
-            radius={5}
+            radius={1}
           />
         </aside>
       )}
