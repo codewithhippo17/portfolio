@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { getProjectCategories } from "@/lib/md";
+import ProjectCard from "@/components/ProjectCard";
+import { Sparkles } from "lucide-react";
 import { buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
 
 export function generateMetadata() {
@@ -16,28 +17,19 @@ export function generateMetadata() {
   };
 }
 
-// Map category names to Catppuccin accent colors for the badges
-const categoryColors: Record<string, string> = {
-  "Web Apps": "text-ctp-mauve border-ctp-mauve",
-  "AI/ML": "text-ctp-green border-ctp-green",
-  Tools: "text-ctp-blue border-ctp-blue",
-  "Open Source": "text-ctp-peach border-ctp-peach",
-  Systems: "text-ctp-red border-ctp-red",
-  Graphics: "text-ctp-teal border-ctp-teal",
-  Networking: "text-ctp-sky border-ctp-sky",
-  DevOps: "text-ctp-lavender border-ctp-lavender",
+// Category → Catppuccin accent classes (full literal strings so Tailwind picks them up)
+const categoryAccents: Record<string, { text: string; bar: string }> = {
+  "Web Apps": { text: "text-ctp-mauve", bar: "bg-ctp-mauve" },
+  "AI/ML": { text: "text-ctp-green", bar: "bg-ctp-green" },
+  Tools: { text: "text-ctp-blue", bar: "bg-ctp-blue" },
+  "Open Source": { text: "text-ctp-peach", bar: "bg-ctp-peach" },
+  Systems: { text: "text-ctp-red", bar: "bg-ctp-red" },
+  Graphics: { text: "text-ctp-teal", bar: "bg-ctp-teal" },
+  Networking: { text: "text-ctp-sky", bar: "bg-ctp-sky" },
+  DevOps: { text: "text-ctp-lavender", bar: "bg-ctp-lavender" },
 };
 
-const categoryBorderColors: Record<string, string> = {
-  "Web Apps": "border-ctp-mauve",
-  "AI/ML": "border-ctp-green",
-  Tools: "border-ctp-blue",
-  "Open Source": "border-ctp-peach",
-  Systems: "border-ctp-red",
-  Graphics: "border-ctp-teal",
-  Networking: "border-ctp-sky",
-  DevOps: "border-ctp-lavender",
-};
+const defaultAccent = { text: "text-ctp-subtext0", bar: "bg-ctp-surface2" };
 
 export default function ProjectsPage() {
   const categories = getProjectCategories();
@@ -49,11 +41,18 @@ export default function ProjectsPage() {
           Projects
         </h1>
         <p className="text-ctp-subtext0">
-          No projects yet. Add markdown files to <code className="text-ctp-peach bg-ctp-surface0 px-1 rounded">content/projects/</code>.
+          No projects yet. Add markdown files to{" "}
+          <code className="text-ctp-peach bg-ctp-surface0 px-1 rounded">
+            content/projects/
+          </code>
+          .
         </p>
       </div>
     );
   }
+
+  const allProjects = [...categories.values()].flat();
+  const featured = allProjects.filter((p) => p.frontmatter.featured);
 
   return (
     <div>
@@ -61,61 +60,56 @@ export default function ProjectsPage() {
         Projects
       </h1>
       <p className="text-ctp-subtext0 mb-8 text-sm">
-        Systems I&apos;ve built, untangled, or killed. With the real constraints.
+        Systems I&apos;ve built, untangled, or killed. With the real
+        constraints.
       </p>
 
+      {/* Featured */}
+      {featured.length > 0 && (
+        <section className="mb-12">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold tracking-tight text-ctp-mauve">
+            <Sparkles size={16} /> Featured
+          </h2>
+          <div className="space-y-4">
+            {featured.map((project) => {
+              const accent =
+                categoryAccents[project.frontmatter.category] ?? defaultAccent;
+              return (
+                <ProjectCard
+                  key={project.slug}
+                  project={project}
+                  accentText={accent.text}
+                  accentBar={accent.bar}
+                  featured
+                />
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* Category lists (featured projects already shown above, don't repeat) */}
       {Array.from(categories.entries()).map(([category, projects]) => {
-        const borderColor = categoryBorderColors[category] ?? "border-ctp-surface1";
-        const textColor = categoryColors[category]?.split(" ")[0] ?? "text-ctp-subtext0";
+        const accent = categoryAccents[category] ?? defaultAccent;
+        const rest = projects.filter((p) => !p.frontmatter.featured);
+
+        if (rest.length === 0) return null;
 
         return (
           <section key={category} className="mb-10">
-            <h2 className={`text-lg font-semibold ${textColor} mb-3 tracking-tight`}>
+            <h2
+              className={`mb-3 text-lg font-semibold tracking-tight ${accent.text}`}
+            >
               {category}
             </h2>
-
             <div className="space-y-3">
-              {projects.map((project) => (
-                <Link
+              {rest.map((project) => (
+                <ProjectCard
                   key={project.slug}
-                  href={`/projects/${project.slug}`}
-                  className={`flex items-start justify-between border-l-2 ${borderColor} pl-4 py-3 hover:bg-ctp-surface0 transition-colors rounded-r-lg gap-4`}
-                >
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-ctp-text font-medium truncate">
-                      {project.frontmatter.title}
-                    </h3>
-                    {project.frontmatter.description && (
-                      <p className="text-ctp-subtext0 text-sm mt-0.5 line-clamp-2">
-                        {project.frontmatter.description}
-                      </p>
-                    )}
-                    <div className="flex gap-2 mt-1.5 flex-wrap">
-                      <span className={`text-xs ${textColor}`}>
-                        {project.frontmatter.status}
-                      </span>
-                      {project.frontmatter.tags?.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs text-ctp-overlay1"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  {project.frontmatter.thumbnail && (
-                    <div className="flex-shrink-0">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={`/portfolio/attachments/${project.frontmatter.thumbnail}`}
-                        alt={project.frontmatter.title}
-                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface1"
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                </Link>
+                  project={project}
+                  accentText={accent.text}
+                  accentBar={accent.bar}
+                />
               ))}
             </div>
           </section>

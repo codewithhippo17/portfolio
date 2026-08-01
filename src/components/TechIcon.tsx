@@ -26,9 +26,11 @@ const iconMap: Record<string, string> = {
 export default function TechIcon({
   name,
   size = 16,
+  className = "",
 }: {
   name: string;
   size?: number;
+  className?: string;
 }) {
   const key = name.toLowerCase().trim();
   const icon = iconMap[key];
@@ -40,7 +42,7 @@ export default function TechIcon({
         icon="carbon:code"
         width={size}
         height={size}
-        className="inline-block align-middle text-ctp-overlay1"
+        className={`inline-block align-middle text-ctp-overlay1 ${className}`}
       />
     );
   }
@@ -50,7 +52,7 @@ export default function TechIcon({
       icon={icon}
       width={size}
       height={size}
-      className="inline-block align-middle"
+      className={`inline-block align-middle ${className}`}
     />
   );
 }

@@ -356,4 +356,29 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Skeleton shimmer used for project thumbnails while loading / when missing */
+  .skeleton-shimmer {
+    position: relative;
+    overflow: hidden;
+    background: var(--catppuccin-color-surface0);
+  }
+  .skeleton-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(202, 211, 245, 0.08),
+      transparent
+    );
+    animation: skeleton-sweep 1.6s ease-in-out infinite;
+  }
+  @keyframes skeleton-sweep {
+    100% {
+      transform: translateX(100%);
+    }
+  }
 }
