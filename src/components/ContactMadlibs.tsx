@@ -1,11 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const opportunities = [
   { value: "fulltime", label: "a full-time engineering role" },
@@ -16,7 +17,6 @@ const opportunities = [
   { value: "coffee", label: "grabbing a coffee to talk tech" },
 ];
 
-// MUST be defined outside the main component so React doesn't unmount it on every render
 const AutoSizeInput = ({ 
   value, 
   onChange, 
@@ -32,11 +32,9 @@ const AutoSizeInput = ({
 }) => {
   return (
     <div className="inline-grid [grid-template-columns:min-content] relative items-center align-baseline">
-      {/* The Invisible Mirror */}
       <span className={`invisible col-start-1 row-start-1 whitespace-pre px-2 pointer-events-none ${value ? 'font-bold' : 'font-light'}`}>
         {value || placeholder}
       </span>
-      {/* The Actual Input */}
       <input 
         type={type}
         value={value}
@@ -52,11 +50,24 @@ const AutoSizeInput = ({
 export default function ContactMadlibs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [opportunity, setOpportunity] = useState("");
-  
-  // Controlled states for dynamic sizing
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
+
+  const containerRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    // Start tracking when the section's bottom hits the viewport's bottom.
+    // Stop tracking when the section's bottom hits the viewport's top.
+    offset: ["end end", "end start"]
+  });
+
+  // Squash the contact form into a smaller, semi-transparent bar.
+  // The animation triggers over the first 30% of the remaining scroll space (the footer).
+  const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.6]);
+  const filter = useTransform(scrollYProgress, [0, 0.3], ["blur(0px)", "blur(2px)"]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,53 +82,60 @@ export default function ContactMadlibs() {
   const selectedLabel = opportunities.find((o) => o.value === opportunity)?.label;
 
   return (
-    <section id="contact-form" className="py-16 border-t border-ctp-surface-0/50 mt-12 mb-4">
-      <h2 className="text-2xl font-bold text-ctp-text mb-8 tracking-tight">Let's build something resilient.</h2>
-      <form onSubmit={handleSubmit} className="text-lg md:text-xl leading-loose text-ctp-subtext-0 font-light max-w-3xl">
-        Hi Hamza, my name is{" "}
-        <AutoSizeInput value={name} onChange={setName} placeholder="your name" required />
-        {" "}and I'm reaching out from{" "}
-        <AutoSizeInput value={company} onChange={setCompany} placeholder="company (optional)" />
-        . I'd love to get in touch with you regarding{" "}
-        
-        <DropdownMenu>
-          <DropdownMenuTrigger className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text cursor-pointer transition-colors inline-flex items-center gap-1 group">
-            {selectedLabel ? (
-              <span className="font-bold">{selectedLabel}</span>
-            ) : (
-              <span className="text-ctp-surface-2 font-light">an opportunity...</span>
-            )}
-            <span className="text-xs opacity-50 group-hover:opacity-100 transition-opacity">▾</span>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-[320px] bg-ctp-base border border-ctp-surface-0 shadow-lg p-1 z-50">
-            {opportunities.map((opt) => (
-              <DropdownMenuItem 
-                key={opt.value} 
-                onClick={() => setOpportunity(opt.value)}
-                className="cursor-pointer text-ctp-subtext-0 hover:text-ctp-mauve hover:bg-ctp-surface-0 px-3 py-2 text-base transition-colors rounded-sm"
-              >
-                {opt.label}
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+    <section ref={containerRef} id="contact-form" className="relative mt-12">
+      {/* Make the contact section sticky to the bottom so it stays pinned. */}
+      {/* The origin-bottom ensures it squeezes downwards toward the footer! */}
+      <motion.div 
+        className="sticky bottom-0 z-10 bg-background py-8 sm:py-16 origin-bottom border-t border-ctp-surface-0/50"
+        style={{ scale, opacity, filter }}
+      >
+        <h2 className="text-2xl font-bold text-ctp-text mb-8 tracking-tight">Let's build something resilient.</h2>
+        <form onSubmit={handleSubmit} className="text-lg md:text-xl leading-loose text-ctp-subtext-0 font-light max-w-3xl">
+          Hi Hamza, my name is{" "}
+          <AutoSizeInput value={name} onChange={setName} placeholder="your name" required />
+          {" "}and I'm reaching out from{" "}
+          <AutoSizeInput value={company} onChange={setCompany} placeholder="company (optional)" />
+          . I'd love to get in touch with you regarding{" "}
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text cursor-pointer transition-colors inline-flex items-center gap-1 group">
+              {selectedLabel ? (
+                <span className="font-bold">{selectedLabel}</span>
+              ) : (
+                <span className="text-ctp-surface-2 font-light">an opportunity...</span>
+              )}
+              <span className="text-xs opacity-50 group-hover:opacity-100 transition-opacity">▾</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-[320px] bg-ctp-base border border-ctp-surface-0 shadow-lg p-1 z-50">
+              {opportunities.map((opt) => (
+                <DropdownMenuItem 
+                  key={opt.value} 
+                  onClick={() => setOpportunity(opt.value)}
+                  className="cursor-pointer text-ctp-subtext-0 hover:text-ctp-mauve hover:bg-ctp-surface-0 px-3 py-2 text-base transition-colors rounded-sm"
+                >
+                  {opt.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-        <input type="hidden" name="opportunity" value={opportunity} required />
+          <input type="hidden" name="opportunity" value={opportunity} required />
 
-        . You can reach me at{" "}
-        <AutoSizeInput value={email} onChange={setEmail} placeholder="your@email.com" type="email" required />
-        {" "}to discuss potential next steps.
-        
-        <div className="mt-10">
-          <button 
-            type="submit" 
-            disabled={isSubmitting}
-            className="font-mono text-xs uppercase tracking-widest bg-ctp-mauve text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-        </div>
-      </form>
+          . You can reach me at{" "}
+          <AutoSizeInput value={email} onChange={setEmail} placeholder="your@email.com" type="email" required />
+          {" "}to discuss potential next steps.
+          
+          <div className="mt-10">
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="font-mono text-xs uppercase tracking-widest bg-ctp-mauve text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+          </div>
+        </form>
+      </motion.div>
     </section>
   );
 }

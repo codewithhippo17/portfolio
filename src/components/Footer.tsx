@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ctp-overlay-0">
+    <footer className="relative z-20 bg-background py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ctp-overlay-0">
       <p>hamza el haiba © {new Date().getFullYear()}</p>
       
       <div className="flex gap-4 items-center">
