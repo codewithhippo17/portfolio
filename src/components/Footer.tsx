@@ -57,8 +57,8 @@ const socialLinks = [
     color: "hover:text-ctp-peach",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="2"/>
-        <path d="M22 4l-10 8L2 4"/>
+        <rect x="2" y="4" width="20" height="16" rx="2" />
+        <path d="M22 4l-10 8L2 4" />
       </svg>
     ),
   },
@@ -66,8 +66,8 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="pt-24 pb-8 flex flex-col justify-between min-h-[500px]">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-24">
+    <footer className="pt-16 pb-6 flex flex-col justify-between">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
         
         {/* Left Side: Branding / Identity */}
         <div className="space-y-6 max-w-sm">
@@ -104,8 +104,8 @@ export default function Footer() {
       </div>
 
       {/* Massive Typography Watermark */}
-      <div className="w-full overflow-hidden mb-12 flex justify-center opacity-30 select-none pointer-events-none">
-        <span className="text-[14vw] font-black text-ctp-surface0 leading-[0.8] tracking-tighter">
+      <div className="w-full overflow-hidden mb-8 flex justify-center opacity-30 select-none pointer-events-none">
+        <span className="text-[10vw] font-black text-ctp-surface0 leading-[0.75] tracking-tighter">
           RESILIENT.
         </span>
       </div>
