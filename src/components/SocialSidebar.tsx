@@ -1,4 +1,6 @@
 "use client";
+import React, { useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const socialLinks = [
   {
@@ -49,8 +51,44 @@ const socialLinks = [
 ];
 
 export default function SocialSidebar() {
+  const [scrollDistanceToBottom, setScrollDistanceToBottom] = useState(1000);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Calculate how far the user is from the absolute bottom of the page
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      const distance = documentHeight - (scrollY + windowHeight);
+      setScrollDistanceToBottom(Math.max(0, distance));
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
+  // When distance to bottom is > 150px, we are normally scrolling.
+  // As distance approaches 0 (the user reaches the very bottom), we squeeze and fade out.
+  // We'll use 150px because that's roughly the footer's height.
+  // Calculate progress from 0 (normal) to 1 (fully squished at bottom).
+  const squishProgress = Math.min(1, Math.max(0, (150 - scrollDistanceToBottom) / 150));
+
+  // We manually interpolate styles based on squishProgress
+  const opacity = 1 - (squishProgress * 1); // Fades to 0
+  const y = squishProgress * 50; // Drops down 50px
+  const scale = 1 - (squishProgress * 0.2); // Shrinks slightly
+
   return (
-    <div className="fixed bottom-0 left-10 z-10 flex flex-col items-center text-ctp-subtext0 group">
+    <motion.div 
+      className="hidden md:flex fixed bottom-0 left-10 z-10 flex-col items-center text-ctp-subtext0 group origin-bottom"
+      style={{ opacity, y, scale }}
+    >
       <ul className="flex flex-col items-center m-0 p-0 list-none gap-5">
         {socialLinks.map((link) => (
           <li key={link.name}>
@@ -66,7 +104,15 @@ export default function SocialSidebar() {
           </li>
         ))}
       </ul>
-      <div style={{ width: '2px', height: '96px', backgroundColor: '#6c7086', marginTop: '8px', flexShrink: 0 }} />
-    </div>
+      <motion.div 
+        style={{ 
+          width: '2px', 
+          height: `${96 * (1 - squishProgress)}px`, // Line shrinks to 0px
+          backgroundColor: '#6c7086', 
+          marginTop: '8px', 
+          flexShrink: 0 
+        }} 
+      />
+    </motion.div>
   );
 }
