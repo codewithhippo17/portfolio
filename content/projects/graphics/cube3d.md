@@ -7,6 +7,7 @@ role: "Developer"
 github: "https://github.com/codewithhippo17/Cube3d"
 status: "completed"
 featured: false
+thumbnail: "1_ZqHvBkDCTHXqXc_AU0gADQ.webp"
 description: "A 3D raycasting engine in C inspired by Wolfenstein 3D."
 ---
 
