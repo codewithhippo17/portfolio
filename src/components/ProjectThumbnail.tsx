@@ -39,7 +39,7 @@ export default function ProjectThumbnail({
   const showPlaceholder = !src || failed;
 
   return (
-    <div className={`relative overflow-hidden bg-ctp-surface0 ${className}`}>
+    <div className={`relative z-0 overflow-hidden bg-ctp-surface0 ${className}`}>
       {showPlaceholder ? (
         <div className="skeleton-shimmer absolute inset-0 flex items-center justify-center">
           <span className={`opacity-40 ${tintClass}`}>

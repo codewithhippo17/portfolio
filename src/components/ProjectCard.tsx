@@ -41,10 +41,13 @@ export default function ProjectCard({
         featured ? "flex-col sm:flex-row" : ""
       }`}
     >
-      {/* Stretched link — whole card navigates to the project */}
+      {/* Stretched link — whole card navigates to the project.
+          Keep this ABOVE content/thumbnail (z-10) so clicks anywhere
+          on the card land on it. Interactive elements (GitHub) sit
+          higher at z-20. */}
       <Link
         href={`/projects/${slug}`}
-        className="absolute inset-0 z-0 rounded-lg"
+        className="absolute inset-0 z-10 rounded-lg"
         aria-label={`View project: ${title}`}
       />
 
@@ -55,8 +58,11 @@ export default function ProjectCard({
         }`}
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex min-w-0 flex-1 flex-col p-4 sm:p-5">
+      {/* Content — sits BELOW the stretched link so clicks pass through.
+          NOTE: no z-index here on purpose. A `z-0` would create a stacking
+          context and CAP the GitHub link (z-20 inside) below the link (z-10).
+          Plain `relative` lets z-20 participate at the card level. */}
+      <div className="relative flex min-w-0 flex-1 flex-col p-4 sm:p-5">
         <h3
           className={`font-semibold text-ctp-text transition-colors group-hover:text-ctp-mauve ${
             featured ? "text-xl sm:text-2xl" : "text-base"
@@ -112,7 +118,7 @@ export default function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${title} source on GitHub`}
-              className="relative z-10 ml-auto inline-flex items-center gap-1 text-xs text-ctp-subtext0 transition-colors hover:text-ctp-text"
+              className="relative z-20 ml-auto inline-flex items-center gap-1 text-xs text-ctp-subtext0 transition-colors hover:text-ctp-text"
             >
               GitHub <ExternalLink size={12} />
             </a>
