@@ -94,6 +94,45 @@ export interface ContentItem<T> {
 
 const contentDir = path.join(process.cwd(), "content");
 
+function appendIconToLinksPlugin() {
+  return (tree: any) => {
+    visit(tree, "element", (node: any) => {
+      if (node.tagName === "a") {
+        // Add an arrow-up-right SVG
+        node.children.push({
+          type: "element",
+          tagName: "svg",
+          properties: {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "12",
+            height: "12",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            className: ["inline-block", "ml-1", "opacity-70", "mb-1"],
+          },
+          children: [
+            {
+              type: "element",
+              tagName: "line",
+              properties: { x1: "7", y1: "17", x2: "17", y2: "7" },
+              children: [],
+            },
+            {
+              type: "element",
+              tagName: "polyline",
+              properties: { points: "7 7 17 7 17 17" },
+              children: [],
+            },
+          ],
+        });
+      }
+    });
+  };
+}
 // Plugin to extract headings
 function extractHeadingsPlugin() {
   return (tree: any, file: any) => {
@@ -133,6 +172,7 @@ export function getContent<T>(subdir: string): ContentItem<T>[] {
       const processor = remark()
         .use(extractHeadingsPlugin)
         .use(remarkRehype, { allowDangerousHtml: true })
+        .use(appendIconToLinksPlugin)
         .use(rehypeSlug)
         .use(rehypeStringify, { allowDangerousHtml: true });
 
