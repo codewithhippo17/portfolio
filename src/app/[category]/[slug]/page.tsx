@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { getContent, getDynamicCategories, formatTitle, BaseFrontmatter } from "@/lib/md";
 import ContentLayout from "@/components/ContentLayout";
+import JsonLd from "@/components/JsonLd";
+import { AUTHOR, SITE_NAME, buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -18,6 +20,45 @@ export async function generateStaticParams() {
   }
   
   return params;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string; slug: string }>;
+}) {
+  const { category, slug } = await params;
+  const items = getContent<BaseFrontmatter>(category);
+  const item = items.find((i) => i.slug === slug);
+
+  if (!item) return {};
+
+  const title = item.frontmatter.title ?? formatTitle(slug);
+  const description = item.frontmatter.description ?? undefined;
+  const date = item.frontmatter.date;
+  const path = `/${category}/${slug}`;
+
+  const base = {
+    title,
+    description,
+    alternates: { canonical: buildUrl(path) },
+    openGraph: siteOpenGraph(path, { title, description: description ?? title, type: "article" }),
+    twitter: siteTwitter({ title, description: description ?? title }),
+  };
+
+  // Article pages gain structured data via JSON-LD injected in the page body.
+  return {
+    ...base,
+    other: {
+      ...(base as any).other,
+      ...(date
+        ? {
+            "article:published_time": date,
+            "article:author": AUTHOR.name,
+          }
+        : {}),
+    },
+  };
 }
 
 export default async function ContentPage({
@@ -38,7 +79,24 @@ export default async function ContentPage({
   if (!item) notFound();
 
   return (
-    <ContentLayout headings={item.headings || []}>
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: item.frontmatter.title ?? formatTitle(slug),
+          ...(item.frontmatter.description
+            ? { description: item.frontmatter.description }
+            : {}),
+          ...(item.frontmatter.date
+            ? { datePublished: item.frontmatter.date, dateModified: item.frontmatter.date }
+            : {}),
+          author: { "@type": "Person", name: AUTHOR.name, url: buildUrl("/") },
+          publisher: { "@type": "Person", name: SITE_NAME, url: buildUrl("/") },
+          mainEntityOfPage: buildUrl(`/${category}/${slug}`),
+        }}
+      />
+      <ContentLayout headings={item.headings || []}>
       <article>
         {/* Back link */}
         <Link
@@ -70,7 +128,8 @@ export default async function ContentPage({
           dangerouslySetInnerHTML={{ __html: item.html }}
         />
       </article>
-    </ContentLayout>
+      </ContentLayout>
+    </>
   );
 }
 

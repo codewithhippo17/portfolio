@@ -1,5 +1,20 @@
 import Link from "next/link";
 import { getProjectCategories } from "@/lib/md";
+import { buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
+
+export function generateMetadata() {
+  const title = "Projects";
+  const description =
+    "Systems I've built, untangled, or killed — with the real constraints. Full-stack, systems, AI/ML, networking, graphics, and DevOps projects by Hamza El Haiba.";
+
+  return {
+    title,
+    description,
+    alternates: { canonical: buildUrl("/projects") },
+    openGraph: siteOpenGraph("/projects", { title, description, type: "website" }),
+    twitter: siteTwitter({ title, description }),
+  };
+}
 
 // Map category names to Catppuccin accent colors for the badges
 const categoryColors: Record<string, string> = {

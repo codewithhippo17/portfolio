@@ -4,9 +4,38 @@ import { ChevronLeft } from "lucide-react";
 import { getProjects, getProjectBySlug } from "@/lib/md";
 import TechIcon from "@/components/TechIcon";
 import ContentLayout from "@/components/ContentLayout";
+import JsonLd from "@/components/JsonLd";
+import { AUTHOR, buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  if (!project) return {};
+
+  const { frontmatter } = project;
+  const title = frontmatter.title;
+  const description = frontmatter.description ?? undefined;
+  const path = `/projects/${slug}`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: buildUrl(path) },
+    openGraph: siteOpenGraph(path, { title, description: description ?? title, type: "article" }),
+    twitter: siteTwitter({ title, description: description ?? title }),
+    other: {
+      "article:author": AUTHOR.name,
+      ...(frontmatter.date ? { "article:published_time": frontmatter.date } : {}),
+    },
+  };
 }
 
 export default async function ProjectPage({
@@ -28,7 +57,25 @@ export default async function ProjectPage({
   };
 
   return (
-    <ContentLayout headings={headings || []}>
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: frontmatter.title,
+          ...(frontmatter.description ? { description: frontmatter.description } : {}),
+          ...(frontmatter.date
+            ? { datePublished: frontmatter.date, dateModified: frontmatter.date }
+            : {}),
+          applicationCategory: "DeveloperApplication",
+          operatingSystem: "Any",
+          ...(frontmatter.github ? { codeRepository: frontmatter.github } : {}),
+          ...(frontmatter.live ? { url: frontmatter.live } : {}),
+          author: { "@type": "Person", name: AUTHOR.name, url: buildUrl("/") },
+          mainEntityOfPage: buildUrl(`/projects/${slug}`),
+        }}
+      />
+      <ContentLayout headings={headings || []}>
       <article>
         {/* Back link */}
         <Link
@@ -106,6 +153,7 @@ export default async function ProjectPage({
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>
-    </ContentLayout>
+      </ContentLayout>
+    </>
   );
 }

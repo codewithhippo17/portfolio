@@ -1,10 +1,29 @@
 import Link from "next/link";
 import { getContent, getDynamicCategories, formatTitle, BaseFrontmatter } from "@/lib/md";
+import { buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getDynamicCategories().map((category) => ({ category }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const { category } = await params;
+  const title = formatTitle(category);
+  const description = `${title} — notes and write-ups by Hamza El Haiba.`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: buildUrl(`/${category}`) },
+    openGraph: siteOpenGraph(`/${category}`, { title, description, type: "website" }),
+    twitter: siteTwitter({ title, description }),
+  };
 }
 
 export default async function FolderIndexPage({
