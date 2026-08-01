@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { ChapterScrubber, type Chapter } from "@/components/ui/chapter-scrubber";
 
 interface ContentLayoutProps {
@@ -19,6 +20,8 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
     }));
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [scrollDistanceToBottom, setScrollDistanceToBottom] = useState(1000);
+  const [footerHeight, setFooterHeight] = useState(150);
 
   useEffect(() => {
     if (chapters.length === 0) return;
@@ -45,12 +48,42 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
     return () => observer.disconnect();
   }, [chapters]);
 
+  // Track scroll distance for the footer reveal fade-out
+  useEffect(() => {
+    const handleScroll = () => {
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      const distance = documentHeight - (scrollY + windowHeight);
+      setScrollDistanceToBottom(Math.max(0, distance));
+
+      const spacerEl = document.getElementById("footer-spacer");
+      if (spacerEl) {
+        setFooterHeight(spacerEl.clientHeight);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    setTimeout(handleScroll, 100);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
   const handleSelect = (chapter: Chapter) => {
     const el = document.getElementById(chapter.id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const squishProgress = Math.min(1, Math.max(0, (footerHeight - scrollDistanceToBottom) / footerHeight));
+  const opacity = 1 - (squishProgress * 1);
+  const scale = 1 - (squishProgress * 0.1);
+  const translateY = `calc(-50% + ${squishProgress * 50}px)`;
 
   return (
     <div className="relative w-full">
@@ -59,9 +92,12 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
         {children}
       </div>
 
-      {/* Sidebar TOC - Fixed to the right of the screen, vertically centered */}
+      {/* Sidebar TOC - Fixed to the right of the screen, fades out when footer reveals */}
       {chapters.length > 0 && (
-        <aside className="hidden lg:block fixed right-8 xl:right-12 top-1/2 -translate-y-1/2 z-40">
+        <motion.aside 
+          className="hidden lg:block fixed right-8 xl:right-12 top-1/2 z-40 origin-right"
+          style={{ opacity, scale, translateY }}
+        >
           <ChapterScrubber
             chapters={chapters}
             currentIndex={activeIndex}
@@ -72,7 +108,7 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
             peakLength={76}
             radius={1}
           />
-        </aside>
+        </motion.aside>
       )}
     </div>
   );
