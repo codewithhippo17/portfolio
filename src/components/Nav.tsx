@@ -39,7 +39,7 @@ function NavLink({
       className={
         active
           ? "block w-full px-2 py-1.5 text-ctp-mauve font-bold transition-colors"
-          : "block w-full px-2 py-1.5 text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+          : "block w-full px-2 py-1.5 text-ctp-subtext0 hover:text-ctp-text transition-colors"
       }
     >
       {children}
@@ -67,13 +67,13 @@ export default function Nav() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-ctp-base/90 backdrop-blur-md border-b border-ctp-surface-0/30">
+    <nav className="sticky top-0 z-50 bg-ctp-base/90 backdrop-blur-md border-b border-ctp-surface0/30">
       <div className="max-w-2xl mx-auto w-full px-6 flex items-center justify-between py-4 text-sm">
         {/* Mobile: hamburger menu (hidden at sm+) */}
         <DropdownMenu>
           <DropdownMenuTrigger
             aria-label="Open menu"
-            className="sm:hidden -ml-1 p-1.5 text-ctp-subtext-0 hover:text-ctp-text transition-colors cursor-pointer"
+            className="sm:hidden -ml-1 p-1.5 text-ctp-subtext0 hover:text-ctp-text transition-colors cursor-pointer"
           >
             <Menu className="size-5" />
           </DropdownMenuTrigger>
@@ -85,7 +85,7 @@ export default function Nav() {
                 </NavLink>
               </DropdownMenuItem>
             ))}
-            <div className="my-1 border-t border-ctp-surface-0/30" role="separator" />
+            <div className="my-1 border-t border-ctp-surface0/30" role="separator" />
             {moreLinks.map((link) => (
               <DropdownMenuItem key={link.href} className="p-0">
                 <NavLink href={link.href} active={isActive(link.href)}>
@@ -93,7 +93,7 @@ export default function Nav() {
                 </NavLink>
               </DropdownMenuItem>
             ))}
-            <div className="my-1 border-t border-ctp-surface-0/30" role="separator" />
+            <div className="my-1 border-t border-ctp-surface0/30" role="separator" />
             <DropdownMenuItem className="p-0">
               <a
                 href="/portfolio/attachments/elhaiba_hamza.pdf"
@@ -118,7 +118,7 @@ export default function Nav() {
                 className={
                   active
                     ? "text-ctp-mauve font-bold underline underline-offset-4 decoration-2 transition-colors"
-                    : "text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+                    : "text-ctp-subtext0 hover:text-ctp-text transition-colors"
                 }
               >
                 {link.label}
@@ -127,7 +127,7 @@ export default function Nav() {
           })}
 
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-ctp-subtext-0 hover:text-ctp-text transition-colors cursor-pointer">
+            <DropdownMenuTrigger className="text-ctp-subtext0 hover:text-ctp-text transition-colors cursor-pointer">
               More ▾
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-44">

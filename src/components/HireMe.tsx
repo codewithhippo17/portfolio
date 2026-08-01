@@ -87,18 +87,18 @@ export default function HireMe({ onClose }: HireMeProps) {
   if (formStatus === "sent") {
     return (
       <>
-        <div className="mb-4 flex items-center justify-between text-ctp-surface-2 select-none uppercase tracking-widest text-xs">
+        <div className="mb-4 flex items-center justify-between text-ctp-surface2 select-none uppercase tracking-widest text-xs">
           <span className="text-ctp-mauve font-bold"># hire me</span>
           <HeaderButtons />
         </div>
         <div className="flex flex-col justify-center flex-grow">
           <p className="text-ctp-green">✓ form submitted.</p>
-          <p className="text-ctp-surface-2 mt-1 text-xs">
+          <p className="text-ctp-surface2 mt-1 text-xs">
             i&apos;ll review it and get back to you.
           </p>
           <button
             onClick={() => setFormStatus("idle")}
-            className="text-left text-ctp-surface-2 hover:text-ctp-mauve transition-colors mt-4 text-xs uppercase tracking-widest"
+            className="text-left text-ctp-surface2 hover:text-ctp-mauve transition-colors mt-4 text-xs uppercase tracking-widest"
           >
             [submit another]
           </button>
@@ -112,7 +112,7 @@ export default function HireMe({ onClose }: HireMeProps) {
   // ═══════════════════════════
   return (
     <>
-      <div className="mb-4 flex items-center justify-between text-ctp-surface-2 select-none uppercase tracking-widest text-xs">
+      <div className="mb-4 flex items-center justify-between text-ctp-surface2 select-none uppercase tracking-widest text-xs">
           <span className="text-ctp-mauve font-bold"># hire me</span>
           <HeaderButtons />
         </div>
@@ -157,7 +157,7 @@ export default function HireMe({ onClose }: HireMeProps) {
 
           {/* Message — multi-line */}
           <div className="pt-1">
-            <span className="text-ctp-subtext-0 font-bold select-none text-xs">
+            <span className="text-ctp-subtext0 font-bold select-none text-xs">
               message
             </span>
             <textarea
@@ -182,10 +182,10 @@ export default function HireMe({ onClose }: HireMeProps) {
             disabled={formStatus === "sending" || !formData.name || !formData.email}
               className={`text-xs uppercase tracking-widest select-none transition-colors font-bold ${
               formStatus === "sending"
-                ? "text-ctp-surface-1 animate-pulse"
+                ? "text-ctp-surface1 animate-pulse"
                 : !formData.name || !formData.email
-                  ? "text-ctp-surface-1 cursor-not-allowed"
-                  : "text-ctp-surface-2 hover:text-ctp-green cursor-pointer"
+                  ? "text-ctp-surface1 cursor-not-allowed"
+                  : "text-ctp-surface2 hover:text-ctp-green cursor-pointer"
             }`}
           >
             {formStatus === "sending" ? "$ sending..." : "[Submit]"}
@@ -214,14 +214,14 @@ function FieldRow({
 }) {
   return (
     <div className="flex items-baseline gap-2">
-      <span className="text-ctp-subtext-0 font-bold shrink-0 select-none text-xs">
+      <span className="text-ctp-subtext0 font-bold shrink-0 select-none text-xs">
         {label}
       </span>
       <input
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1 bg-transparent outline-none text-ctp-text font-mono text-sm border-b border-transparent focus:border-ctp-mauve caret-ctp-mauve transition-colors pb-0.5 placeholder-ctp-surface-1"
+        className="flex-1 bg-transparent outline-none text-ctp-text font-mono text-sm border-b border-transparent focus:border-ctp-mauve caret-ctp-mauve transition-colors pb-0.5 placeholder:text-ctp-surface1"
         placeholder={placeholder}
       />
     </div>

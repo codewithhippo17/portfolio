@@ -29,7 +29,7 @@ export default function Home() {
 
   if (!home) {
     return (
-      <p className="text-ctp-subtext-0">Create content/home.md to get started.</p>
+      <p className="text-ctp-subtext0">Create content/home.md to get started.</p>
     );
   }
 
@@ -52,13 +52,13 @@ export default function Home() {
             {home.frontmatter.title}
           </h1>
           {home.frontmatter.description && (
-            <p className="text-ctp-subtext-1 text-sm mb-6">
+            <p className="text-ctp-subtext1 text-sm mb-6">
               {home.frontmatter.description}
             </p>
           )}
 
           <div className="space-y-6">
-            <div className="markdown-content text-ctp-subtext-0 leading-relaxed">
+            <div className="markdown-content text-ctp-subtext0 leading-relaxed">
               <div dangerouslySetInnerHTML={{ __html: home.html }} />
             </div>
           </div>

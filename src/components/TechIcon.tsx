@@ -40,7 +40,7 @@ export default function TechIcon({
         icon="carbon:code"
         width={size}
         height={size}
-        className="inline-block align-middle text-ctp-overlay-1"
+        className="inline-block align-middle text-ctp-overlay1"
       />
     );
   }

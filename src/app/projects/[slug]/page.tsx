@@ -53,7 +53,7 @@ export default async function ProjectPage({
   const statusColor: Record<string, string> = {
     completed: "text-ctp-green",
     ongoing: "text-ctp-blue",
-    archived: "text-ctp-overlay-1",
+    archived: "text-ctp-overlay1",
   };
 
   return (
@@ -80,7 +80,7 @@ export default async function ProjectPage({
         {/* Back link */}
         <Link
           href="/projects"
-          className="inline-flex items-center text-sm text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+          className="inline-flex items-center text-sm text-ctp-subtext0 hover:text-ctp-text transition-colors"
         >
           <ChevronLeft size={16} className="mr-1 -ml-1" />
           Back to projects
@@ -92,8 +92,8 @@ export default async function ProjectPage({
         </h1>
 
         {/* Meta row */}
-        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ctp-subtext-0 mb-6">
-          <span className={statusColor[frontmatter.status] ?? "text-ctp-subtext-0"}>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ctp-subtext0 mb-6">
+          <span className={statusColor[frontmatter.status] ?? "text-ctp-subtext0"}>
             {frontmatter.status}
           </span>
           <span>{frontmatter.date}</span>
@@ -106,7 +106,7 @@ export default async function ProjectPage({
             {frontmatter.tags.map((tag) => (
               <span
                 key={tag}
-                className="flex items-center gap-1.5 text-xs text-ctp-overlay-1 bg-ctp-surface-0 px-2 py-0.5 rounded"
+                className="flex items-center gap-1.5 text-xs text-ctp-overlay1 bg-ctp-surface0 px-2 py-0.5 rounded"
               >
                 <TechIcon name={tag} size={14} />
                 {tag}
@@ -145,11 +145,11 @@ export default async function ProjectPage({
         )}
 
         {/* Divider */}
-        <hr className="border-ctp-surface-0 mb-8" />
+        <hr className="border-ctp-surface0 mb-8" />
 
         {/* Content */}
         <div
-          className="markdown-content text-ctp-subtext-0 leading-relaxed"
+          className="markdown-content text-ctp-subtext0 leading-relaxed"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </article>

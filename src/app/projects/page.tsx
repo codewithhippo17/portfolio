@@ -48,8 +48,8 @@ export default function ProjectsPage() {
         <h1 className="text-2xl font-bold text-ctp-text mb-6 tracking-tight">
           Projects
         </h1>
-        <p className="text-ctp-subtext-0">
-          No projects yet. Add markdown files to <code className="text-ctp-peach bg-ctp-surface-0 px-1 rounded">content/projects/</code>.
+        <p className="text-ctp-subtext0">
+          No projects yet. Add markdown files to <code className="text-ctp-peach bg-ctp-surface0 px-1 rounded">content/projects/</code>.
         </p>
       </div>
     );
@@ -60,13 +60,13 @@ export default function ProjectsPage() {
       <h1 className="text-2xl font-bold text-ctp-text mb-2 tracking-tight">
         Projects
       </h1>
-      <p className="text-ctp-subtext-0 mb-8 text-sm">
+      <p className="text-ctp-subtext0 mb-8 text-sm">
         Systems I&apos;ve built, untangled, or killed. With the real constraints.
       </p>
 
       {Array.from(categories.entries()).map(([category, projects]) => {
-        const borderColor = categoryBorderColors[category] ?? "border-ctp-surface-1";
-        const textColor = categoryColors[category]?.split(" ")[0] ?? "text-ctp-subtext-0";
+        const borderColor = categoryBorderColors[category] ?? "border-ctp-surface1";
+        const textColor = categoryColors[category]?.split(" ")[0] ?? "text-ctp-subtext0";
 
         return (
           <section key={category} className="mb-10">
@@ -79,14 +79,14 @@ export default function ProjectsPage() {
                 <Link
                   key={project.slug}
                   href={`/projects/${project.slug}`}
-                  className={`flex items-start justify-between border-l-2 ${borderColor} pl-4 py-3 hover:bg-ctp-surface-0 transition-colors rounded-r-lg gap-4`}
+                  className={`flex items-start justify-between border-l-2 ${borderColor} pl-4 py-3 hover:bg-ctp-surface0 transition-colors rounded-r-lg gap-4`}
                 >
                   <div className="flex-1 min-w-0">
                     <h3 className="text-ctp-text font-medium truncate">
                       {project.frontmatter.title}
                     </h3>
                     {project.frontmatter.description && (
-                      <p className="text-ctp-subtext-0 text-sm mt-0.5 line-clamp-2">
+                      <p className="text-ctp-subtext0 text-sm mt-0.5 line-clamp-2">
                         {project.frontmatter.description}
                       </p>
                     )}
@@ -97,7 +97,7 @@ export default function ProjectsPage() {
                       {project.frontmatter.tags?.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="text-xs text-ctp-overlay-1"
+                          className="text-xs text-ctp-overlay1"
                         >
                           #{tag}
                         </span>
@@ -110,7 +110,7 @@ export default function ProjectsPage() {
                       <img
                         src={`/portfolio/attachments/${project.frontmatter.thumbnail}`}
                         alt={project.frontmatter.title}
-                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface-1"
+                        className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface1"
                         loading="lazy"
                       />
                     </div>

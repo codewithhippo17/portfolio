@@ -101,7 +101,7 @@ export default async function ContentPage({
         {/* Back link */}
         <Link
           href={`/${category}`}
-          className="inline-flex items-center text-sm text-ctp-subtext-0 hover:text-ctp-text transition-colors"
+          className="inline-flex items-center text-sm text-ctp-subtext0 hover:text-ctp-text transition-colors"
         >
           <ChevronLeft size={16} className="mr-1 -ml-1" />
           Back to {formatTitle(category)}
@@ -114,17 +114,17 @@ export default async function ContentPage({
 
         {/* Meta row */}
         {item.frontmatter.date && (
-          <div className="text-sm text-ctp-subtext-0 mb-6">
+          <div className="text-sm text-ctp-subtext0 mb-6">
             {item.frontmatter.date}
           </div>
         )}
 
         {/* Divider */}
-        <hr className="border-ctp-surface-0 mb-8" />
+        <hr className="border-ctp-surface0 mb-8" />
 
         {/* Content */}
         <div
-          className="markdown-content text-ctp-subtext-0 leading-relaxed"
+          className="markdown-content text-ctp-subtext0 leading-relaxed"
           dangerouslySetInnerHTML={{ __html: item.html }}
         />
       </article>

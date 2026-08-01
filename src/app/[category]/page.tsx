@@ -47,7 +47,7 @@ export default async function FolderIndexPage({
         <h1 className="text-2xl font-bold text-ctp-text mb-6 tracking-tight">
           {title}
         </h1>
-        <p className="text-ctp-subtext-0">No entries yet. Add markdown files to <code className="text-ctp-peach bg-ctp-surface-0 px-1 rounded">content/{category}/</code>.</p>
+        <p className="text-ctp-subtext0">No entries yet. Add markdown files to <code className="text-ctp-peach bg-ctp-surface0 px-1 rounded">content/{category}/</code>.</p>
       </div>
     );
   }
@@ -63,19 +63,19 @@ export default async function FolderIndexPage({
           <Link
             key={item.slug}
             href={`/${category}/${item.slug}`}
-            className="flex items-start justify-between border-l-2 border-ctp-surface-2 hover:border-ctp-mauve pl-4 py-3 hover:bg-ctp-surface-0 transition-all rounded-r-lg group gap-4"
+            className="flex items-start justify-between border-l-2 border-ctp-surface2 hover:border-ctp-mauve pl-4 py-3 hover:bg-ctp-surface0 transition-all rounded-r-lg group gap-4"
           >
             <div className="flex-1 min-w-0">
               <h3 className="text-ctp-text font-medium group-hover:text-ctp-mauve transition-colors truncate">
                 {item.frontmatter.title || item.slug}
               </h3>
               {item.frontmatter.date && (
-                <span className="text-xs text-ctp-subtext-0 block mt-1">
+                <span className="text-xs text-ctp-subtext0 block mt-1">
                   {item.frontmatter.date}
                 </span>
               )}
               {item.frontmatter.description && (
-                <p className="text-ctp-subtext-0 text-sm mt-1 line-clamp-2">
+                <p className="text-ctp-subtext0 text-sm mt-1 line-clamp-2">
                   {item.frontmatter.description}
                 </p>
               )}
@@ -86,7 +86,7 @@ export default async function FolderIndexPage({
                 <img 
                   src={`/portfolio/attachments/${item.frontmatter.thumbnail}`} 
                   alt={item.frontmatter.title || "Thumbnail"} 
-                  className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface-1"
+                  className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md border border-ctp-surface1"
                   loading="lazy"
                 />
               </div>

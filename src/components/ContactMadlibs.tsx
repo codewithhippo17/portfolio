@@ -49,7 +49,7 @@ const AutoSizeInput = ({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="col-start-1 row-start-1 w-full min-w-0 bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light placeholder:text-ctp-surface-2 transition-colors"
+        className="col-start-1 row-start-1 w-full min-w-0 bg-transparent border-b border-ctp-surface2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text font-bold placeholder:font-light placeholder:text-ctp-surface2 transition-colors"
       />
     </div>
   );
@@ -102,9 +102,9 @@ export default function ContactMadlibs() {
   const selectedLabel = opportunities.find((o) => o.value === opportunity)?.label;
 
   return (
-    <section id="contact-form" className="py-16 border-t border-ctp-surface-0/50 mt-12 mb-4">
+    <section id="contact-form" className="py-16 border-t border-ctp-surface0/50 mt-12 mb-4">
       <h2 className="text-2xl font-bold text-ctp-text mb-8 tracking-tight">Let's build something resilient.</h2>
-      <form onSubmit={handleSubmit} className="text-lg md:text-xl leading-loose text-ctp-subtext-0 font-light max-w-3xl">
+      <form onSubmit={handleSubmit} className="text-lg md:text-xl leading-loose text-ctp-subtext0 font-light max-w-3xl">
         Hi Hamza, my name is{" "}
         <AutoSizeInput value={name} onChange={setName} placeholder="your name" required />
         {" "}and I'm reaching out from{" "}
@@ -112,20 +112,20 @@ export default function ContactMadlibs() {
         . I'd love to get in touch with you regarding{" "}
         
         <DropdownMenu>
-          <DropdownMenuTrigger className="bg-transparent border-b border-ctp-surface-2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text cursor-pointer transition-colors inline-flex items-center gap-1 group">
+          <DropdownMenuTrigger className="bg-transparent border-b border-ctp-surface2 focus:border-ctp-mauve outline-none px-2 py-0 text-ctp-text cursor-pointer transition-colors inline-flex items-center gap-1 group">
             {selectedLabel ? (
               <span className="font-bold">{selectedLabel}</span>
             ) : (
-              <span className="text-ctp-surface-2 font-light">an opportunity...</span>
+              <span className="text-ctp-surface2 font-light">an opportunity...</span>
             )}
             <span className="text-xs opacity-50 group-hover:opacity-100 transition-opacity">▾</span>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="start" className="w-[320px] bg-ctp-base border border-ctp-surface-0 shadow-lg p-1 z-50">
+          <DropdownMenuContent align="start" className="w-[320px] bg-ctp-base border border-ctp-surface0 shadow-lg p-1 z-50">
             {opportunities.map((opt) => (
               <DropdownMenuItem 
                 key={opt.value} 
                 onClick={() => setOpportunity(opt.value)}
-                className="cursor-pointer text-ctp-subtext-0 hover:text-ctp-mauve hover:bg-ctp-surface-0 px-3 py-2 text-base transition-colors rounded-sm"
+                className="cursor-pointer text-ctp-subtext0 hover:text-ctp-mauve hover:bg-ctp-surface0 px-3 py-2 text-base transition-colors rounded-sm"
               >
                 {opt.label}
               </DropdownMenuItem>
