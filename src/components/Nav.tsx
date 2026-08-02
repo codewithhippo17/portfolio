@@ -67,7 +67,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-ctp-base/90 backdrop-blur-md border-b border-ctp-surface0/30">
+    <nav className="sticky top-0 z-50 bg-ctp-base/90 backdrop-blur-md border-b border-ctp-surface0/20 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.25)]">
       <div className="max-w-2xl mx-auto w-full px-6 flex items-center justify-between py-4 text-sm">
         {/* Mobile: hamburger menu (hidden at sm+) */}
         <DropdownMenu>
