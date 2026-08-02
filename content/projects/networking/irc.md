@@ -7,6 +7,7 @@ role: "Backend Developer"
 github: "https://github.com/codewithhippo17/IRC"
 status: "completed"
 featured: false
+thumbnail: "irc.png"
 description: "A fully functional IRC server written in C++98."
 ---
 

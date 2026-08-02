@@ -7,6 +7,7 @@ role: "DevOps Engineer"
 github: "https://github.com/codewithhippo17/Inception"
 status: "completed"
 featured: true
+thumbnail: "inception.jpg"
 description: "A comprehensive Docker-based infrastructure virtualization project."
 ---
 

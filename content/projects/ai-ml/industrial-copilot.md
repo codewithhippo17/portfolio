@@ -7,6 +7,7 @@ role: "Fullstack Developer"
 github: "https://github.com/codewithhippo17/Industrial-Copilot"
 status: "completed"
 featured: true
+thumbnail: "energy.jpg"
 description: "An AI-powered energy optimization and monitoring platform."
 ---
 
