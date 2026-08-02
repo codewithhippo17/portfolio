@@ -49,60 +49,121 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Force Macchiato dark mode by overriding any light defaults */
+/* Default to Catppuccin Latte (Light Theme) variables.
+   These are overridden by @media (prefers-color-scheme: dark) or when .dark is present. */
 :root {
-  --catppuccin-color-base: #24273a !important;
-  --catppuccin-color-mantle: #1e2030 !important;
-  --catppuccin-color-crust: #181926 !important;
-  --catppuccin-color-text: #cad3f5 !important;
-  --catppuccin-color-subtext0: #a5adcb !important;
-  --catppuccin-color-subtext1: #b8c0e0 !important;
-  --catppuccin-color-surface0: #363a4f !important;
-  --catppuccin-color-surface1: #494d64 !important;
-  --catppuccin-color-surface2: #5b6078 !important;
-  --catppuccin-color-overlay0: #6e738d !important;
-  --catppuccin-color-overlay1: #8087a2 !important;
-  --catppuccin-color-overlay2: #939ab7 !important;
-  --catppuccin-color-mauve: #c6a0f6 !important;
-  --catppuccin-color-blue: #8aadf4 !important;
-  --catppuccin-color-lavender: #b7bdf8 !important;
-  --catppuccin-color-green: #a6da95 !important;
-  --catppuccin-color-peach: #f5a97f !important;
-  --catppuccin-color-red: #ed8796 !important;
-  --catppuccin-color-yellow: #eed49f !important;
-  --catppuccin-color-teal: #8bd5ca !important;
-  --catppuccin-color-pink: #f5bde6 !important;
-  --catppuccin-color-flamingo: #f0c6c6 !important;
-  --catppuccin-color-rosewater: #f4dbd6 !important;
-  --catppuccin-color-sapphire: #7dc4e4 !important;
-  --catppuccin-color-sky: #91d7e3 !important;
-  --background: #24273a;
-  --foreground: #cad3f5;
-  --card: #363a4f;
-  --card-foreground: #cad3f5;
-  --popover: #363a4f;
-  --popover-foreground: #cad3f5;
-  --primary: #c6a0f6;
-  --primary-foreground: #181926;
-  --secondary: #494d64;
-  --secondary-foreground: #cad3f5;
-  --muted: #363a4f;
-  --muted-foreground: #8087a2;
-  --accent: #494d64;
-  --accent-foreground: #cad3f5;
-  --destructive: #ed8796;
-  --border: #5b6078;
-  --input: #494d64;
-  --ring: #c6a0f6;
+  --catppuccin-color-base: #eff1f5 !important;
+  --catppuccin-color-mantle: #e6e9ef !important;
+  --catppuccin-color-crust: #dce0e8 !important;
+  --catppuccin-color-text: #4c4f69 !important;
+  --catppuccin-color-subtext0: #6c6f85 !important;
+  --catppuccin-color-subtext1: #5c5f77 !important;
+  --catppuccin-color-surface0: #ccd0da !important;
+  --catppuccin-color-surface1: #bcc0cc !important;
+  --catppuccin-color-surface2: #acb0be !important;
+  --catppuccin-color-overlay0: #9ca0b0 !important;
+  --catppuccin-color-overlay1: #8c8fa1 !important;
+  --catppuccin-color-overlay2: #7c7f93 !important;
+  --catppuccin-color-mauve: #8839ef !important;
+  --catppuccin-color-blue: #1e66f5 !important;
+  --catppuccin-color-lavender: #7287fd !important;
+  --catppuccin-color-green: #40a02b !important;
+  --catppuccin-color-peach: #fe640b !important;
+  --catppuccin-color-red: #d20f39 !important;
+  --catppuccin-color-yellow: #df8e1d !important;
+  --catppuccin-color-teal: #179299 !important;
+  --catppuccin-color-pink: #ea76cb !important;
+  --catppuccin-color-flamingo: #dd7878 !important;
+  --catppuccin-color-rosewater: #dc8a78 !important;
+  --catppuccin-color-sapphire: #209fb5 !important;
+  --catppuccin-color-sky: #04a5e5 !important;
+  
+  /* Palette mapping */
+  --background: #eff1f5;
+  --foreground: #4c4f69;
+  --card: #ccd0da;
+  --card-foreground: #4c4f69;
+  --popover: #ccd0da;
+  --popover-foreground: #4c4f69;
+  --primary: #8839ef;
+  --primary-foreground: #eff1f5;
+  --secondary: #bcc0cc;
+  --secondary-foreground: #4c4f69;
+  --muted: #ccd0da;
+  --muted-foreground: #8c8fa1;
+  --accent: #bcc0cc;
+  --accent-foreground: #4c4f69;
+  --destructive: #d20f39;
+  --border: #acb0be;
+  --input: #bcc0cc;
+  --ring: #8839ef;
   --radius: 0.5rem;
-  --sidebar: #24273a;
-  --sidebar-foreground: #cad3f5;
-  --sidebar-primary: #c6a0f6;
-  --sidebar-primary-foreground: #181926;
-  --sidebar-accent: #494d64;
-  --sidebar-accent-foreground: #cad3f5;
-  --sidebar-border: #5b6078;
-  --sidebar-ring: #c6a0f6;
+  --sidebar: #eff1f5;
+  --sidebar-foreground: #4c4f69;
+  --sidebar-primary: #8839ef;
+  --sidebar-primary-foreground: #eff1f5;
+  --sidebar-accent: #bcc0cc;
+  --sidebar-accent-foreground: #4c4f69;
+  --sidebar-border: #acb0be;
+  --sidebar-ring: #8839ef;
+}
+
+/* System preference dark mode (Macchiato variables) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --catppuccin-color-base: #24273a !important;
+    --catppuccin-color-mantle: #1e2030 !important;
+    --catppuccin-color-crust: #181926 !important;
+    --catppuccin-color-text: #cad3f5 !important;
+    --catppuccin-color-subtext0: #a5adcb !important;
+    --catppuccin-color-subtext1: #b8c0e0 !important;
+    --catppuccin-color-surface0: #363a4f !important;
+    --catppuccin-color-surface1: #494d64 !important;
+    --catppuccin-color-surface2: #5b6078 !important;
+    --catppuccin-color-overlay0: #6e738d !important;
+    --catppuccin-color-overlay1: #8087a2 !important;
+    --catppuccin-color-overlay2: #939ab7 !important;
+    --catppuccin-color-mauve: #c6a0f6 !important;
+    --catppuccin-color-blue: #8aadf4 !important;
+    --catppuccin-color-lavender: #b7bdf8 !important;
+    --catppuccin-color-green: #a6da95 !important;
+    --catppuccin-color-peach: #f5a97f !important;
+    --catppuccin-color-red: #ed8796 !important;
+    --catppuccin-color-yellow: #eed49f !important;
+    --catppuccin-color-teal: #8bd5ca !important;
+    --catppuccin-color-pink: #f5bde6 !important;
+    --catppuccin-color-flamingo: #f0c6c6 !important;
+    --catppuccin-color-rosewater: #f4dbd6 !important;
+    --catppuccin-color-sapphire: #7dc4e4 !important;
+    --catppuccin-color-sky: #91d7e3 !important;
+    
+    --background: #24273a;
+    --foreground: #cad3f5;
+    --card: #363a4f;
+    --card-foreground: #cad3f5;
+    --popover: #363a4f;
+    --popover-foreground: #cad3f5;
+    --primary: #c6a0f6;
+    --primary-foreground: #181926;
+    --secondary: #494d64;
+    --secondary-foreground: #cad3f5;
+    --muted: #363a4f;
+    --muted-foreground: #8087a2;
+    --accent: #494d64;
+    --accent-foreground: #cad3f5;
+    --destructive: #ed8796;
+    --border: #5b6078;
+    --input: #494d64;
+    --ring: #c6a0f6;
+    --sidebar: #24273a;
+    --sidebar-foreground: #cad3f5;
+    --sidebar-primary: #c6a0f6;
+    --sidebar-primary-foreground: #181926;
+    --sidebar-accent: #494d64;
+    --sidebar-accent-foreground: #cad3f5;
+    --sidebar-border: #5b6078;
+    --sidebar-ring: #c6a0f6;
+  }
 }
 
 body {

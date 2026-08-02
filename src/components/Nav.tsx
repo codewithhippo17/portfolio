@@ -149,7 +149,7 @@ export default function Nav() {
         <div className="flex items-center gap-3">
           <button
             onClick={scrollToContact}
-            className="font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-ctp-green text-ctp-crust px-2 sm:px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text whitespace-nowrap"
+            className="font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-ctp-green text-ctp-base px-2 sm:px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text dark:text-ctp-crust whitespace-nowrap"
           >
             Get in touch
           </button>
@@ -157,7 +157,7 @@ export default function Nav() {
             href="/portfolio/attachments/elhaiba_hamza.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:block font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-ctp-peach text-ctp-crust px-2 sm:px-2.5 py-1 rounded-[4px] font-bold transition-colors hover:bg-ctp-text whitespace-nowrap"
+            className="hidden sm:block font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-ctp-peach text-ctp-base px-2 sm:px-2.5 py-1 rounded-[4px] font-bold transition-colors hover:bg-ctp-text dark:text-ctp-crust whitespace-nowrap"
           >
             Resume
           </a>
