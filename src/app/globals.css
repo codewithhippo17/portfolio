@@ -78,33 +78,33 @@
   --catppuccin-color-sapphire: #209fb5 !important;
   --catppuccin-color-sky: #04a5e5 !important;
   
-  /* Palette mapping */
+  /* Palette mapping - Polished light mode */
   --background: #eff1f5;
   --foreground: #4c4f69;
-  --card: #ccd0da;
+  --card: #e6e9ef;          /* Lighter card backgrounds (Mantle instead of Surface0) */
   --card-foreground: #4c4f69;
-  --popover: #ccd0da;
+  --popover: #e6e9ef;
   --popover-foreground: #4c4f69;
-  --primary: #8839ef;
+  --primary: #8839ef;       /* Royal Mauve */
   --primary-foreground: #eff1f5;
-  --secondary: #bcc0cc;
+  --secondary: #ccd0da;     /* Softer secondary elements */
   --secondary-foreground: #4c4f69;
-  --muted: #ccd0da;
-  --muted-foreground: #8c8fa1;
-  --accent: #bcc0cc;
+  --muted: #e6e9ef;
+  --muted-foreground: #6c6f85; /* Deeper subtext0 contrast */
+  --accent: #ccd0da;
   --accent-foreground: #4c4f69;
   --destructive: #d20f39;
-  --border: #acb0be;
-  --input: #bcc0cc;
+  --border: #ccd0da;        /* Softer border borders (Surface0 instead of Surface2) */
+  --input: #ccd0da;
   --ring: #8839ef;
   --radius: 0.5rem;
   --sidebar: #eff1f5;
   --sidebar-foreground: #4c4f69;
   --sidebar-primary: #8839ef;
   --sidebar-primary-foreground: #eff1f5;
-  --sidebar-accent: #bcc0cc;
+  --sidebar-accent: #ccd0da;
   --sidebar-accent-foreground: #4c4f69;
-  --sidebar-border: #acb0be;
+  --sidebar-border: #ccd0da;
   --sidebar-ring: #8839ef;
 }
 
