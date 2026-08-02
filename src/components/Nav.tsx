@@ -149,7 +149,7 @@ export default function Nav() {
         <div className="flex items-center gap-3">
           <button
             onClick={scrollToContact}
-            className="font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-[#81c8be] text-ctp-base px-2 sm:px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text dark:text-ctp-crust whitespace-nowrap"
+            className="font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-[#85c1dc] text-ctp-base px-2 sm:px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text dark:text-ctp-crust whitespace-nowrap"
           >
             Get in touch
           </button>
