@@ -98,7 +98,7 @@ export default function HireMe({ onClose }: HireMeProps) {
           </p>
           <button
             onClick={() => setFormStatus("idle")}
-            className="text-left text-ctp-surface2 hover:text-ctp-mauve transition-colors mt-4 text-xs uppercase tracking-widest"
+            className="text-left text-ctp-subtext0 hover:text-ctp-mauve transition-colors mt-4 text-xs uppercase tracking-widest cursor-pointer"
           >
             [submit another]
           </button>
@@ -185,7 +185,7 @@ export default function HireMe({ onClose }: HireMeProps) {
                 ? "text-ctp-surface1 animate-pulse"
                 : !formData.name || !formData.email
                   ? "text-ctp-surface1 cursor-not-allowed"
-                  : "text-ctp-surface2 hover:text-ctp-green cursor-pointer"
+                  : "text-ctp-text hover:text-ctp-green cursor-pointer dark:text-ctp-subtext1 dark:hover:text-ctp-green"
             }`}
           >
             {formStatus === "sending" ? "$ sending..." : "[Submit]"}

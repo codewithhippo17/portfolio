@@ -149,7 +149,7 @@ export default function ContactMadlibs() {
           <button 
             type="submit" 
             disabled={formStatus === "sending" || !email || !name}
-            className="font-mono text-xs uppercase tracking-widest bg-ctp-mauve text-[#4c4f69] px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text hover:text-[#dce0e8] dark:text-ctp-crust dark:hover:text-ctp-crust disabled:opacity-50 disabled:cursor-not-allowed"
+            className="font-mono text-xs uppercase tracking-widest bg-ctp-mauve text-ctp-text dark:text-ctp-crust px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text hover:text-ctp-crust dark:hover:text-ctp-crust disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {formStatus === "sending" ? "sending..." : "submit_"}
           </button>
