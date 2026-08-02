@@ -47,6 +47,10 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  
+  /* Expose button variables to Tailwind config inline */
+  --color-btn-text: var(--btn-text);
+  --color-btn-text-hover: var(--btn-text-hover);
 }
 
 /* Default to Catppuccin Latte (Light Theme) variables.
@@ -106,6 +110,10 @@
   --sidebar-accent-foreground: #4c4f69;
   --sidebar-border: #ccd0da;
   --sidebar-ring: #8839ef;
+  
+  /* Semantic Button Mappings (Ensure high contrast text across modes) */
+  --btn-text: #4c4f69;        /* Dark slate text on light/pastel buttons */
+  --btn-text-hover: #dce0e8;  /* Light text on dark hover backgrounds */
 }
 
 /* System preference dark mode (Macchiato variables) */
@@ -163,6 +171,10 @@
     --sidebar-accent-foreground: #cad3f5;
     --sidebar-border: #5b6078;
     --sidebar-ring: #c6a0f6;
+
+    /* Semantic Button Mappings (Ensure high contrast text across modes) */
+    --btn-text: #181926;        /* Dark crust text on pastel backgrounds in dark mode */
+    --btn-text-hover: #181926;  /* Dark text on light hover backgrounds in dark mode */
   }
 }
 
