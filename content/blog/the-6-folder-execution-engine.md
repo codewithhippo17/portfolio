@@ -9,13 +9,13 @@ description: "How I use AI and a 6-folder Obsidian vault to protect my signal fr
 
 Every bookmark is a lie: "I'll read it later."
 
-**Later** never comes. The internet creates content faster than humanly possible, turning information into noise. AI made it worse. It **industrialized** that noise. So content becomes a dime a dozen, and your **attention goes bankrupt**.
+**Later** never comes. The internet generates content faster than humanly possible, turning truth into noise. AI made it worse. It **industrialized** that noise. So content becomes a dime a dozen, and your **attention goes bankrupt**.
 
-To survive the noise, execution must be automated. Algorithms can gather the data, filter it, and make decisions from it.
+To survive the noise, execution must be automated accordingly. So what is left for us, if the machine does the executing?
 
-AI can optimize, but humans prefer.
+**Synthesis.**
 
-Two years ago, my note-taking app was a graveyard of good ideas. Today, it's a synthesis engine.
+AI can optimize, but humans prefer. Two years ago, my note-taking app was a graveyard of good ideas. Today, it's a synthesis engine.
 
 ## The Pipeline
 
