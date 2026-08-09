@@ -27,7 +27,7 @@ Storage hoards; pipelines process. To escape the noise, raw fuel—blogs, podcas
 
 ![PKM Pipeline Diagram](/portfolio/attachments/pipeline.svg)
 
-First, feed the chaos into the forge. Deploy the analysis engine (`extract_wisdom`, `analyze_claims`) to strip away the rhetoric. The AI doesn't think for you; it simply reshapes the data into nodes your brain and your agents can grip.
+First, feed the chaos into the forge. Deploy the [Fabric](https://github.com/danielmiessler/fabric) analysis engine (`extract_wisdom`, `analyze_claims`) to strip away the rhetoric. The AI doesn't think for you; it simply reshapes the data into nodes your brain and your agents can grip.
 
 But a refined idea without a destination is just sophisticated clutter. You must route by *purpose*, not topic. Tactics flow into **Projects**. Narratives become **Blogs**. Timeless principles harden into **Atomic Notes**.
 
