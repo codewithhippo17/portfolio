@@ -25,7 +25,7 @@ Machines optimize; humans prefer.
 
 Storage hoards; pipelines process. To escape the noise, raw fuel—blogs, podcasts, documentation—must be forced through a ruthless assembly line, converting chaotic capture into permanent signal.
 
-![PKM Pipeline Diagram](/portfolio/attachments/pipeline.svg)
+![A flowchart mapping the knowledge pipeline from raw content capture to structured project deliverables.](/portfolio/attachments/pipeline.svg)
 
 First, feed the chaos into the forge. Deploy the [Fabric](https://github.com/danielmiessler/fabric) analysis engine (`extract_wisdom`, `analyze_claims`) to strip away the rhetoric. The AI doesn't think for you; it simply reshapes the data into nodes your brain and your agents can grip.
 
