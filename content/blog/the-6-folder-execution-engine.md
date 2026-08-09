@@ -37,6 +37,32 @@ The wisdom is absolute: Tagging is for archivists; routing is for operators. You
 
 ---
 
+### The 6-Folder Blueprint
+
+My digital brain lives in exactly six folders. It is Zettelkasten and PARA, stripped to the studs. 
+
+It is not a filing cabinet. **It is a factory floor.** 
+
+**`1- Rough-notes/` (The Inbox)**  
+The core dump. Random thoughts and rough meeting notes live here. It is designed to be messy. The only rule? Nothing stays forever. It is a waiting room, not an archive.
+
+**`2- Source-material/` (The Library)**  
+Books, video summaries, and specs. These are permanent, immutable records. Raw materials safely stored so I can reference them without returning to the noise of the open internet.
+
+**`3- Tags/` (The Anchors)**  
+Instead of messy `#hashtags` scattered everywhere, I use dedicated Tag files (e.g., `Startups.md`, `SystemDesign.md`). Each page acts as an anchor for a single concept. Every note links here, pulling the system together.
+
+**`4- Indexes/` (The Dashboards)**  
+Maps of Content. When I need everything I know about a specific topic, I look here. They are the entry points that prevent the system from becoming a labyrinth.
+
+**`5- Templates/` (The Molds)**  
+Consistency scales systems. Templates force structure. No blank page anxiety. Just immediate action.
+
+**`6- Atomic-notes/` (The Core)**  
+The heart of the engine. Once a rough note is refined, it becomes an "Atomic Note"—a single, permanent, clear idea. Strictly structured: summary, key bullets, and hard links to other notes.
+
+---
+
 ### The AI Librarian
 
 A rigid structure is great, but older methods fail for one reason: **friction**. Manually tagging and linking notes feels like doing taxes. Eventually, you stop, and the system collapses.
