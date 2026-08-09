@@ -13,9 +13,9 @@ description: "How I use AI and a 6-folder Obsidian vault to protect my signal fr
 
 To survive, execution must be automated. But what is left for us?
 
-**Synthesis.**
+**Synthesis & taste.**
 
-Machines optimize; humans prefer. 
+Machines optimize; humans prefer.
 
 > *The tragedy is that we feed our preferences into systems designed to bury them. Here is the engine that digs them out.*
 
@@ -23,15 +23,15 @@ Machines optimize; humans prefer.
 
 ### The Pipeline
 
+Storage hoards; pipelines process. To escape the noise, raw fuel—blogs, podcasts, documentation—must be forced through a ruthless assembly line, converting chaotic capture into permanent signal.
+
 ![PKM Pipeline Diagram](/portfolio/attachments/pipeline.svg)
 
-Storage hoards; pipelines process. To escape the noise, raw fuel—blogs, podcasts, documentation—must be forced through a ruthless assembly line, converting chaotic capture into permanent signal. 
+First, feed the chaos into the forge. Deploy the [Fabric](https://github.com/danielmiessler/fabric) analysis engine (`extract_wisdom`, `analyze_claims`) to strip away the rhetoric. The AI doesn't think for you; it simply reshapes the data into nodes your brain and your agents can grip.
 
-First, feed the chaos into the forge. Deploy the [Fabric](https://github.com/danielmiessler/fabric) analysis engine (`extract_wisdom`, `analyze_claims`) to strip away the rhetoric. The AI doesn't think for you; it simply reshapes the data into nodes your brain and your agents can grip. 
+But a refined idea without a destination is just sophisticated clutter. You must route by *purpose*. Tactics flow into **Projects**. Narratives become **Blogs**. Timeless principles harden into **Atomic Notes**.
 
-But a refined idea without a destination is just sophisticated clutter. You must route by *purpose*. Tactics flow into **Projects**. Narratives become **Blogs**. Timeless principles harden into **Atomic Notes**. 
-
-As these notes compound, your agents read them. They extract your methodologies and encode them as new **Skills**. Your past outputs program their future capabilities. 
+As these notes compound, your agents read them. They extract your methodologies and encode them as new **Skills**. Your past outputs program their future capabilities.
 
 The wisdom is absolute: Tagging is for archivists; routing is for operators. You are no longer building a library. You are building a factory where today's reading becomes tomorrow's automated execution.
 
@@ -39,9 +39,9 @@ The wisdom is absolute: Tagging is for archivists; routing is for operators. You
 
 ### The 6-Folder Blueprint
 
-My digital brain lives in exactly six folders. Zettelkasten and PARA, stripped to the studs. 
+My digital brain lives in exactly six folders. Zettelkasten and PARA, stripped to the studs.
 
-It is not a filing cabinet. **It is a factory floor.** 
+It is not a filing cabinet. **It is a factory floor.**
 
 1. **`1- Rough-notes/` (The Inbox):** The core dump. Random thoughts and meeting notes live here. Designed to be messy. The only rule: nothing stays forever. It is a waiting room, not an archive.
 2. **`2- Source-material/` (The Library):** Books, video summaries, and specs. Immutable records. Raw materials stored so I can reference them without returning to the noise of the open internet.
@@ -54,13 +54,13 @@ It is not a filing cabinet. **It is a factory floor.**
 
 ### Where Do Projects Live?
 
-They do not live in isolation. They live in a symlink. 
+They do not live in isolation. They live in a symlink.
 
-I symlink a dedicated folder directly between my vault and my active codebase. When research flows through the pipeline into a polished spec or domain model, it instantly exists inside the execution environment. 
+I symlink a dedicated folder directly between my vault and my active codebase. When research flows through the pipeline into a polished spec or domain model, it instantly exists inside the execution environment.
 
-But knowledge alone doesn't ship code. From those specs, I draft a master PRD and break it into rigid tasks. 
+But knowledge alone doesn't ship code. From those specs, I draft a master PRD and break it into rigid tasks.
 
-This is where you command the machine. For Task 1 (e.g., crafting a database schema), I link the domain model and strictly enforce *which* AI agent and *which* skills must execute it. For Task 2 (building APIs), I bind a specialized agent directly to the API specs. The symlinked docs ensure the agents never hallucinate in a vacuum—they are constrained entirely by the knowledge processed through the pipeline. 
+This is where you command the machine. For Task 1 (e.g., crafting a database schema), I link the domain model and strictly enforce *which* AI agent and *which* skills must execute it. For Task 2 (building APIs), I bind a specialized agent directly to the API specs. The symlinked docs ensure the agents never hallucinate in a vacuum—they are constrained entirely by the knowledge processed through the pipeline.
 
 The vault supplies the architecture. The symlink binds the context. The agents execute the code.
 
@@ -84,6 +84,7 @@ We have left the era where access to information was an advantage. Today, everyo
 
 The new advantage is **synthesis**—the ability to filter infinite noise, catch the rare signal, and connect the dots faster than anyone else.
 
-If your notes are just a timeline of things you've read, you are sitting on a graveyard of good ideas. Restrict your environment to a quiet sanctuary. Enforce a 6-folder blueprint. Symlink it to your execution environment, and use AI to automate the maintenance. 
+If your notes are just a timeline of things you've read, you are sitting on a graveyard of good ideas. Restrict your environment to a quiet sanctuary. Enforce a 6-folder blueprint. Symlink it to your execution environment, and use AI to automate the maintenance.
 
 > You stop searching for what you read last month. Your knowledge compounds. Your note-taking app transforms into what it was always meant to be: an execution engine.
+
