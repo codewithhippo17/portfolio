@@ -5,7 +5,7 @@ tags: [productivity, zettelkasten, ai, obsidian]
 description: "How I use AI and a 6-folder Obsidian vault to protect my signal from the noise."
 ---
 
-# Your Notes Are a Graveyard: Protecting Your Signal in the Age of Infinite Noise
+# Protecting Your Signal in the Age of Infinite Noise
 
 > Every bookmark is a lie: "I'll read it later."
 
@@ -21,17 +21,17 @@ Machines can optimize, but humans prefer.
 
 ---
 
-### The pipeline
-
 ### The Pipeline
 
-Storage hoards; pipelines process. To escape the noise, raw fuel—blogs, podcasts, documentation—must be forced through a ruthless assembly line, converting chaotic capture into permanent signal. 
+![PKM Pipeline Diagram](/attachments/pipeline.svg)
 
-First, feed the chaos into the forge. Deploy the analysis engine (`extract_wisdom`, `analyze_claims`) to strip away the rhetoric. The AI doesn't think for you; it simply reshapes the data into nodes your brain and your agents can grip. 
+Storage hoards; pipelines process. To escape the noise, raw fuel—blogs, podcasts, documentation—must be forced through a ruthless assembly line, converting chaotic capture into permanent signal.
 
-But a refined idea without a destination is just sophisticated clutter. You must route by *purpose*, not topic. Tactics flow into **Projects**. Narratives become **Blogs**. Timeless principles harden into **Atomic Notes**. 
+First, feed the chaos into the forge. Deploy the analysis engine (`extract_wisdom`, `analyze_claims`) to strip away the rhetoric. The AI doesn't think for you; it simply reshapes the data into nodes your brain and your agents can grip.
 
-As these notes compound, your agents read them. They extract your methodologies and encode them as new **Skills**. Your past outputs literally program their future capabilities. 
+But a refined idea without a destination is just sophisticated clutter. You must route by *purpose*, not topic. Tactics flow into **Projects**. Narratives become **Blogs**. Timeless principles harden into **Atomic Notes**.
+
+As these notes compound, your agents read them. They extract your methodologies and encode them as new **Skills**. Your past outputs literally program their future capabilities.
 
 The wisdom is absolute: Tagging is for archivists; routing is for operators. You are no longer building a library. You are building a factory where today's reading becomes tomorrow's automated execution.
 
@@ -60,4 +60,3 @@ The new advantage is **synthesis**. It is the ability to filter infinite noise, 
 If your notes are just a timeline of things you've read, you are sitting on a graveyard of good ideas. But when you restrict your environment to a quiet sanctuary, enforce a 6-folder blueprint, and use AI to automate the maintenance, something shifts.
 
 > You stop searching for what you read last month. Your knowledge compounds. Your note-taking app transforms into what it was always meant to be: an execution engine.
-
