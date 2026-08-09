@@ -63,9 +63,15 @@ The heart of the engine. Once a rough note is refined, it becomes an "Atomic Not
 
 ### Where Do Projects Live?
 
-You will notice there is no "Projects" folder in the blueprint. That is intentional. 
+They do not live in isolation. They live in a symlink. 
 
-The vault is your backend knowledge graph; a Project is an active, external execution environment (a codebase, a canvas, a manuscript). They must remain separate. When I build a Project, I do not start from scratch. I query my `Indexes`, pull the relevant `Atomic-notes`, and inject them directly into the active workspace. The vault supplies the ammunition; the Project pulls the trigger.
+I symlink a dedicated folder directly between my vault and my active codebase. When research flows through the pipeline into a polished spec or domain model, it instantly exists inside the execution environment. 
+
+But knowledge alone doesn't ship code. From those specs, I draft a master PRD and break it into rigid tasks. 
+
+This is where you command the machine. For Task 1 (e.g., crafting a database schema), I link the domain model and strictly enforce *which* AI agent and *which* skills must execute it. For Task 2 (building APIs), I bind a specialized agent directly to the API specs. The symlinked docs ensure the agents never hallucinate in a vacuum—they are constrained entirely by the knowledge processed through the pipeline. 
+
+The vault supplies the architecture. The symlink binds the context. The agents execute the code.
 
 ---
 
