@@ -23,7 +23,7 @@ Machines can optimize, but humans prefer.
 
 ### The Pipeline
 
-![PKM Pipeline Diagram](/attachments/pipeline.svg)
+![PKM Pipeline Diagram](/portfolio/attachments/pipeline.svg)
 
 Storage hoards; pipelines process. To escape the noise, raw fuel—blogs, podcasts, documentation—must be forced through a ruthless assembly line, converting chaotic capture into permanent signal.
 
