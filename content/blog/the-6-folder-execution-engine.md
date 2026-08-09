@@ -61,6 +61,12 @@ Consistency scales systems. Templates force structure. No blank page anxiety. Ju
 **`6- Atomic-notes/` (The Core)**  
 The heart of the engine. Once a rough note is refined, it becomes an "Atomic Note"—a single, permanent, clear idea. Strictly structured: summary, key bullets, and hard links to other notes.
 
+### Where Do Projects Live?
+
+You will notice there is no "Projects" folder in the blueprint. That is intentional. 
+
+The vault is your backend knowledge graph; a Project is an active, external execution environment (a codebase, a canvas, a manuscript). They must remain separate. When I build a Project, I do not start from scratch. I query my `Indexes`, pull the relevant `Atomic-notes`, and inject them directly into the active workspace. The vault supplies the ammunition; the Project pulls the trigger.
+
 ---
 
 ### The AI Librarian
