@@ -19,6 +19,8 @@ Machines can optimize, but humans prefer.
 
 > *The tragedy is that we feed that preference into systems designed to bury it. Here is the engine that digs it out.*
 
+An execution engine requires a pipeline, not a storage bin. Raw information must move through a ruthless assembly line—from chaotic capture to refined permanence—before it becomes useful.
+
 ---
 
 ### The 6-Folder Blueprint
