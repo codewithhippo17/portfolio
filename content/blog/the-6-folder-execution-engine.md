@@ -39,9 +39,9 @@ The wisdom is absolute: Tagging is for archivists; routing is for operators. You
 
 ### The 6-Folder Blueprint
 
-My digital brain lives in exactly six folders. Zettelkasten and PARA, stripped to the studs.
+My digital brain lives in exactly six folders. Zettelkasten and PARA, stripped to the studs. 
 
-It is not a filing cabinet. **It is a factory floor.**
+It is not a filing cabinet. **It is a factory floor.** *(You can [clone the exact vault template here](https://github.com/codewithhippo17/obsidian-template.git)).*
 
 1. **`1- Rough-notes/` (The Inbox):** The core dump. Random thoughts and meeting notes live here. Designed to be messy. The only rule: nothing stays forever. It is a waiting room, not an archive.
 2. **`2- Source-material/` (The Library):** Books, video summaries, and specs. Immutable records. Raw materials stored so I can reference them without returning to the noise of the open internet.
