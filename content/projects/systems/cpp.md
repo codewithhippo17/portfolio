@@ -6,6 +6,7 @@ date: "2024-01-10"
 tags: ["C++", "OOP", "Templates", "STL"]
 role: "Developer"
 github: "https://github.com/codewithhippo17/CPP"
+thumbnail: "pngegg.png"
 status: "completed"
 ---
 

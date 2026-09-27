@@ -5,6 +5,7 @@ category: "Systems"
 date: "2023-02-15"
 tags: ["C", "Variadic Functions", "Formatting"]
 role: "Developer"
+thumbnail: "printf.png"
 github: "https://github.com/codewithhippo17/pritf"
 status: "completed"
 ---
