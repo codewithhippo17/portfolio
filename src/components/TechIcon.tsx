@@ -21,6 +21,8 @@ const iconMap: Record<string, string> = {
   algorithms: "carbon:decision-tree",
   "data structures": "carbon:data-structured",
   optimization: "carbon:meter",
+  websockets: "selfhst:websocket",
+  tailwindcss: "devicon:tailwindcss",
   "machine-learning": "logos:tensorflow",
   llm: "carbon:machine-learning-model",
   rag: "carbon:search",
