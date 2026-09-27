@@ -7,6 +7,7 @@ tags: ["C", "Algorithms", "Data Structures", "Optimization"]
 role: "Developer"
 github: "https://github.com/codewithhippo17/push"
 status: "completed"
+thumbnail: "push-swap-thumb.svg"
 ---
 
 ## Overview

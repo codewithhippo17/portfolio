@@ -5,6 +5,7 @@ category: "Systems"
 date: "2023-03-10"
 tags: ["C", "File I/O", "Memory Management"]
 role: "Developer"
+thumbnail: "gnl.jpg"
 github: "https://github.com/codewithhippo17/get_next_line"
 status: "completed"
 ---

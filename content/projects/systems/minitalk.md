@@ -5,6 +5,7 @@ category: "Systems"
 date: "2023-04-05"
 tags: ["C", "UNIX Signals", "IPC"]
 role: "Developer"
+thumbnail: "minitalk.jpg"
 github: "https://github.com/codewithhippo17/minitalk"
 status: "completed"
 ---

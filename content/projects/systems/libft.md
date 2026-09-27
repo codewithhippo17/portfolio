@@ -5,6 +5,7 @@ category: "Systems"
 date: "2023-01-20"
 tags: ["C", "Algorithms", "Data Structures"]
 role: "Developer"
+thumbnail: "libft.jpg"
 github: "https://github.com/codewithhippo17/libft"
 status: "completed"
 ---

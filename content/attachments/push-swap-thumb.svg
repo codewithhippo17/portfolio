@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#11111b" rx="20"/>
+
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="neonPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5c2e7" />
+      <stop offset="100%" stop-color="#cba6f7" />
+    </linearGradient>
+    <linearGradient id="neonBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#89b4fa" />
+      <stop offset="100%" stop-color="#89dceb" />
+    </linearGradient>
+    
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Title abstract representation -->
+  <text x="400" y="80" fill="#a6adc8" font-family="monospace" font-size="24" font-weight="bold" letter-spacing="4" text-anchor="middle">PUSH_SWAP</text>
+
+  <!-- STACK A (Left - Unordered) -->
+  <g transform="translate(150, 450)">
+    <!-- Base -->
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#45475a" stroke-width="6" stroke-linecap="round" />
+    <text x="100" y="40" fill="#585b70" font-family="monospace" font-size="20" text-anchor="middle" font-weight="bold">STACK A</text>
+    
+    <!-- Blocks (Unordered) -->
+    <rect x="50" y="-40" width="100" height="20" rx="6" fill="url(#neonPink)" opacity="0.8"/>
+    <rect x="20" y="-80" width="160" height="20" rx="6" fill="url(#neonPink)" opacity="0.9"/>
+    <rect x="60" y="-120" width="80" height="20" rx="6" fill="url(#neonPink)" opacity="0.7"/>
+    <rect x="30" y="-160" width="140" height="20" rx="6" fill="url(#neonPink)" opacity="1.0"/>
+    <rect x="70" y="-200" width="60" height="20" rx="6" fill="url(#neonPink)" opacity="0.6"/>
+  </g>
+
+  <!-- STACK B (Right - Ordered) -->
+  <g transform="translate(450, 450)">
+    <!-- Base -->
+    <line x1="0" y1="0" x2="200" y2="0" stroke="#45475a" stroke-width="6" stroke-linecap="round" />
+    <text x="100" y="40" fill="#585b70" font-family="monospace" font-size="20" text-anchor="middle" font-weight="bold">STACK B</text>
+
+    <!-- Blocks (Ordered) -->
+    <rect x="20" y="-40" width="160" height="20" rx="6" fill="url(#neonBlue)" opacity="1.0"/>
+    <rect x="35" y="-80" width="130" height="20" rx="6" fill="url(#neonBlue)" opacity="0.9"/>
+    <rect x="50" y="-120" width="100" height="20" rx="6" fill="url(#neonBlue)" opacity="0.8"/>
+    <rect x="65" y="-160" width="70" height="20" rx="6" fill="url(#neonBlue)" opacity="0.7"/>
+  </g>
+
+  <!-- Transfer Animation / Arrow Arc -->
+  <g>
+    <!-- Dashed Arc representing the PB instruction -->
+    <path d="M 250 210 Q 400 50 550 210" fill="none" stroke="#94e2d5" stroke-width="4" stroke-dasharray="10 10" opacity="0.6" stroke-linecap="round"/>
+    
+    <!-- Floating block being transferred -->
+    <rect x="375" y="100" width="50" height="20" rx="6" fill="#94e2d5" filter="url(#glow)"/>
+    <polygon points="545,210 535,190 555,190" fill="#94e2d5" />
+    
+    <!-- PB Command Text -->
+    <text x="400" y="80" fill="#94e2d5" font-family="monospace" font-size="18" font-weight="bold" text-anchor="middle" filter="url(#glow)">pb</text>
+  </g>
+</svg>
