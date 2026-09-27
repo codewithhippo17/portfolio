@@ -7,7 +7,7 @@ role: "Developer"
 github: "https://github.com/codewithhippo17/philosophers"
 status: "completed"
 featured: false
-thumbnail: "philosophers-thumb.svg"
+thumbnail: "philosophers-thumb.webp"
 description: "A solution to the classic dining philosophers problem using threads and mutexes."
 ---
 
