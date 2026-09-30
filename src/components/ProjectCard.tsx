@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import ProjectThumbnail from "@/components/ProjectThumbnail";
+import GithubButton from "@/components/GithubButton";
 import type { ContentItem, ProjectFrontmatter } from "@/lib/md";
 
 export function formatDate(date: string) {
@@ -118,9 +119,9 @@ export default function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${title} source on GitHub`}
-              className="relative z-20 ml-auto inline-flex items-center gap-1 text-xs text-ctp-subtext0 transition-colors hover:text-ctp-text"
+              className="relative z-20 ml-auto inline-flex items-center transition-colors"
             >
-              GitHub <ExternalLink size={12} />
+              <GithubButton />
             </a>
           )}
         </div>

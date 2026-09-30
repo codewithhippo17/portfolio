@@ -62,10 +62,10 @@ export default function EmailSidebar() {
       className="hidden md:flex w-10 fixed bottom-0 right-10 z-10 flex-col items-center text-ctp-subtext0 origin-bottom"
     >
       {/* StyledLinkWrapper: flex column, centered, relative */}
-      <div className="flex flex-col items-center relative">
+      <div className="flex flex-col items-center relative w-full h-full">
         <a
           href={`mailto:${SITE_EMAIL}`}
-          className="m-5 p-2.5 font-mono text-xs leading-[1.125rem] tracking-[0.1em] [writing-mode:vertical-rl] text-ctp-subtext0 transition-transform duration-300 hover:-translate-y-[3px] focus-visible:-translate-y-[3px] hover:text-ctp-mauve focus-visible:text-ctp-mauve outline-none"
+          className="p-2 font-mono text-sm leading-relaxed tracking-[0.15em] [writing-mode:vertical-rl] text-ctp-subtext0 transition-transform duration-300 hover:-translate-y-[3px] focus-visible:-translate-y-[3px] hover:text-ctp-mauve focus-visible:text-ctp-mauve outline-none"
         >
           {SITE_EMAIL}
         </a>
