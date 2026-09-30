@@ -31,6 +31,12 @@ const iconMap: Record<string, string> = {
   authentication: "carbon:security",
   ai: "mingcute:ai-fill",
   "open-source": "octicon:repo-16",
+  docker: "catppuccin:docker",
+  "docker-compose": "catppuccin:docker-compose",
+  "docker compose": "catppuccin:docker-compose",
+  mariadb: "thesvg-color:mariadb",
+  nginx: "skill-icons:nginx",
+  wordpress: "brandico:wordpress",
 };
 
 export default function TechIcon({

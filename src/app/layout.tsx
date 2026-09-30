@@ -97,8 +97,7 @@ export default function RootLayout({
         {/* Main scrolling content with solid background to cover the sticky footer */}
         <div className="relative z-10 bg-background flex flex-col flex-grow w-full shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
           <Nav />
-          <div className="max-w-2xl mx-auto w-full px-6 flex flex-col flex-grow relative ">
-            {/* Side panel — Scratchpad / Hire Me */}
+          <div className="max-w-3xl mx-auto w-full px-6 flex flex-col flex-grow relative ">
             <main className="flex-grow pt-16 pb-16">{children}</main>
             <ContactMadlibs />
           </div>
@@ -106,7 +105,7 @@ export default function RootLayout({
 
         {/* The sticky footer reveal component */}
         <StickyFooterReveal>
-          <div className="max-w-2xl mx-auto w-full px-6">
+          <div className="max-w-3xl mx-auto w-full px-6">
             <Footer />
           </div>
         </StickyFooterReveal>

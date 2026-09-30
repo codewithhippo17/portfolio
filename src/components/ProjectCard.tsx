@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import ProjectThumbnail from "@/components/ProjectThumbnail";
 import GithubButton from "@/components/GithubButton";
+import { Badge } from "@/components/reui/badge";
 import type { ContentItem, ProjectFrontmatter } from "@/lib/md";
 
 export function formatDate(date: string) {
@@ -9,12 +10,6 @@ export function formatDate(date: string) {
   if (Number.isNaN(d.getTime())) return date;
   return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
-
-const statusPill: Record<string, string> = {
-  completed: "text-ctp-green border-ctp-green/40 bg-ctp-green/10",
-  ongoing: "text-ctp-blue border-ctp-blue/40 bg-ctp-blue/10",
-  archived: "text-ctp-overlay1 border-ctp-overlay1/40 bg-ctp-overlay1/10",
-};
 
 export default function ProjectCard({
   project,
@@ -30,15 +25,21 @@ export default function ProjectCard({
   const { slug, frontmatter } = project;
   const { title, description, date, tags, role, github, status, thumbnail } =
     frontmatter;
-  const statusClass = statusPill[status] ?? statusPill.completed;
   const thumbSrc = thumbnail
     ? `/portfolio/attachments/${thumbnail}`
     : undefined;
   const iconName = tags?.[0]?.toLowerCase();
 
+  // Map string status to valid Badge variants
+  const badgeVariant = (
+    ["completed", "ongoing", "archived"].includes(status?.toLowerCase() || "") 
+      ? status?.toLowerCase() 
+      : "default"
+  ) as "completed" | "ongoing" | "archived" | "default";
+
   return (
     <div
-      className={`group relative flex items-stretch overflow-hidden rounded-lg border border-ctp-surface0/70 bg-ctp-mantle/50 transition-colors hover:bg-ctp-surface0/40 ${
+      className={`group relative flex items-stretch overflow-hidden rounded-lg border border-ctp-surface0/70 bg-ctp-mantle/50 transition-all duration-500 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:bg-ctp-surface0/40 ${
         featured ? "flex-col sm:flex-row" : ""
       }`}
     >
@@ -100,11 +101,10 @@ export default function ProjectCard({
 
         {/* Meta row */}
         <div className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-3">
-          <span
-            className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider ${statusClass}`}
-          >
+          <Badge variant={badgeVariant}>
+            <span className="ms-0.25 mr-1.5 size-1.25 rounded-full! bg-[currentColor]" />{" "}
             {status}
-          </span>
+          </Badge>
           <span className="text-xs text-ctp-overlay1">
             {formatDate(date ?? "")}
           </span>
