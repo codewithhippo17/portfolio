@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink } from "lucide-react";
 import ProjectThumbnail from "@/components/ProjectThumbnail";
 import GithubButton from "@/components/GithubButton";
 import { Badge } from "@/components/reui/badge";
@@ -38,9 +37,11 @@ export default function ProjectCard({
   ) as "completed" | "ongoing" | "archived" | "default";
 
   return (
-    <div
-      className={`group relative flex items-stretch overflow-hidden rounded-lg border border-ctp-surface0/70 bg-ctp-mantle/50 transition-all duration-500 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:bg-ctp-surface0/40 ${
-        featured ? "flex-col sm:flex-row" : ""
+        <div
+      className={`group relative flex overflow-hidden rounded-xl border transition-all duration-500 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-xl hover:shadow-ctp-mauve/10 ${
+        featured 
+          ? "flex-col bg-gradient-to-br from-ctp-surface0/40 to-ctp-mantle/60 border-ctp-mauve/30" 
+          : "flex-col sm:flex-row items-stretch bg-ctp-mantle/50 border-ctp-surface0/70 hover:bg-ctp-surface0/40"
       }`}
     >
       {/* Stretched link — whole card navigates to the project.
@@ -50,13 +51,13 @@ export default function ProjectCard({
       <Link
         href={`/projects/${slug}`}
         className="absolute inset-0 z-10 rounded-lg"
-        aria-label={`View project: ${title}`}
+        // aria-label={`View project: ${title}`}
       />
 
       {/* Category accent bar on the left edge */}
       <span
-        className={`absolute inset-y-0 left-0 w-0.5 ${accentBar} ${
-          featured ? "rounded-l-lg" : ""
+        className={`absolute z-20 ${
+          featured ? `top-0 inset-x-0 h-1 ${accentBar}` : `inset-y-0 left-0 w-0.5 ${accentBar}`
         }`}
       />
 
@@ -64,52 +65,52 @@ export default function ProjectCard({
           NOTE: no z-index here on purpose. A `z-0` would create a stacking
           context and CAP the GitHub link (z-20 inside) below the link (z-10).
           Plain `relative` lets z-20 participate at the card level. */}
-      <div className="relative flex min-w-0 flex-1 flex-col p-4 sm:p-5">
-        <h3
-          className={`font-semibold text-ctp-text transition-colors group-hover:text-ctp-mauve ${
-            featured ? "text-xl sm:text-2xl" : "text-base"
-          }`}
-        >
-          {title}
-        </h3>
-
-        {description && (
-          <p
-            className={`mt-1 text-ctp-subtext0 leading-relaxed ${
-              featured ? "line-clamp-3 text-sm sm:text-base" : "line-clamp-2 text-sm"
+      <div className={`relative flex min-w-0 flex-1 flex-col ${featured ? "p-5 sm:p-7" : "p-5 sm:p-6"}`}>
+        {/* Header Section: Title and Description */}
+        <div className="flex flex-col gap-1.5">
+          <h3
+            className={`text-ctp-text transition-colors group-hover:text-ctp-mauve ${
+              featured ? "text-xl sm:text-2xl font-bold tracking-tight" : "text-base sm:text-lg font-semibold"
             }`}
           >
-            {description}
-          </p>
-        )}
+            {title}
+          </h3>
 
-        {featured && (
-          <span className="mt-3 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-ctp-mauve">
-            View project <ArrowRight size={13} />
-          </span>
-        )}
+          {description && (
+            <p
+              className={`text-ctp-subtext0 leading-relaxed ${
+                featured ? "line-clamp-3 text-sm sm:text-base" : "line-clamp-2 text-sm"
+              }`}
+            >
+              {description}
+            </p>
+          )}
+        </div>
 
+        
+
+        {/* Tags Section */}
         {tags && tags.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+          <div className="mt-4 flex flex-wrap gap-2">
             {tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="text-xs text-ctp-overlay1">
+              <span key={tag} className="rounded-md bg-ctp-surface0/50 px-2 py-1 text-[10px] font-medium tracking-wide text-ctp-overlay1">
                 #{tag}
               </span>
             ))}
           </div>
         )}
 
-        {/* Meta row */}
-        <div className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-3">
+        {/* Meta Row: Status Badge, Date, Github */}
+        <div className="mt-auto flex flex-wrap items-center gap-3 pt-5">
           <Badge variant={badgeVariant}>
             <span className="ms-0.25 mr-1.5 size-1.25 rounded-full! bg-[currentColor]" />{" "}
             {status}
           </Badge>
-          <span className="text-xs text-ctp-overlay1">
+          <span className="font-mono text-xs text-ctp-overlay1">
             {formatDate(date ?? "")}
           </span>
           {role && (
-            <span className="hidden text-xs text-ctp-overlay1 sm:inline">
+            <span className="hidden font-mono text-xs text-ctp-overlay1 sm:inline">
               · {role}
             </span>
           )}
@@ -135,8 +136,8 @@ export default function ProjectCard({
         tintClass={accentText}
         className={
           featured
-            ? "h-40 w-full shrink-0 sm:h-auto sm:w-72"
-            : "w-28 shrink-0 sm:w-44"
+            ? "order-first w-full h-48 sm:h-56 shrink-0 border-b border-ctp-surface0/70"
+            : "w-32 shrink-0 border-l border-ctp-surface0/70 sm:w-48"
         }
       />
     </div>

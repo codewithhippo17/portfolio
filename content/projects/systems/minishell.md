@@ -7,7 +7,7 @@ tags: ["C", "Unix", "Bash", "System Programming"]
 role: "Core Developer"
 github: "https://github.com/codewithhippo17/minishell"
 status: "completed"
-thumbnail: "minishell-thumb.svg"
+thumbnail: "minishell.webp"
 ---
 
 ## Overview

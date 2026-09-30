@@ -4,7 +4,7 @@ description: "A real-time bidding platform where every second counts."
 category: "Web"
 date: "2024-05-20"
 tags: ["TypeScript", "NextJS", "WebSockets", "TailwindCSS"]
-role: "Fullstack Developer"
+role: "Fullstack"
 thumbnail: "sogepark.jpg"
 github: "https://github.com/codewithhippo17/auction_platform"
 status: "completed"
