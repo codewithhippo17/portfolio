@@ -162,7 +162,7 @@ export default function Nav() {
           {/* Primary CTA: Reach Out */}
           <button
             onClick={scrollToContact}
-            className="inline-flex h-9 items-center justify-center rounded-md bg-ctp-mauve px-4 font-mono text-[10px] font-bold uppercase tracking-widest text-ctp-base transition-all duration-200 hover:bg-ctp-mauve/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-mauve focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
+            className="inline-flex h-9 cursor-pointer items-center justify-center rounded-md bg-ctp-mauve px-4 font-mono text-[10px] font-bold uppercase tracking-widest text-ctp-base transition-all duration-200 hover:bg-ctp-mauve/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-mauve focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
           >
             Reach Out
           </button>
