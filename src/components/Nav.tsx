@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, Download } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -147,20 +147,25 @@ export default function Nav() {
 
         {/* CTAs */}
         <div className="flex items-center gap-3">
-          <button
-            onClick={scrollToContact}
-            className="font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-ctp-sky text-btn-text px-2 sm:px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text hover:text-btn-text-hover whitespace-nowrap"
-          >
-            Reach Out
-          </button>
+          {/* Secondary CTA: Resume */}
           <a
             href="/portfolio/attachments/elhaiba_hamza.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:block font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-ctp-peach text-btn-text px-2 sm:px-2.5 py-1 rounded-[4px] font-bold transition-colors hover:bg-ctp-text hover:text-btn-text-hover whitespace-nowrap"
+            aria-label="Download my resume as a PDF document"
+            className="group hidden sm:inline-flex h-9 items-center justify-center gap-2 rounded-md border border-ctp-surface1 bg-transparent px-3.5 font-mono text-[10px] font-medium uppercase tracking-widest text-ctp-subtext0 transition-all duration-200 hover:border-ctp-surface2 hover:bg-ctp-surface0 hover:text-ctp-mauve focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-mauve focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
           >
             Resume
+            <Download className="size-3.5 transition-transform group-hover:-translate-y-[2px]" aria-hidden="true" />
           </a>
+
+          {/* Primary CTA: Reach Out */}
+          <button
+            onClick={scrollToContact}
+            className="inline-flex h-9 items-center justify-center rounded-md bg-ctp-mauve px-4 font-mono text-[10px] font-bold uppercase tracking-widest text-ctp-base transition-all duration-200 hover:bg-ctp-mauve/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-mauve focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
+          >
+            Reach Out
+          </button>
         </div>
       </div>
     </nav>
