@@ -151,7 +151,7 @@ export default function Nav() {
             onClick={scrollToContact}
             className="font-mono text-[10px] sm:text-xs uppercase tracking-widest bg-ctp-sky text-btn-text px-2 sm:px-2.5 py-1 rounded-[4px] font-bold cursor-pointer transition-colors hover:bg-ctp-text hover:text-btn-text-hover whitespace-nowrap"
           >
-            Get in touch
+            Reach Out
           </button>
           <a
             href="/portfolio/attachments/elhaiba_hamza.pdf"
