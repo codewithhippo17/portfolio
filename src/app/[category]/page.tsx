@@ -5,6 +5,16 @@ import ProjectThumbnail from "@/components/ProjectThumbnail";
 
 export const dynamicParams = false;
 
+const CATEGORY_DESCRIPTIONS: Record<string, string> = {
+  "blog": "Thoughts, tutorials, and deep dives on software engineering and design.",
+  "decision-log": "Architectural decisions, trade-offs, and the rigorous reasoning behind them.",
+  "anti-portfolio": "Projects that failed, abstractions that leaked, and what I learned from them.",
+  "mental-models": "Frameworks for thinking about systems, startups, and robust code.",
+  "failure-log": "A transparent record of outages, deadlocks, and architectural collapses. Because systems fail, and we learn.",
+  "engineering-principles": "The immutable rules and methodologies that govern how I write code and design systems."
+};
+
+
 export async function generateStaticParams() {
   return getDynamicCategories().map((category) => ({ category }));
 }
@@ -16,7 +26,7 @@ export async function generateMetadata({
 }) {
   const { category } = await params;
   const title = formatTitle(category);
-  const description = `${title} — notes and write-ups by Hamza El Haiba.`;
+  const description = CATEGORY_DESCRIPTIONS[category] || `${title} — notes and write-ups by Hamza El Haiba.`;
 
   return {
     title,
@@ -55,9 +65,14 @@ export default async function FolderIndexPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-ctp-text mb-6 tracking-tight">
+      <h1 className="text-2xl font-bold text-ctp-text mb-2 tracking-tight">
         {title}
       </h1>
+      {CATEGORY_DESCRIPTIONS[category] && (
+        <p className="text-ctp-subtext0 mb-8 text-sm">
+          {CATEGORY_DESCRIPTIONS[category]}
+        </p>
+      )}
 
       <div className="grid grid-cols-1 gap-4">
         {items.map((item) => {
