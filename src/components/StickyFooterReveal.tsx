@@ -23,8 +23,13 @@ export default function StickyFooterReveal({ children }: { children: React.React
 
   return (
     <>
-      {/* Spacer that creates the scrollable area at the bottom of the page */}
-      <div id="footer-spacer" style={{ height }} className="w-full" />
+      {/* Spacer that creates the scrollable area at the bottom of the page.
+          The height starts at 0 on the server and is set to the footer's
+          measured clientHeight after mount.  suppressHydrationWarning silences
+          React's mismatch warning for this single inline style — the only
+          correct approach for a value that is inherently unavailable at SSR
+          time (DOM measurement). */}
+      <div id="footer-spacer" style={{ height }} className="w-full" suppressHydrationWarning />
       
       {/* The actual footer content, fixed at the bottom of the viewport, behind main content */}
       <div className="fixed bottom-0 left-0 w-full z-0 pointer-events-none">

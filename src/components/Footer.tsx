@@ -1,5 +1,22 @@
 import React from "react";
 
+/**
+ * CopyrightYear renders the current year.
+ *
+ * new Date().getFullYear() is evaluated at different times on server vs client
+ * (and in different timezones), which causes a React hydration mismatch warning.
+ * suppressHydrationWarning tells React to accept the discrepancy on this single
+ * element rather than logging an error — the correct, minimal scope for this
+ * kind of unavoidable client/server divergence.
+ */
+function CopyrightYear() {
+  return (
+    <span suppressHydrationWarning>
+      {new Date().getFullYear()}
+    </span>
+  );
+}
+
 const socialLinks = [
   {
     name: "GitHub",
@@ -112,7 +129,7 @@ export default function Footer() {
 
       {/* Bottom Legal Row */}
       <div className="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-ctp-surface0/50 text-xs text-ctp-overlay0 gap-4">
-        <p>© {new Date().getFullYear()} Hamza El Haiba. All rights reserved.</p>
+        <p>© <CopyrightYear /> Hamza El Haiba. All rights reserved.</p>
         <p className="flex items-center gap-1">
           Based in Morocco <span className="text-ctp-surface2">•</span> GMT+1
         </p>

@@ -3,6 +3,7 @@ title: "Your Notes Are a Graveyard"
 date: "2026-08-04"
 tags: [productivity, zettelkasten, ai, obsidian]
 description: "How I use AI and a 6-folder Obsidian vault to protect my signal from the noise."
+thumbnail: "graveyard.jpeg"
 ---
 
 # Protecting Your Signal in the Age of Infinite Noise

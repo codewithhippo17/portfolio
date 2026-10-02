@@ -69,12 +69,12 @@ export const metadata: Metadata = {
   }),
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", sizes: "256x256", type: "image/png" },
+      { url: "/portfolio/favicon.ico", sizes: "any" },
+      { url: "/portfolio/icon.png", sizes: "256x256", type: "image/png" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: "/portfolio/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
-  manifest: "/manifest.webmanifest",
+  manifest: "/portfolio/manifest.webmanifest",
   other: {
     "theme-color": "#1e1e2e", // Catppuccin Macchiato base
   },

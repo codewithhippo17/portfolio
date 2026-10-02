@@ -156,6 +156,30 @@ function extractHeadingsPlugin() {
   };
 }
 
+/**
+ * Normalize a frontmatter date value to a plain YYYY-MM-DD string.
+ *
+ * gray-matter (via js-yaml) silently parses an *unquoted* YAML date like
+ *   date: 2023-11-05
+ * into a JavaScript Date object.  When React renders a Date as JSX text it
+ * calls .toString(), which is locale- and timezone-dependent.  The server
+ * (usually UTC) and the client (user's local timezone) therefore produce
+ * different strings → hydration mismatch.
+ *
+ * Quoted dates (date: "2023-11-05") are already strings and pass through
+ * unchanged.  Passing anything else (undefined, null) returns undefined so
+ * callers can still do `date && <div>{date}</div>`.
+ */
+function normalizeFrontmatterDate(value: unknown): string | undefined {
+  if (!value) return undefined;
+  if (value instanceof Date) {
+    // toISOString() → "2023-11-05T00:00:00.000Z"; slice the date part only.
+    return value.toISOString().slice(0, 10);
+  }
+  if (typeof value === "string") return value;
+  return String(value);
+}
+
 /** Reads all .md files from a directory, parses frontmatter + renders body */
 export function getContent<T>(subdir: string): ContentItem<T>[] {
   const dir = path.join(contentDir, subdir);
@@ -169,6 +193,12 @@ export function getContent<T>(subdir: string): ContentItem<T>[] {
       const raw = fs.readFileSync(path.join(dir, file), "utf-8");
       const { data, content } = matter(raw);
       const slug = file.replace(/\.md$/, "");
+      // Normalize the date field so it is always a plain string (or absent).
+      // gray-matter turns an *unquoted* YAML date into a JS Date object, which
+      // renders differently on server vs client (timezone-dependent .toString()).
+      if (data.date !== undefined) {
+        data.date = normalizeFrontmatterDate(data.date);
+      }
       return { slug, frontmatter: data as T, content };
     })
     .map((item) => {
