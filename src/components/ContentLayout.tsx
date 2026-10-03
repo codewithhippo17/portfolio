@@ -47,7 +47,7 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
     return () => observer.disconnect();
   }, [chapters]);
 
-  // Track scroll distance for the footer reveal fade-out
+  // Track scroll distance for the TOC fade-out when CTA appears
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;

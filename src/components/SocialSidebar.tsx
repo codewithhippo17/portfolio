@@ -60,28 +60,16 @@ export default function SocialSidebar() {
 
   useEffect(() => {
     const handleScroll = () => {
+      const documentHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
-      const contactEl = document.getElementById("contact");
+      const scrollY = window.scrollY;
+      const distance = documentHeight - (scrollY + windowHeight);
       
-      let progress = 0;
+      const spacerEl = document.getElementById("footer-spacer");
+      const footerHeight = spacerEl ? spacerEl.clientHeight : 150;
       
-      if (contactEl) {
-        const rect = contactEl.getBoundingClientRect();
-        const fadeStart = windowHeight;
-        const fadeEnd = windowHeight - 200;
-        
-        if (rect.top < fadeStart) {
-          progress = (fadeStart - rect.top) / (fadeStart - fadeEnd);
-          progress = Math.min(1, Math.max(0, progress));
-        }
-      } else {
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollY = window.scrollY;
-        const distance = documentHeight - (scrollY + windowHeight);
-        const spacerEl = document.getElementById("footer-spacer");
-        const footerHeight = spacerEl ? spacerEl.clientHeight : 150;
-        progress = Math.min(1, Math.max(0, (footerHeight - distance) / footerHeight));
-      }
+      // Progress goes from 0 to 1 smoothly across the entire height of the footer reveal
+      const progress = Math.min(1, Math.max(0, (footerHeight - distance) / footerHeight));
       
       setSquishProgress(progress);
     };

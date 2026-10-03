@@ -150,9 +150,9 @@ export default function Nav() {
           </a>
 
           {/* Primary CTA: Reach Out */}
-          <Link href="#contact" className={cn(buttonVariants(), "h-9 px-4")}>
+          <a href="#contact" className={cn(buttonVariants(), "h-9 px-4")}>
             Reach Out
-          </Link>
+          </a>
         </div>
       </div>
     </nav>

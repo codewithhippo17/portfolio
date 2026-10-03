@@ -1,16 +1,20 @@
 ---
-title: "Hamza El Haiba"
+title: "El Haiba Hamza"
 description: "Architect in Digital Technologies"
 ---
 
-## Architecture is a Conversation, Not a Monument
+## Why systems fail when the business succeeds
 
-The **most expensive mistake** in software isn't bad code. It's building a monument to **assumptions that haven't been tested yet**. We build rigid, tightly coupled monuments to our own cleverness, only to watch them fracture when the business actually succeeds.
+The most expensive mistake in software isn't bad code. It's building a monument to **assumptions nobody has tested**. Systems built that way look clever right up until the business succeeds, and then they fracture.
 
 ![[hamza-photo.jpg|left]]
 
-**I'm Hamza El Haiba, an Architect in Digital Technologies.**
-*I specialize in systems that have outgrown their assumptions.*
+I'm **El Haiba Hamza**, a software architect. I build **B2B platforms for the Moroccan market** and untangle the ones that have outgrown their original design.
+
+
+My rule: draw **strict boundaries**, and relax them only when the cost of isolation exceeds the cost of coupling. Architecture isn't about predicting the future. It's about ==making the future cheap to build==
+
+It works. I took a logistics platform where 12 teams shared one database schema and no one owned anything. Six months later, they deploy independently, and a schema change in one service no longer pages three teams at 2 AM. [One sentence on what you actually did, e.g. "I split the schema by domain and gave each team ownership of its tables."]
 
 I don't draw perfect, static blueprints. I draw **boundaries** — strict ones — and I relax them only when the **cost of isolation exceeds the cost of coupling**. Architecture isn't about predicting the future. It's about making the future **cheap to build**.
 

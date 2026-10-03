@@ -52,14 +52,9 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto text-left flex flex-col gap-6">
+    <div className="w-full text-left flex flex-col gap-6">
       {/* Header section */}
       <div className="flex flex-col gap-3">
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-ctp-green/10 text-ctp-green border border-ctp-green/20 w-fit self-start">
-          <span className="w-2 h-2 rounded-full bg-ctp-green animate-pulse" />
-          <span className="text-[10px] font-mono uppercase tracking-widest font-bold">Open to opportunities</span>
-        </div>
-        
         <h2 className="text-2xl sm:text-3xl font-bold text-ctp-text tracking-tight">
           Let's build something resilient.
         </h2>
@@ -111,7 +106,7 @@ export default function ContactForm() {
                 key={t}
                 type="button"
                 onClick={() => setTopic(t)}
-                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                className={`cursor-pointer text-xs px-3 py-1.5 rounded-full border transition-colors ${
                   topic === t 
                     ? "bg-ctp-surface1 border-ctp-surface2 text-ctp-text font-medium" 
                     : "bg-transparent border-ctp-surface0 text-ctp-subtext0 hover:border-ctp-surface1"
@@ -155,7 +150,7 @@ export default function ContactForm() {
 
           <Button 
             type="submit" 
-            variant="outline" 
+            variant={(!email || !message) ? "outline" : "primary"}
             disabled={status === "sending" || !email || !message}
             className="self-end"
           >
