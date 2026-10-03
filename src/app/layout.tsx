@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import ContactMadlibs from "@/components/ContactMadlibs";
+import ContactForm from "@/components/ContactForm";
 import StickyFooterReveal from "@/components/StickyFooterReveal";
 import SocialSidebar from "@/components/SocialSidebar";
 import EmailSidebar from "@/components/EmailSidebar";
@@ -99,7 +99,9 @@ export default function RootLayout({
           <Nav />
           <div className="max-w-3xl mx-auto w-full px-6 flex flex-col flex-grow relative ">
             <main className="flex-grow pt-16 pb-16">{children}</main>
-            <ContactMadlibs />
+            <div id="contact" className="pb-16 pt-4 scroll-mt-24">
+              <ContactForm />
+            </div>
           </div>
         </div>
 

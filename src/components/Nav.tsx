@@ -9,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button, buttonVariants, cn } from "@/components/ui/button";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -53,17 +54,6 @@ export default function Nav() {
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
-  };
-
-  const scrollToContact = () => {
-    const form = document.getElementById("contact-form");
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => {
-        const nameInput = form.querySelector('input[type="text"]') as HTMLInputElement;
-        if (nameInput) nameInput.focus();
-      }, 600);
-    }
   };
 
   return (
@@ -127,7 +117,7 @@ export default function Nav() {
           })}
 
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-ctp-subtext0 hover:text-ctp-text transition-colors cursor-pointer">
+            <DropdownMenuTrigger className="text-ctp-subtext0 hover:text-ctp-text transition-colors cursor-pointer outline-none">
               More ▾
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-44">
@@ -153,19 +143,16 @@ export default function Nav() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Download my resume as a PDF document"
-            className="group hidden sm:inline-flex h-9 items-center justify-center gap-2 rounded-md border border-ctp-surface1 bg-transparent px-3.5 font-mono text-[10px] font-medium uppercase tracking-widest text-ctp-subtext0 transition-all duration-200 hover:border-ctp-surface2 hover:bg-ctp-surface0 hover:text-ctp-mauve focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-mauve focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
+            className={cn(buttonVariants({ variant: "outline" }), "hidden sm:inline-flex group h-9 px-3.5")}
           >
             Resume
-            <Download className="size-3.5 transition-transform group-hover:-translate-y-[2px]" aria-hidden="true" />
+            <Download className="size-3.5 ml-2 transition-transform group-hover:-translate-y-[2px]" aria-hidden="true" />
           </a>
 
           {/* Primary CTA: Reach Out */}
-          <button
-            onClick={scrollToContact}
-            className="inline-flex h-9 cursor-pointer items-center justify-center rounded-md bg-ctp-mauve px-4 font-mono text-[10px] font-bold uppercase tracking-widest text-ctp-base transition-all duration-200 hover:bg-ctp-mauve/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-mauve focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98]"
-          >
+          <Link href="#contact" className={cn(buttonVariants(), "h-9 px-4")}>
             Reach Out
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

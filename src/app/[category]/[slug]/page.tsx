@@ -98,36 +98,35 @@ export default async function ContentPage({
         }}
       />
       <ContentLayout headings={item.headings || []}>
-      <article>
-        {/* Back link */}
-        <Link
-          href={`/${category}`}
-          className="inline-flex items-center text-sm text-ctp-subtext0 hover:text-ctp-text transition-colors"
-        >
-          <ChevronLeft size={16} className="mr-1 -ml-1" />
-          Back to {formatTitle(category)}
-        </Link>
+        <article>
+          {/* Back link */}
+          <Link
+            href={`/${category}`}
+            className="inline-flex items-center text-sm text-ctp-subtext0 hover:text-ctp-text transition-colors"
+          >
+            <ChevronLeft size={16} className="mr-1 -ml-1" />
+            Back to {formatTitle(category)}
+          </Link>
 
-        {/* Header */}
-        <h1 className="text-2xl font-bold text-ctp-text mt-4 mb-2 tracking-tight">
-          {item.frontmatter.title}
-        </h1>
+          {/* Header */}
+          <h1 className="text-2xl font-bold text-ctp-text mt-4 mb-2 tracking-tight">
+            {item.frontmatter.title}
+          </h1>
 
-        {/* Meta row */}
-        {item.frontmatter.date && (
-          <div className="text-sm text-ctp-subtext0 mb-6">
-            {item.frontmatter.date}
-          </div>
-        )}
+          {/* Meta row */}
+          {item.frontmatter.date && (
+            <div className="text-sm text-ctp-subtext0 mb-6">
+              {item.frontmatter.date}
+            </div>
+          )}
 
-        {/* Divider */}
-        <hr className="border-ctp-surface0 mb-8" />
+          {/* Divider */}
+          <hr className="border-ctp-surface0 mb-8" />
 
-        {/* Content */}
-        <MarkdownContent html={item.html} />
-      </article>
+          {/* Content */}
+          <MarkdownContent html={item.html} />
+        </article>
       </ContentLayout>
     </>
   );
 }
-
