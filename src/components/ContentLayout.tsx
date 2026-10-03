@@ -20,8 +20,7 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
     }));
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [scrollDistanceToBottom, setScrollDistanceToBottom] = useState(1000);
-  const [footerHeight, setFooterHeight] = useState(150);
+  const [squishProgress, setSquishProgress] = useState(0);
 
   useEffect(() => {
     if (chapters.length === 0) return;
@@ -51,16 +50,30 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
   // Track scroll distance for the footer reveal fade-out
   useEffect(() => {
     const handleScroll = () => {
-      const documentHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-      const distance = documentHeight - (scrollY + windowHeight);
-      setScrollDistanceToBottom(Math.max(0, distance));
-
-      const spacerEl = document.getElementById("footer-spacer");
-      if (spacerEl) {
-        setFooterHeight(spacerEl.clientHeight);
+      const contactEl = document.getElementById("contact");
+      
+      let progress = 0;
+      
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        const fadeStart = windowHeight;
+        const fadeEnd = windowHeight - 200;
+        
+        if (rect.top < fadeStart) {
+          progress = (fadeStart - rect.top) / (fadeStart - fadeEnd);
+          progress = Math.min(1, Math.max(0, progress));
+        }
+      } else {
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollY = window.scrollY;
+        const distance = documentHeight - (scrollY + windowHeight);
+        const spacerEl = document.getElementById("footer-spacer");
+        const footerHeight = spacerEl ? spacerEl.clientHeight : 150;
+        progress = Math.min(1, Math.max(0, (footerHeight - distance) / footerHeight));
       }
+      
+      setSquishProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -80,7 +93,6 @@ export default function ContentLayout({ children, headings }: ContentLayoutProps
     }
   };
 
-  const squishProgress = Math.min(1, Math.max(0, (footerHeight - scrollDistanceToBottom) / footerHeight));
   const opacity = 1 - (squishProgress * 1);
   const scale = 1 - (squishProgress * 0.1);
   const translateY = `calc(-50% + ${squishProgress * 50}px)`;

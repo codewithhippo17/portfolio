@@ -99,7 +99,7 @@ export default function RootLayout({
           <Nav />
           <div className="max-w-3xl mx-auto w-full px-6 flex flex-col flex-grow relative ">
             <main className="flex-grow pt-16 pb-16">{children}</main>
-            <div id="contact" className="pb-16 pt-4 scroll-mt-24">
+            <div id="contact" className="mt-16 pt-16 pb-16 border-t border-ctp-surface0/50 scroll-mt-24">
               <ContactForm />
             </div>
           </div>

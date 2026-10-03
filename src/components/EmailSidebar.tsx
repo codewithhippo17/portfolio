@@ -20,21 +20,34 @@ import { motion } from "framer-motion";
 export const SITE_EMAIL = "elhaiba.hamza@proton.me";
 
 export default function EmailSidebar() {
-  const [scrollDistanceToBottom, setScrollDistanceToBottom] = useState(1000);
-  const [footerHeight, setFooterHeight] = useState(150);
+  const [squishProgress, setSquishProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const documentHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-      const distance = documentHeight - (scrollY + windowHeight);
-      setScrollDistanceToBottom(Math.max(0, distance));
-
-      const spacerEl = document.getElementById("footer-spacer");
-      if (spacerEl) {
-        setFooterHeight(spacerEl.clientHeight);
+      const contactEl = document.getElementById("contact");
+      
+      let progress = 0;
+      
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        const fadeStart = windowHeight;
+        const fadeEnd = windowHeight - 200;
+        
+        if (rect.top < fadeStart) {
+          progress = (fadeStart - rect.top) / (fadeStart - fadeEnd);
+          progress = Math.min(1, Math.max(0, progress));
+        }
+      } else {
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollY = window.scrollY;
+        const distance = documentHeight - (scrollY + windowHeight);
+        const spacerEl = document.getElementById("footer-spacer");
+        const footerHeight = spacerEl ? spacerEl.clientHeight : 150;
+        progress = Math.min(1, Math.max(0, (footerHeight - distance) / footerHeight));
       }
+      
+      setSquishProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -47,10 +60,6 @@ export default function EmailSidebar() {
     };
   }, []);
 
-  const squishProgress = Math.min(
-    1,
-    Math.max(0, (footerHeight - scrollDistanceToBottom) / footerHeight)
-  );
   const opacity = 1 - squishProgress;
   const y = squishProgress * 50;
   const scale = 1 - squishProgress * 0.2;

@@ -120,13 +120,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Massive Typography Watermark */}
-      <div className="w-full overflow-hidden mb-8 flex justify-center opacity-30 select-none pointer-events-none">
-        <span className="text-[10vw] font-black text-ctp-surface0 leading-[0.75] tracking-tighter">
-          RESILIENT.
-        </span>
-      </div>
-
       {/* Bottom Legal Row */}
       <div className="flex flex-col md:flex-row items-center justify-between pt-6 border-t border-ctp-surface0/50 text-xs text-ctp-overlay0 gap-4">
         <p>© <CopyrightYear /> Hamza El Haiba. All rights reserved.</p>

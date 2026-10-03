@@ -56,23 +56,34 @@ const socialLinks = [
 ];
 
 export default function SocialSidebar() {
-  const [scrollDistanceToBottom, setScrollDistanceToBottom] = useState(1000);
-  const [footerHeight, setFooterHeight] = useState(150);
+  const [squishProgress, setSquishProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate how far the user is from the absolute bottom of the page
-      const documentHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;
-      const scrollY = window.scrollY;
-      const distance = documentHeight - (scrollY + windowHeight);
-      setScrollDistanceToBottom(Math.max(0, distance));
+      const contactEl = document.getElementById("contact");
       
-      // Get exact dynamic footer height
-      const spacerEl = document.getElementById("footer-spacer");
-      if (spacerEl) {
-        setFooterHeight(spacerEl.clientHeight);
+      let progress = 0;
+      
+      if (contactEl) {
+        const rect = contactEl.getBoundingClientRect();
+        const fadeStart = windowHeight;
+        const fadeEnd = windowHeight - 200;
+        
+        if (rect.top < fadeStart) {
+          progress = (fadeStart - rect.top) / (fadeStart - fadeEnd);
+          progress = Math.min(1, Math.max(0, progress));
+        }
+      } else {
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollY = window.scrollY;
+        const distance = documentHeight - (scrollY + windowHeight);
+        const spacerEl = document.getElementById("footer-spacer");
+        const footerHeight = spacerEl ? spacerEl.clientHeight : 150;
+        progress = Math.min(1, Math.max(0, (footerHeight - distance) / footerHeight));
       }
+      
+      setSquishProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -86,11 +97,6 @@ export default function SocialSidebar() {
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
-
-  // Use the exact dynamic footer height so the animation perfectly syncs 
-  // with the moment the footer starts revealing.
-  // Calculate progress from 0 (normal) to 1 (fully squished at bottom).
-  const squishProgress = Math.min(1, Math.max(0, (footerHeight - scrollDistanceToBottom) / footerHeight));
 
   // We manually interpolate styles based on squishProgress
   const opacity = 1 - (squishProgress * 1); // Fades to 0
