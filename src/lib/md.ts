@@ -88,6 +88,7 @@ export interface PageFrontmatter {
 
 export interface ContentItem<T> {
   slug: string;
+  folder?: string;
   frontmatter: T;
   html: string;
   headings: { id: string; title: string; depth: number }[];
@@ -181,25 +182,34 @@ function normalizeFrontmatterDate(value: unknown): string | undefined {
 }
 
 /** Reads all .md files from a directory, parses frontmatter + renders body */
-export function getContent<T>(subdir: string): ContentItem<T>[] {
+export function getContent<T>(subdir: string, recursive = false): ContentItem<T>[] {
   const dir = path.join(contentDir, subdir);
 
   if (!fs.existsSync(dir)) return [];
 
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
+  let files = fs.readdirSync(dir).filter((f) => f.endsWith(".md")).map(f => ({ fullPath: path.join(dir, f), folder: undefined as string | undefined }));
+
+  if (recursive) {
+    const subdirs = fs.readdirSync(dir).filter(f => fs.statSync(path.join(dir, f)).isDirectory());
+    for (const sub of subdirs) {
+      const subPath = path.join(dir, sub);
+      const subFiles = fs.readdirSync(subPath).filter((f) => f.endsWith(".md")).map(f => ({ fullPath: path.join(subPath, f), folder: sub }));
+      files = [...files, ...subFiles];
+    }
+  }
 
   return files
-    .map((file) => {
-      const raw = fs.readFileSync(path.join(dir, file), "utf-8");
+    .map(({ fullPath, folder }) => {
+      const raw = fs.readFileSync(fullPath, "utf-8");
       const { data, content } = matter(raw);
-      const slug = file.replace(/\.md$/, "");
+      const slug = path.basename(fullPath, ".md");
       // Normalize the date field so it is always a plain string (or absent).
       // gray-matter turns an *unquoted* YAML date into a JS Date object, which
       // renders differently on server vs client (timezone-dependent .toString()).
       if (data.date !== undefined) {
         data.date = normalizeFrontmatterDate(data.date);
       }
-      return { slug, frontmatter: data as T, content };
+      return { slug, folder, frontmatter: data as T, content };
     })
     .map((item) => {
       const processor = remark()

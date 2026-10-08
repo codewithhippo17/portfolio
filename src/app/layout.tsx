@@ -88,6 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body
@@ -95,7 +96,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col relative overflow-x-hidden"
       >
         {/* Main scrolling content with solid background to cover the sticky footer */}
-        <div className="relative z-10 bg-background flex flex-col flex-grow w-full shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+        <div suppressHydrationWarning className="relative z-10 bg-background flex flex-col flex-grow w-full shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
           <Nav />
           <div className="max-w-3xl mx-auto w-full px-6 flex flex-col flex-grow relative ">
             <main className="flex-grow pt-16 pb-16">{children}</main>

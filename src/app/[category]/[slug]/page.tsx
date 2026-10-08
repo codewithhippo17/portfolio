@@ -14,7 +14,7 @@ export async function generateStaticParams() {
   const validCategories = getDynamicCategories();
   
   for (const category of validCategories) {
-    const items = getContent<BaseFrontmatter>(category);
+    const items = getContent<BaseFrontmatter>(category, true);
     for (const item of items) {
       params.push({ category, slug: item.slug });
     }
@@ -29,7 +29,7 @@ export async function generateMetadata({
   params: Promise<{ category: string; slug: string }>;
 }) {
   const { category, slug } = await params;
-  const items = getContent<BaseFrontmatter>(category);
+  const items = getContent<BaseFrontmatter>(category, true);
   const item = items.find((i) => i.slug === slug);
 
   if (!item) return {};
@@ -74,7 +74,7 @@ export default async function ContentPage({
     notFound();
   }
 
-  const items = getContent<BaseFrontmatter>(category);
+  const items = getContent<BaseFrontmatter>(category, true);
   const item = items.find((i) => i.slug === slug);
 
   if (!item) notFound();

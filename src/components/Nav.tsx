@@ -17,14 +17,6 @@ const navLinks = [
   { href: "/blog", label: "Blog" },
 ];
 
-const moreLinks = [
-  { href: "/failure-log", label: "Failure Log" },
-  { href: "/mental-models", label: "Mental Models" },
-  { href: "/engineering-principles", label: "Principles" },
-  { href: "/anti-portfolio", label: "Anti-Portfolio" },
-  { href: "/decision-log", label: "Decision Log" },
-];
-
 function NavLink({
   href,
   active,
@@ -76,14 +68,6 @@ export default function Nav() {
               </DropdownMenuItem>
             ))}
             <div className="my-1 border-t border-ctp-surface0/30" role="separator" />
-            {moreLinks.map((link) => (
-              <DropdownMenuItem key={link.href} className="p-0">
-                <NavLink href={link.href} active={isActive(link.href)}>
-                  {link.label}
-                </NavLink>
-              </DropdownMenuItem>
-            ))}
-            <div className="my-1 border-t border-ctp-surface0/30" role="separator" />
             <DropdownMenuItem className="p-0">
               <a
                 href="/portfolio/attachments/elhaiba_hamza.pdf"
@@ -97,7 +81,7 @@ export default function Nav() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {/* Desktop: primary links + More dropdown (hidden below sm) */}
+        {/* Desktop: primary links (hidden below sm) */}
         <div className="hidden sm:flex items-center gap-4 sm:gap-6">
           {navLinks.map((link) => {
             const active = isActive(link.href);
@@ -115,24 +99,6 @@ export default function Nav() {
               </Link>
             );
           })}
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="text-ctp-subtext0 hover:text-ctp-text transition-colors cursor-pointer outline-none">
-              More ▾
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-44">
-              {moreLinks.map((link) => {
-                const active = isActive(link.href);
-                return (
-                  <DropdownMenuItem key={link.href} className="p-0">
-                    <NavLink href={link.href} active={active}>
-                      {link.label}
-                    </NavLink>
-                  </DropdownMenuItem>
-                );
-              })}
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
 
         {/* CTAs */}
