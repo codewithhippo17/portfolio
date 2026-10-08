@@ -14,7 +14,7 @@ const badgeVariants = cva(
         ongoing:
           "border-ctp-blue/40 bg-ctp-blue/10 text-ctp-blue",
         archived:
-          "border-ctp-overlay1/40 bg-ctp-overlay1/10 text-ctp-overlay1",
+          "border-ctp-overlay1/40 bg-ctp-overlay1/10 text-ctp-text",
         "info-light":
           "border-ctp-sky/40 bg-ctp-sky/10 text-ctp-sky",
       },

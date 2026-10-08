@@ -103,11 +103,11 @@ export default async function ProjectPage({
 
         {/* Tags */}
         {frontmatter.tags?.length > 0 && (
-          <div className="flex flex-wrap gap-3 mb-6">
+          <div className="flex flex-wrap gap-4 mb-6">
             {frontmatter.tags.map((tag) => (
               <span
                 key={tag}
-                className="flex items-center gap-1.5 text-xs text-ctp-overlay1 bg-ctp-surface0 px-2 py-0.5 rounded"
+                className="flex items-center gap-1.5 text-xs text-ctp-text font-medium"
               >
                 <TechIcon name={tag} size={14} />
                 {tag}

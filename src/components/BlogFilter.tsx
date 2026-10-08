@@ -174,7 +174,7 @@ export default function BlogFilter({
 
                       <div className="mt-auto flex flex-wrap items-center gap-x-2 gap-y-1 pt-3">
                         {item.frontmatter.date && (
-                          <span className="text-xs text-ctp-overlay1 font-mono uppercase tracking-wider">
+                          <span className="text-xs text-ctp-text font-mono uppercase tracking-wider">
                             {item.frontmatter.date}
                           </span>
                         )}

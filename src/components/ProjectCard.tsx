@@ -93,7 +93,7 @@ export default function ProjectCard({
         {tags && tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="rounded-md bg-ctp-surface0/50 px-2 py-1 text-[10px] font-medium tracking-wide text-ctp-subtext0">
+              <span key={tag} className="rounded-md bg-ctp-surface0/50 px-2 py-1 text-[10px] font-medium tracking-wide text-ctp-text">
                 #{tag}
               </span>
             ))}

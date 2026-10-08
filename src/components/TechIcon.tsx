@@ -30,6 +30,8 @@ const iconMap: Record<string, string> = {
   markdown: "logos:markdown",
   authentication: "carbon:security",
   ai: "mingcute:ai-fill",
+  ollama: "ant-design:ollama-filled",
+  devops: "iconoir:agile",
   "open-source": "octicon:repo-16",
   docker: "catppuccin:docker",
   "docker-compose": "catppuccin:docker-compose",
