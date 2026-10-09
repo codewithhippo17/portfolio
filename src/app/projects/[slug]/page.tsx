@@ -139,7 +139,7 @@ export default async function ProjectPage({
                   href={frontmatter.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(buttonVariants({ size: "sm" }))}
+                  className={cn(buttonVariants(), "h-8 sm:h-9")}
                 >
                   Visit Site ↗
                 </a>
