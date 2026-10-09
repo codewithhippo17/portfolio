@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Circle } from "lucide-react";
 import {
@@ -49,6 +49,32 @@ export default function BlogFilter({
   categorySlug: string;
 }) {
   const [selectedFolders, setSelectedFolders] = useState<string[]>([]);
+  const [filterOpacity, setFilterOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const contactEl = document.getElementById("contact");
+      if (!contactEl) return;
+      
+      const rect = contactEl.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      if (rect.top > windowHeight) {
+        setFilterOpacity(1);
+      } else {
+        const fadeDistance = 400; // Pixels of scroll over which to fade out
+        const visibleAmount = windowHeight - rect.top;
+        const newOpacity = Math.max(0, 1 - visibleAmount / fadeDistance);
+        setFilterOpacity(newOpacity);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run once on mount
+    handleScroll();
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Group items by folder
   const foldersMap = new Map<string, ContentItem<BaseFrontmatter>[]>();
@@ -65,7 +91,14 @@ export default function BlogFilter({
     <div suppressHydrationWarning className="space-y-8">
       {/* Filter fixed at the top left of the entire page */}
       {sortedFolders.length > 0 && (
-        <div className="fixed top-24 left-4 md:left-8 z-50 w-full max-w-[240px]">
+        <div 
+          className="fixed top-24 left-4 md:left-8 z-50 w-full max-w-[240px]"
+          style={{ 
+            opacity: filterOpacity, 
+            pointerEvents: filterOpacity < 0.2 ? 'none' : 'auto',
+            transition: 'opacity 0.1s ease-out'
+          }}
+        >
           <MultiSelect 
             value={selectedFolders} 
             onValueChange={setSelectedFolders}
