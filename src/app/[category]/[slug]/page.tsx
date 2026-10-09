@@ -5,6 +5,7 @@ import { getContent, getDynamicCategories, formatTitle, BaseFrontmatter } from "
 import ContentLayout from "@/components/ContentLayout";
 import JsonLd from "@/components/JsonLd";
 import MarkdownContent from "@/components/MarkdownContent";
+import HeroImage from "@/components/HeroImage";
 import { AUTHOR, SITE_NAME, buildUrl, siteOpenGraph, siteTwitter } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -118,6 +119,14 @@ export default async function ContentPage({
             <div className="text-sm text-ctp-subtext0 mb-6">
               {item.frontmatter.date}
             </div>
+          )}
+
+          {/* Hero Thumbnail */}
+          {item.frontmatter.thumbnail && (
+            <HeroImage
+              src={`/portfolio/attachments/${item.frontmatter.thumbnail}`}
+              alt={item.frontmatter.title || "Post thumbnail"}
+            />
           )}
 
           {/* Divider */}
