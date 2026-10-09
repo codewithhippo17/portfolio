@@ -91,60 +91,62 @@ export default async function ProjectPage({
           Back to projects
         </Link>
 
-        {/* Header */}
-        <h1 className="text-2xl font-bold text-ctp-text mt-4 mb-2 tracking-tight">
-          {frontmatter.title}
-        </h1>
+        {/* Header Block with Links on the Right */}
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mt-4 mb-6">
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold text-ctp-text mb-2 tracking-tight">
+              {frontmatter.title}
+            </h1>
 
-        {/* Meta row */}
-        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ctp-subtext0 mb-6">
-          <span className={statusColor[frontmatter.status] ?? "text-ctp-subtext0"}>
-            {frontmatter.status}
-          </span>
-          <span>{frontmatter.date}</span>
-          <span>{frontmatter.role}</span>
-        </div>
-
-        {/* Tags */}
-        {frontmatter.tags?.length > 0 && (
-          <div className="flex flex-wrap gap-4 mb-6">
-            {frontmatter.tags.map((tag) => (
-              <span
-                key={tag}
-                className="flex items-center gap-1.5 text-xs text-ctp-text font-medium"
-              >
-                <TechIcon name={tag} size={14} />
-                {tag}
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-ctp-subtext0 mb-6">
+              <span className={statusColor[frontmatter.status] ?? "text-ctp-subtext0"}>
+                {frontmatter.status}
               </span>
-            ))}
-          </div>
-        )}
+              <span>{frontmatter.date}</span>
+              <span>{frontmatter.role}</span>
+            </div>
 
-        {/* Links */}
-        {(frontmatter.github || frontmatter.live) && (
-          <div className="flex gap-4 mb-6">
-            {frontmatter.github && (
-              <a
-                href={frontmatter.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(buttonVariants({ variant: "outline" }), "group")}
-              >
-                <GithubButton />
-              </a>
-            )}
-            {frontmatter.live && (
-              <a
-                href={frontmatter.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(buttonVariants())}
-              >
-                Visit Site ↗
-              </a>
+            {frontmatter.tags?.length > 0 && (
+              <div className="flex flex-wrap gap-4">
+                {frontmatter.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="flex items-center gap-1.5 text-xs text-ctp-text font-medium"
+                  >
+                    <TechIcon name={tag} size={14} />
+                    {tag}
+                  </span>
+                ))}
+              </div>
             )}
           </div>
-        )}
+
+          {/* Links */}
+          {(frontmatter.github || frontmatter.live) && (
+            <div className="flex items-center sm:justify-end gap-6 shrink-0 mt-2 sm:mt-1">
+              {frontmatter.github && (
+                <a
+                  href={frontmatter.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-20 inline-flex items-center transition-colors"
+                >
+                  <GithubButton />
+                </a>
+              )}
+              {frontmatter.live && (
+                <a
+                  href={frontmatter.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(buttonVariants({ size: "sm" }))}
+                >
+                  Visit Site ↗
+                </a>
+              )}
+            </div>
+          )}
+        </div>
 
         {/* Hero Thumbnail */}
         {frontmatter.thumbnail && (
